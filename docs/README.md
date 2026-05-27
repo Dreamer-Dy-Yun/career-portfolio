@@ -4,6 +4,7 @@
 
 ## 파일 책임
 
+- `portfolio-redesign-plan.md`: 새 포트폴리오의 정체성, 화면 구성, 시각 방향, 데이터 운영 기준.
 - `google-sheets-content-contract.md`: Google Sheets에서 내보내야 하는 공개 JSON 구조와 운영 주의사항.
 
 ## 문서 원칙
