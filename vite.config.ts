@@ -5,6 +5,6 @@ import react from '@vitejs/plugin-react';
 // For a repository page such as <username>.github.io/career-portfolio/, use base: "/career-portfolio/".
 
 export default defineConfig({
-  base: '/',
+  base: '/career-portfolio/',
   plugins: [react()],
 });
