@@ -4,99 +4,139 @@ export const fallbackContent: PortfolioContent = {
   siteTitle: 'Yun Dae-Young Portfolio',
   hero: {
     name: 'Yun Dae-Young',
-    title: 'Business System Designer / Backend & Data Pipeline Engineer',
-    subtitle: '불명확한 업무 요구, 흩어진 운영 데이터, 외부 시스템 제약을 분석해 실행 가능한 시스템 구조로 전환하는 개발자',
+    title: 'Workflow & Data System Designer',
+    subtitle: '복잡한 업무 흐름과 데이터를 규칙, 상태, 검증 구조로 정리하는 사람',
     description:
-      '면세점 정산, OCR/LLM 문서 처리, PostgreSQL 기반 데이터 모델링, ICT 검사 데이터 정규화 작업에서 입력, 검증 상태, 책임 경계, 운영 흐름을 먼저 정의하고 백엔드, DB, API, UI로 연결해 왔습니다.',
-    chips: ['Business System Design', 'Data Workflow', 'PostgreSQL', 'API Integration', 'OCR / LLM'],
+      '물리학, 진화심리학, 에이전트 기반 모델처럼 규칙과 상호작용이 패턴을 만드는 구조에 관심을 가져 왔습니다. 실무에서는 흩어진 업무 데이터, 외부 시스템 제약, 수기 검증 흐름을 분석해 처리 가능한 시스템 구조로 바꾸는 작업을 해왔습니다.',
+    chips: ['Workflow Modeling', 'Data Boundary Design', 'Validation Flow', 'Rule-based Process', 'System Implementation'],
   },
   roles: [
     {
-      title: 'Backend / Data Workflow Engineering',
-      description: 'Excel, API 응답, OCR 결과, 수기 확인값처럼 서로 다른 운영 입력을 DB/API/배치 흐름으로 구조화합니다.',
-      focus: ['Data boundary', 'PostgreSQL modeling', 'API and OCR data flow'],
+      title: 'Workflow & Data Modeling',
+      description: '불명확한 업무 입력을 원본 데이터, 처리 상태, 검증 결과, 출력 구조로 분해합니다.',
+      focus: ['input / state / output boundary', 'validation flow', 'business data modeling'],
     },
     {
-      title: 'Business System Analysis & Design',
-      description: '요구가 불명확한 업무를 입력, 출력, 상태, 권한, 책임 경계로 분해하고 구현 가능한 시스템 단위로 재조립합니다.',
-      focus: ['Requirement structuring', 'Responsibility boundary', 'Validation state'],
+      title: 'Rule-based System Design',
+      description: '예외를 개별 분기로 누적하기보다, 반복 가능한 규칙과 처리 구조로 일반화합니다.',
+      focus: ['reusable processing logic', 'rule / condition separation', 'workflow engine thinking'],
     },
     {
-      title: 'Human-in-the-loop AI Data Workflow',
-      description: 'OCR/LLM 결과를 최종값으로 보지 않고 원본, 추출값, 검증값, 수정 흐름이 분리된 업무 데이터로 다룹니다.',
-      focus: ['Raw / parsed / verified data', 'Coordinate and masking metadata', 'Human verification'],
+      title: 'Verification-oriented AI Workflow',
+      description: 'OCR/LLM 결과를 확정값이 아니라 검증 전 데이터로 취급하고, 사람이 확인 가능한 흐름으로 연결합니다.',
+      focus: ['raw / parsed / verified separation', 'coordinate and masking metadata', 'human verification loop'],
+    },
+    {
+      title: 'Backend / DB Implementation',
+      description: '설계한 업무 구조를 API, DB, 배치 처리, UI 흐름으로 구현합니다.',
+      focus: ['PostgreSQL', 'FastAPI', 'batch processing', 'React workflow UI'],
     },
   ],
   operatingPrinciples: [
     {
-      title: 'Define the boundary first',
-      description: '요구사항이 불명확할수록 입력, 출력, 상태, 책임 경계를 먼저 정의합니다.',
+      title: 'Input, state, output first',
+      description: '불명확한 요구사항을 입력, 출력, 상태, 책임 경계로 분해합니다.',
     },
     {
-      title: 'Separate raw, parsed, verified data',
-      description: '원본 데이터, AI/자동 추출값, 사람이 검증한 값을 분리해 추적과 수정을 가능하게 둡니다.',
+      title: 'Separate verification stages',
+      description: '원본 데이터, 자동 처리 결과, 사람이 검증한 값을 분리합니다.',
     },
     {
-      title: 'Prefer API/DB workflow over UI automation',
-      description: '화면 자동화에 바로 묶기보다 API, DB, 데이터 흐름 기반 재구성을 우선 검토합니다.',
+      title: 'Prefer system workflow over screen automation',
+      description: '단순 화면 자동화보다 API, DB, 배치, 상태 기반 흐름으로 재구성할 수 있는지 먼저 봅니다.',
     },
     {
-      title: 'Generalize repeated exceptions',
-      description: '반복되는 예외 처리는 하드코딩보다 재사용 가능한 처리 구조로 정리합니다.',
+      title: 'Turn exceptions into rules',
+      description: '예외 케이스를 개별 처리하기보다 규칙과 구조로 일반화합니다.',
     },
     {
-      title: 'Leave operational decisions visible',
-      description: '운영 리스크와 책임 경계는 상태값, 문서, 검증 흐름으로 남깁니다.',
+      title: 'Make operation boundaries visible',
+      description: '운영 리스크와 책임 경계를 문서와 시스템 구조에 남깁니다.',
     },
   ],
   projects: [
     {
       title: 'YIDO Dutyfree B2C Settlement System',
       period: '2025',
-      role: 'Business System Design / Backend / DB / Frontend',
+      role: 'Workflow Modeling / Backend / DB / UI',
       summary:
-        '면세점 정산 업무에서 EDI Excel, 영수증/여권 이미지, OCR/LLM 추출값, 수기 검증값이 분리되어 발생하던 데이터 단절을 정리하고, 검증 전/후 데이터와 매핑 흐름을 분리해 추적 가능한 정산 시스템 구조로 설계·구현했습니다.',
-      inputs: ['EDI Excel', '영수증/여권 이미지', 'OCR/LLM 추출값', '수기 검증값', '정산 매핑 기준'],
-      decisions: [
-        '원본 이미지, AI 추출값, 검증 완료 데이터를 분리',
-        '영수증-여권-EDI 매핑을 중심 흐름으로 설계',
-        '자동 추출 결과를 바로 확정하지 않고 검증 UI에서 수정 가능하게 구성',
-        '사용량과 LLM 토큰 추적이 가능한 데이터 구조 준비',
+        '면세점 정산 업무에서 분리되어 있던 EDI, 이미지, AI 추출값, 수기 검증값을 추적 가능한 정산 데이터 구조로 전환했습니다.',
+      problem:
+        'EDI Excel, 영수증/여권 이미지, OCR/LLM 추출값, 수기 검증값이 서로 다른 흐름에 놓여 있어 정산 데이터의 연결과 검증 책임이 불명확했습니다.',
+      constraints: [
+        '입력 형식이 Excel, 이미지, AI 추출값, 수기 확인값으로 분리됨',
+        'OCR/LLM 결과를 그대로 확정값으로 사용할 수 없음',
+        '영수증-여권-EDI 매핑이 완전한 입력 품질을 전제로 할 수 없음',
       ],
-      output: ['추적 가능한 정산 데이터 흐름', '검증 전/후 상태가 분리된 업무 구조', '이미지 확인과 데이터 매핑을 연결한 운영 UI'],
+      decisions: [
+        '원본 입력, AI 추출값, 사람이 검증한 값을 분리',
+        '영수증-여권-EDI 매핑 흐름을 중심 업무 구조로 정의',
+        '검증 전/후 상태를 구분해 추적 가능한 데이터 흐름으로 설계',
+      ],
+      deliverables: ['PostgreSQL relational schema', 'FastAPI backend workflow', 'React image verification UI', 'usage and token tracking structure'],
+      meaning:
+        '단순 OCR 연동이 아니라, 불완전한 입력을 검증 가능한 정산 업무 상태로 전환한 사례입니다.',
       stack: ['Python', 'FastAPI', 'PostgreSQL', 'SQLAlchemy', 'React', 'TypeScript', 'OCR', 'LLM API'],
     },
     {
       title: 'PostgreSQL Multi-schema DB Manager',
       period: '2025',
-      role: 'Backend / Database Architecture',
+      role: 'Rule-based DB Operation Design',
       summary:
-        '반복되는 PostgreSQL schema 관리, table 생성, batch upsert/update 작업을 프로젝트별 일회성 SQL이 아니라 재사용 가능한 비동기 DB 실행 구조로 정리했습니다.',
-      inputs: ['Schema name', 'Table metadata', 'Batch records', 'Conflict constraints'],
-      decisions: ['Schema-scoped execution', 'Reusable batch upsert/update helpers', 'Metadata-driven table handling'],
-      output: ['반복 DB 작업 재사용', 'Schema 단위 데이터 분리', '프로젝트별 DB 처리 로직 중복 감소'],
+        '반복되는 PostgreSQL schema 관리, table 생성, batch upsert/update 작업을 재사용 가능한 비동기 DB 실행 구조로 정리했습니다.',
+      problem:
+        '프로젝트마다 비슷한 DB 작업이 반복되었고, schema/table/constraint 처리 방식이 일회성 코드로 흩어질 위험이 있었습니다.',
+      constraints: [
+        'schema-scoped execution이 필요함',
+        'batch insert/update 패턴이 반복됨',
+        '특정 table이나 schema에 하드코딩하면 재사용성이 낮아짐',
+      ],
+      decisions: ['schema context를 실행 단위에 주입', 'batch upsert/update helper 분리', 'metadata 기반 table/constraint 처리'],
+      deliverables: ['async SQLAlchemy manager', 'schema-scoped operation helpers', 'batch upsert/update helpers'],
+      meaning:
+        '반복되는 DB 예외 처리를 개별 SQL이 아니라 재사용 가능한 처리 규칙으로 일반화한 사례입니다.',
       stack: ['Python', 'PostgreSQL', 'SQLAlchemy', 'asyncpg'],
     },
     {
       title: 'OCR / LLM Document Parsing Pipeline',
       period: '2025',
-      role: 'AI Data Workflow / Data Structuring',
+      role: 'Verification-oriented AI Data Workflow',
       summary:
-        '여권/영수증 이미지에서 나온 OCR/LLM 결과를 최종값이 아니라 검증 대상 데이터로 다루고, 좌표, 마스킹, 해시, 필드 구조를 분리해 수정 가능한 문서 처리 흐름으로 구성했습니다.',
-      inputs: ['Passport image', 'Receipt image', 'OCR text', 'LLM parsed fields', 'Field coordinates'],
-      decisions: ['AI 출력값을 provisional data로 취급', '좌표와 마스킹 정보를 필드 구조에 포함', '원본 이미지와 파싱 결과 레이어 분리'],
-      output: ['필드 단위 검증 가능', '원본 이미지와 추출값 추적 가능', '수정 가능한 구조화 데이터'],
+        '여권/영수증 이미지의 OCR/LLM 결과를 검증 대상 데이터로 다루고, 사람이 확인 가능한 필드 구조와 수정 흐름으로 연결했습니다.',
+      problem:
+        'AI 추출 결과에는 필드 오류와 불확실성이 있으므로, 업무 데이터로 쓰기 전에 원본 이미지와 대조 가능한 검증 구조가 필요했습니다.',
+      constraints: [
+        'OCR 결과가 항상 정확하지 않음',
+        '마스킹 값은 보이는 문자 구조를 보존해야 함',
+        '이미지 표시 크기가 바뀌어도 좌표 정보가 검토 가능해야 함',
+      ],
+      decisions: ['AI 출력값을 provisional data로 취급', '좌표와 마스킹 정보를 field metadata로 분리', '원본 이미지와 parsed result를 별도 레이어로 관리'],
+      deliverables: ['field-level JSON structure', 'coordinate metadata', 'masking rule structure', 'validation-ready parsed records'],
+      meaning:
+        'AI 결과를 “자동 확정”하지 않고 사람이 검증 가능한 업무 데이터 흐름으로 바꾼 사례입니다.',
       stack: ['Python', 'OCR', 'LLM API', 'JSON', 'PostgreSQL'],
     },
     {
       title: 'ICT Data Extractor / Visual Normalization',
       period: '2025',
-      role: 'Data Engineering / Visualization',
+      role: 'Workflow Modeling / Data Normalization',
       summary:
-        'ICT 검사 데이터의 여러 측정 포인트를 스펙 기준으로 비교 가능하게 만들기 위해, Spec/USL/LSL 중심의 시각 정규화 방식을 설계하고 CSV 파싱, DB 저장, 시각화용 데이터 변환 흐름을 구성했습니다.',
-      inputs: ['Inspection CSV', 'Measured values', 'Spec / USL / LSL values'],
-      decisions: ['측정값과 규격값 분리', 'Spec-centered visual normalization', 'Clamping과 scale factor 기반 출력 구조'],
-      output: ['서로 다른 측정 포인트 비교 가능', '규격 기준 해석 유지', '시각화 준비 데이터 생성'],
+        'ICT 검사 데이터의 수십~수천 개 측정 포인트를 스펙 기준으로 비교하기 위해, USL/LSL/Spec 중심의 시각 정규화 방식을 설계했습니다.',
+      problem:
+        '측정 포인트마다 단위, 범위, 규격 경계가 달라 단순 값 비교나 평균/표준편차 기반 정규화만으로는 검사 의미를 유지하기 어려웠습니다.',
+      constraints: [
+        '측정값과 규격값을 분리해서 다뤄야 함',
+        'Mean/std 기반 정규화는 규격 중심 비교 목적에 맞지 않음',
+        '다른 단위와 범위를 가진 측정 포인트를 같은 시각 기준으로 비교해야 함',
+      ],
+      decisions: [
+        '측정값과 Spec/USL/LSL 값을 분리',
+        'USL/LSL/Spec 중심의 visual normalization 적용',
+        'Clamping, normalization constant, scale factor를 활용한 시각화용 변환 흐름 구성',
+      ],
+      deliverables: ['CSV parsing flow', 'normalized measurement records', 'visual comparison-ready data', 'PostgreSQL storage structure'],
+      meaning:
+        '단순 데이터 파싱이 아니라, 검사 데이터의 의미를 유지하면서 시각적 인지 부하를 줄이는 비교 구조를 만든 사례입니다.',
       stack: ['Python', 'Pandas', 'PostgreSQL', 'Data Visualization'],
     },
   ],
@@ -109,15 +149,15 @@ export const fallbackContent: PortfolioContent = {
   ],
   skillGroups: [
     {
-      title: 'Analysis / Design',
-      items: ['Requirement structuring', 'Workflow decomposition', 'Data boundary design', 'Validation state design', 'Operational risk analysis', 'Responsibility mapping'],
+      title: 'Analysis / Modeling',
+      items: ['Requirement structuring', 'Workflow modeling', 'Data boundary design', 'Validation state design', 'Operational risk analysis', 'Rule-based process design'],
     },
     { title: 'Languages', items: ['Python', 'TypeScript', 'JavaScript', 'C#', 'SQL', 'VBA'] },
     { title: 'Backend / API', items: ['FastAPI', 'REST API', 'Async processing', 'API integration'] },
     { title: 'Database', items: ['PostgreSQL', 'SQLAlchemy', 'asyncpg', 'Schema design'] },
     { title: 'AI / OCR', items: ['OCR workflow', 'LLM API', 'JSON output', 'Result validation'] },
     { title: 'Frontend', items: ['React', 'TypeScript', 'Vite', 'Workflow UI'] },
-    { title: 'Automation / Operations', items: ['Process automation', 'Workflow refactoring', 'QA', 'Operational documentation'] },
+    { title: 'Operations', items: ['Legacy process refactoring', 'Workflow documentation', 'QA', 'Operational handoff'] },
   ],
   contact: {
     formUrl: '',

@@ -4,6 +4,13 @@ type ProjectGridProps = {
   projects: ProjectContent[];
 };
 
+const detailSections = [
+  ['Problem', 'problem'],
+  ['Constraints', 'constraints'],
+  ['Design Decisions', 'decisions'],
+  ['Deliverables', 'deliverables'],
+] as const;
+
 const ProjectGrid = ({ projects }: ProjectGridProps) => {
   return (
     <div className="project-grid">
@@ -17,30 +24,28 @@ const ProjectGrid = ({ projects }: ProjectGridProps) => {
             <span>{project.role}</span>
           </div>
           <p className="project-summary">{project.summary}</p>
-          <div className="project-evidence">
-            <div>
-              <h4>Inputs</h4>
-              <ul>
-                {project.inputs.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4>Design Decisions</h4>
-              <ul>
-                {project.decisions.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4>Outputs</h4>
-              <ul>
-                {project.output.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+          <div className="project-detail-grid">
+            {detailSections.map(([label, key]) => {
+              const value = project[key];
+
+              return (
+                <div className="project-detail-block" key={label}>
+                  <h4>{label}</h4>
+                  {Array.isArray(value) ? (
+                    <ul>
+                      {value.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>{value}</p>
+                  )}
+                </div>
+              );
+            })}
+            <div className="project-detail-block project-meaning">
+              <h4>Meaning</h4>
+              <p>{project.meaning}</p>
             </div>
           </div>
           <ul className="chip-list" aria-label={`${project.title} tech stack`}>

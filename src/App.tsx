@@ -42,7 +42,7 @@ const App = () => {
         <Section id="roles" eyebrow="Role Fit" title="Position">
           <RoleGrid roles={content.roles} />
         </Section>
-        <Section id="principles" eyebrow="Operating Principle" title="How I Work">
+        <Section id="principles" eyebrow="Thinking Pattern" title="How I Structure Problems">
           <OperatingPrinciples principles={content.operatingPrinciples ?? fallbackContent.operatingPrinciples} />
         </Section>
         <Section id="projects" eyebrow="Project Work" title="Evidence">

@@ -22,9 +22,11 @@ export type ProjectContent = {
   period: string;
   role: string;
   summary: string;
-  inputs: string[];
+  problem: string;
+  constraints: string[];
   decisions: string[];
-  output: string[];
+  deliverables: string[];
+  meaning: string;
   stack: string[];
 };
 

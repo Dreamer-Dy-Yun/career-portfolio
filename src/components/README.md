@@ -8,8 +8,8 @@
 - `Hero.tsx`: 첫 화면과 사진/시각 패널 영역.
 - `Section.tsx`: 공통 섹션 래퍼.
 - `RoleGrid.tsx`: Position 카드.
-- `OperatingPrinciples.tsx`: How I Work 작업 원칙 카드.
-- `ProjectGrid.tsx`: Evidence 프로젝트 카드. Inputs, Design Decisions, Outputs 구조를 표시합니다.
+- `OperatingPrinciples.tsx`: How I Structure Problems 작업 원칙 카드.
+- `ProjectGrid.tsx`: Evidence 프로젝트 카드. Problem, Constraints, Design Decisions, Deliverables, Meaning 구조를 표시합니다.
 - `CareerTimeline.tsx`: 회사, 기간, 역할 중심의 Career 타임라인.
 - `SkillCloud.tsx`: Stack 그룹.
 - `ContactPanel.tsx`: Google Form 또는 이메일 문의 채널.

@@ -70,26 +70,28 @@
 }
 
 .role-card,
-.principle-card,
 .skill-card {
-  grid-column: span 4;
+  grid-column: span 3;
   display: grid;
   gap: 0.75rem;
 }
 
 .principle-card {
+  grid-column: span 4;
+  display: grid;
+  gap: 0.75rem;
   border-top: 3px solid rgba(37, 99, 235, 0.22);
 }
 
 .project-card {
-  grid-column: span 6;
+  grid-column: 1 / -1;
   display: grid;
   gap: 1rem;
   border-top: 4px solid var(--primary);
 }
 
-.project-card:first-child {
-  grid-column: 1 / -1;
+.project-card:first-child,
+.project-card:nth-child(4) {
   border-top-color: var(--accent);
 }
 
@@ -115,25 +117,33 @@
   line-height: 1.65;
 }
 
-.project-evidence {
+.project-detail-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.75rem;
 }
 
-.project-evidence div,
+.project-detail-block,
 .mini-list {
   border-radius: 18px;
   background: #f8fafc;
   padding: 0.85rem;
 }
 
-.project-evidence h4 {
+.project-meaning {
+  background: #eef6ff;
+}
+
+.project-detail-block h4 {
   margin-bottom: 0.45rem;
   color: var(--ink);
 }
 
-.project-evidence ul,
+.project-detail-block p {
+  margin: 0;
+}
+
+.project-detail-block ul,
 .mini-list,
 .timeline,
 .chip-list {
@@ -142,7 +152,8 @@
   list-style: none;
 }
 
-.project-evidence li,
+.project-detail-block li,
+.project-detail-block p,
 .mini-list li {
   color: var(--muted);
   line-height: 1.55;
@@ -203,10 +214,4 @@
 .button-secondary {
   color: var(--ink);
   background: #e8f0ff;
-}
-
-@media (max-width: 860px) {
-  .principle-card {
-    grid-column: 1 / -1;
-  }
 }
