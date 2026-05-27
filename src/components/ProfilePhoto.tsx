@@ -11,7 +11,7 @@ const ProfilePhoto = () => {
 
   return (
     <div className="profile-photo profile-photo--empty" aria-label="프로필 사진 예정 영역">
-      <span>사진 예정</span>
+      <span>YD</span>
     </div>
   );
 };

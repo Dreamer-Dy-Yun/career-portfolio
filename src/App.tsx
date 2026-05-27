@@ -10,21 +10,40 @@ import Section from './components/Section';
 import SkillMatrix from './components/SkillMatrix';
 import { evidenceTags } from './data/evidenceTags';
 import { experiences } from './data/experiences';
-import { JobTarget, jobTargets } from './data/jobTargets';
+import { jobTargets } from './data/jobTargets';
+import type { JobTarget } from './data/jobTargets';
 import { profile } from './data/profile';
 import { projects } from './data/projects';
 import { skillGroups } from './data/skills';
 
 const GENERAL_TARGET_ID = 'general';
 
+const signalCards = [
+  {
+    label: '핵심 입력',
+    value: 'Excel · OCR · API',
+    note: '흩어진 운영 데이터를 구조화하는 흐름',
+  },
+  {
+    label: '설계 기준',
+    value: '검증 · 추적 · 재사용',
+    note: '실제 운영에서 고쳐 쓰기 쉬운 처리 구조',
+  },
+  {
+    label: '경력 기반',
+    value: 'QA · 운영 · 개발',
+    note: 'IT만이 아닌 현장 기반의 검증 감각',
+  },
+];
+
 const identityCards = [
   {
-    title: '주 포지션',
+    title: '포지션',
     body: '운영 데이터를 구조화하는 백엔드 / 데이터 파이프라인 엔지니어',
   },
   {
-    title: '차별점',
-    body: 'QA, 제조 품질, 운영 IT, 프로젝트 수행 경험을 억지로 IT로 포장하지 않고 검증 감각으로 연결합니다.',
+    title: '기반',
+    body: '제조 품질, QA, IT 운영, 프로젝트 수행 경험을 바탕으로 검증과 운영 흐름을 함께 봅니다.',
   },
   {
     title: '작업 방식',
@@ -37,11 +56,6 @@ const careerBasePoints = [
   '일본 IT 운영 환경에서는 절차, 커뮤니케이션, 변경 이력 관리의 중요성을 익혔습니다.',
   '자동화 프로젝트 경험은 단순 스크립트보다 운영 가능한 실행 구조를 고민하게 만든 전환점입니다.',
   '최근 작업은 API, PostgreSQL, OCR/LLM, 데이터 파이프라인을 연결하는 방향으로 확장됐습니다.',
-];
-
-const reviewSummary = [
-  '이 포트폴리오는 화면 장식보다 문제 맥락, 데이터 흐름, 검증 방식, 엔지니어링 결정을 먼저 보여주도록 재구성했습니다.',
-  '프로젝트 설명은 과장된 수치 대신 입력 데이터, 제약 조건, 설계 선택, 검증 가능성을 중심으로 읽히게 했습니다.',
 ];
 
 const isProjectRelevantToTarget = (project: (typeof projects)[number], selectedTarget: JobTarget | null) => {
@@ -91,7 +105,17 @@ const App = () => {
       <main>
         <Hero selectedJobTarget={selectedJobTarget} contactHref={contactHref} resumeHref={resumeHref} />
 
-        <Section id="identity" title="누구를 위한 포트폴리오인가" className="identity-section">
+        <section className="signal-strip" aria-label="포트폴리오 요약">
+          {signalCards.map((item) => (
+            <article className="signal-card" key={item.label}>
+              <span>{item.label}</span>
+              <strong>{item.value}</strong>
+              <p>{item.note}</p>
+            </article>
+          ))}
+        </section>
+
+        <Section id="identity" title="핵심 프로필" className="identity-section profile-band">
           <div className="identity-grid">
             {identityCards.map((item) => (
               <article className="identity-card" key={item.title}>
@@ -102,7 +126,7 @@ const App = () => {
           </div>
         </Section>
 
-        <Section id="current-focus" title="지원 포지션 관점">
+        <Section id="current-focus" title="지원 직무" className="focus-band">
           <JobTargetSelector
             options={[
               { id: GENERAL_TARGET_ID, label: '전체' },
@@ -115,13 +139,13 @@ const App = () => {
             <strong>{isGeneralTarget ? '전체 관점' : selectedJobTarget?.headline}</strong>
             <p>
               {isGeneralTarget
-                ? '백엔드, 데이터 파이프라인, 시스템 설계, OCR/LLM, QA/운영 기반을 함께 보여주는 기본 보기입니다.'
+                ? '백엔드, 데이터 파이프라인, 시스템 설계, OCR/LLM, QA와 운영 경험을 함께 보여줍니다.'
                 : selectedJobTarget?.summary}
             </p>
           </div>
         </Section>
 
-        <Section id="strengths" title="해결하는 문제">
+        <Section id="strengths" title="해결하는 문제" className="strength-band">
           <div className="strength-list">
             {profile.coreStrengths.map((strength) => (
               <article className="strength-item" key={strength.title}>
@@ -132,7 +156,7 @@ const App = () => {
           </div>
         </Section>
 
-        <Section id="evidence-index" title="근거 지도">
+        <Section id="evidence-index" title="역량 근거" className="evidence-band">
           <EvidenceIndex
             evidenceTags={evidenceTags}
             projects={projects}
@@ -141,29 +165,22 @@ const App = () => {
           />
         </Section>
 
-        <Section id="technical-review" title="기술 검토 기준">
-          <div className="review-summary">
-            {reviewSummary.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </Section>
-
-        <Section id="projects" title="대표 프로젝트">
+        <Section id="projects" title="대표 프로젝트" className="project-band">
           <div className="project-grid">
-            {sortedProjects.map(({ project, isRelevantToSelectedTarget }) => (
+            {sortedProjects.map(({ project, isRelevantToSelectedTarget }, index) => (
               <ProjectCard
                 key={project.title}
                 project={project}
                 isRelevantToSelectedTarget={isRelevantToSelectedTarget}
                 selectedJobTargetId={selectedJobTargetId}
                 evidenceTags={evidenceTags}
+                isFeatured={index === 0}
               />
             ))}
           </div>
         </Section>
 
-        <Section id="career-base" title="경력 기반">
+        <Section id="career-base" title="경력 기반" className="career-band">
           <div className="career-base">
             <div className="career-note">
               {careerBasePoints.map((point) => (
@@ -174,28 +191,29 @@ const App = () => {
           </div>
         </Section>
 
-        <Section id="skills" title="기술과 업무 도구">
+        <Section id="skills" title="기술과 업무 도구" className="skills-band">
           <SkillMatrix skillGroups={skillGroups} />
         </Section>
 
-        <Section id="contact" title="문의">
-          <div className="contact-card">
-            <p>채용, 협업, 기술 검토 관련 문의를 받을 수 있는 채널입니다.</p>
-            <div className="contact-actions">
-              {hasContactForm ? (
-                <a className="button-primary" href={contactFormUrl} target="_blank" rel="noreferrer">
-                  Google Form
-                </a>
-              ) : null}
-              {hasRealEmail ? (
-                <a className="button-secondary" href={`mailto:${email}`}>
-                  이메일 보내기
-                </a>
-              ) : null}
-              {!hasContactForm && !hasRealEmail ? <span className="contact-muted">문의 채널 준비 중</span> : null}
+        {hasContactForm || hasRealEmail ? (
+          <Section id="contact" title="문의" className="contact-band">
+            <div className="contact-card">
+              <p>채용, 협업, 기술 검토 관련 연락을 받을 수 있습니다.</p>
+              <div className="contact-actions">
+                {hasContactForm ? (
+                  <a className="button-primary" href={contactFormUrl} target="_blank" rel="noreferrer">
+                    Google Form
+                  </a>
+                ) : null}
+                {hasRealEmail ? (
+                  <a className="button-secondary" href={`mailto:${email}`}>
+                    이메일 보내기
+                  </a>
+                ) : null}
+              </div>
             </div>
-          </div>
-        </Section>
+          </Section>
+        ) : null}
       </main>
       <Footer />
     </div>

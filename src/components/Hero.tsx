@@ -16,7 +16,7 @@ const Hero = ({ selectedJobTarget, contactHref, resumeHref }: HeroProps) => {
     <section className="hero section" id="hero">
       <div className="hero-layout">
         <div className="hero-copy">
-          <p className="hero-kicker">Career Portfolio</p>
+          <p className="hero-kicker">Backend / Data Pipeline</p>
           <h1>{profile.koreanName}</h1>
           <p className="hero-name-sub">{profile.name}</p>
           <p className="hero-title">{title}</p>

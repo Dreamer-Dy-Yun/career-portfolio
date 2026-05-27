@@ -26,7 +26,7 @@ export const profile: Profile = {
   title: '운영 데이터를 구조화하는 백엔드 / 데이터 파이프라인 엔지니어',
   tagline: '품질, 운영, 자동화, 데이터 처리 경험을 연결해 검증 가능한 업무 흐름을 만듭니다.',
   summary:
-    'QA와 운영 현장 경험에서 출발해 API 연동, PostgreSQL 데이터 모델링, OCR/LLM 처리, 자동화 리팩토링으로 확장해 왔습니다. 모든 경력을 억지로 개발 이력으로 포장하기보다, 현장에서 얻은 검증 감각과 운영 이해를 데이터 중심 시스템 설계에 연결하는 데 집중합니다.',
+    '제조 QA와 IT 운영 현장에서 익힌 검증 감각을 바탕으로 API 연동, PostgreSQL 데이터 모델링, OCR/LLM 처리, 자동화 리팩토링까지 확장해 왔습니다. 현장의 흐름을 이해하고 데이터를 구조화해 운영 가능한 시스템으로 연결하는 데 집중합니다.',
   location: 'South Korea',
   email: 'contact@example.com',
   contactFormUrl: '',

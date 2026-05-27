@@ -1,9 +1,8 @@
 const navItems = [
-  { href: '#identity', label: '정체성' },
+  { href: '#identity', label: '프로필' },
   { href: '#evidence-index', label: '근거' },
   { href: '#projects', label: '프로젝트' },
-  { href: '#career-base', label: '경력 기반' },
-  { href: '#contact', label: '연락처' },
+  { href: '#career-base', label: '경력' },
 ];
 
 const Header = () => {
