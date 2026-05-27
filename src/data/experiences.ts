@@ -58,7 +58,7 @@ export const experiences: Experience[] = [
     period: '2023.05 - 2023.10',
     role: 'PM / PL / Developer / QA',
     summary:
-      '기획·개발·품질 점검을 한 번에 다루며 자동화 대상 과업의 실행 단위를 관리했습니다.',
+      '자동화 프로젝트의 기획, 개발, QA, 전달 과정을 함께 다루며 실행 단위와 품질 기준을 관리했습니다.',
     highlights: [
       '기획~개발~테스트 전달 경로를 한 흐름으로 정리해 일정 대응력을 유지했습니다.',
       '품질 점검 항목과 의사결정 기록을 정렬해 협업 이슈를 줄였습니다.',
@@ -80,7 +80,7 @@ export const experiences: Experience[] = [
     period: '2021.09 - 2023.04',
     role: 'PM / PL / Developer / QA / Tester',
     summary:
-      '자동화 과제, 인도·테스트 과정을 묶어 전달 가능한 단위로 정리하고 운영 적용을 진행했습니다.',
+      '업무 자동화와 테스트, 인도 과정을 수행하며 현장 업무를 전달 가능한 작업 단위로 정리했습니다.',
     highlights: [
       '반복 작업 실행을 분해해 일정과 산출물이 유지되도록 조정했습니다.',
       '품질 체크 항목을 재정의해 재작업 비용을 줄였습니다.',
@@ -125,9 +125,9 @@ export const experiences: Experience[] = [
   {
     company: 'KOHTECH',
     period: '2014.10 - 2015.10',
-    role: 'QA',
-    summary: '품질 관리 체계에서 결함/검수 흐름 경험을 기반으로 운영 신뢰도를 관리했습니다.',
-    highlights: ['검사 항목과 결함 보고 체계를 정리해 관리 효율을 높였습니다.'],
+    role: 'Manufacturing QA',
+    summary: '제조 품질 관리 환경에서 검사 기준, 결함 추적, 품질 보고 흐름을 경험했습니다.',
+    highlights: ['검사 항목과 결함 보고 체계를 기준으로 품질 이슈를 정리했습니다.'],
     functionHighlights: [
       {
         label: 'QA / Testing',

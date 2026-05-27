@@ -33,7 +33,6 @@ type ProjectCardProps = {
   isRelevantToSelectedTarget?: boolean;
   selectedJobTargetId?: string;
   evidenceTags: EvidenceTag[];
-  showCaseStudyDetails?: boolean;
 };
 
 const ProjectCard = ({
@@ -41,7 +40,6 @@ const ProjectCard = ({
   isRelevantToSelectedTarget = false,
   selectedJobTargetId,
   evidenceTags,
-  showCaseStudyDetails = false,
 }: ProjectCardProps) => {
   const fitExplanation =
     selectedJobTargetId &&
@@ -52,15 +50,19 @@ const ProjectCard = ({
   const tags = getEvidenceTagsByIds(project.evidenceTagIds, evidenceTags);
 
   return (
-    <article className="card">
-      <div className="project-category">{translateLabel(project.category)}</div>
-      {isRelevantToSelectedTarget ? <p className="target-relevance-badge">선택 포커스와 일치</p> : null}
-      <h3>{project.title}</h3>
+    <article className="project-card">
+      <div className="project-card-head">
+        <div>
+          <div className="project-category">{translateLabel(project.category)}</div>
+          <h3>{project.title}</h3>
+        </div>
+        {isRelevantToSelectedTarget ? <p className="target-relevance-badge">현재 관점과 연결</p> : null}
+      </div>
       <p className="meta">
         <span>{project.period}</span>
         <span>{project.role}</span>
       </p>
-      <p className="summary">{project.summary}</p>
+      <p className="project-summary">{project.summary}</p>
       {project.decisionTags?.length ? (
         <div className="sub-list">
           <h4>엔지니어링 결정</h4>
@@ -79,12 +81,15 @@ const ProjectCard = ({
           <p>{fitExplanation}</p>
         </div>
       ) : null}
-      <div className={showCaseStudyDetails ? 'case-study-visible' : 'case-study-hidden'}>
-        <CaseStudyBlock caseStudy={project.caseStudy} />
-      </div>
+      {project.caseStudy ? (
+        <details className="case-study-details">
+          <summary>케이스 스터디 보기</summary>
+          <CaseStudyBlock caseStudy={project.caseStudy} />
+        </details>
+      ) : null}
       {project.evidence ? (
         <div className="sub-list">
-          <h4>근거</h4>
+          <h4>구현 근거</h4>
           <ul>
             {project.evidence.map((item) => (
               <li key={`${project.title}-${item}`}>{item}</li>
@@ -92,25 +97,25 @@ const ProjectCard = ({
           </ul>
         </div>
       ) : null}
-      <div className="sub-list">
-        <h4>문제</h4>
-        <p>{project.problem}</p>
+      <div className="project-problem-grid">
+        <div className="sub-list">
+          <h4>문제</h4>
+          <p>{project.problem}</p>
+        </div>
+        <div className="sub-list">
+          <h4>해결</h4>
+          <p>{project.solution}</p>
+        </div>
       </div>
       <div className="sub-list">
-        <h4>해결</h4>
-        <p>{project.solution}</p>
-      </div>
-      <div className="sub-list">
-        <h4>성과</h4>
+        <h4>결과</h4>
         <ul>
           {project.impact.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
       </div>
-      <p className="label-row">
-        <strong>기술 스택</strong>
-      </p>
+      <h4>기술 스택</h4>
       <ul className="pill-list">
         {project.techStack.map((tech) => (
           <li className="pill" key={tech}>

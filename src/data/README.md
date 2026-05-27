@@ -1,6 +1,6 @@
 # Career Portfolio Data Maintenance Notes
 
-Version: v1.0
+Version: v1.1
 
 ## Purpose of each file
 
@@ -12,6 +12,14 @@ Version: v1.0
 - `jobTargets.ts`: selectable target profiles for job-focused presentation.
 - `evidenceTags.ts`: shared evidence labels used for projects and experiences.
 - `src/data/README.md`: this document.
+
+## Google Sheets CMS direction
+
+- Google Sheets is the planned read-only CMS.
+- Google Forms or email is the planned contact channel.
+- Site-side write/edit features should not be added unless backend/auth is introduced later.
+- Use `docs/google-sheets-cms-template.md` when creating or updating the spreadsheet.
+- Keep `src/data/*.ts` as the local fallback when the public Sheet is unavailable.
 
 ## Stable ID and reference rules
 
@@ -49,3 +57,4 @@ Version: v1.0
 - Do not add fake metrics.
 - Do not add unsupported achievements.
 - Keep all wording tied to implemented behavior and verifiable project context.
+- Do not force non-IT work into IT language. Manufacturing QA, operations, and communication experience should remain explicit when that is the factual source of value.
