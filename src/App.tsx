@@ -51,13 +51,6 @@ const identityCards = [
   },
 ];
 
-const careerBasePoints = [
-  '제조 QA 경험에서는 검사 기준, 결함 확인, 품질 관리 흐름을 실제 업무로 다뤘습니다.',
-  '일본 IT 운영 환경에서는 절차, 커뮤니케이션, 변경 이력 관리의 중요성을 익혔습니다.',
-  '자동화 프로젝트 경험은 단순 스크립트보다 운영 가능한 실행 구조를 고민하게 만든 전환점입니다.',
-  '최근 작업은 API, PostgreSQL, OCR/LLM, 데이터 파이프라인을 연결하는 방향으로 확장됐습니다.',
-];
-
 const isProjectRelevantToTarget = (project: (typeof projects)[number], selectedTarget: JobTarget | null) => {
   if (!selectedTarget) {
     return false;
@@ -180,13 +173,8 @@ const App = () => {
           </div>
         </Section>
 
-        <Section id="career-base" title="경력 기반" className="career-band">
+        <Section id="career-base" title="경력 타임라인" className="career-band">
           <div className="career-base">
-            <div className="career-note">
-              {careerBasePoints.map((point) => (
-                <p key={point}>{point}</p>
-              ))}
-            </div>
             <ExperienceTimeline experiences={experiences} evidenceTags={evidenceTags} />
           </div>
         </Section>
