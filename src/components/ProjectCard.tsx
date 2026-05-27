@@ -146,7 +146,7 @@ const ProjectCard = ({
       </div>
 
       <details className="project-more">
-        <summary>역할/키워드 근거</summary>
+        <summary>분류와 태그</summary>
         <div className="project-more-content">
           <div className="sub-list">
             <h4>키워드</h4>
@@ -160,7 +160,7 @@ const ProjectCard = ({
           </div>
 
           <div className="sub-list">
-            <h4>역할 관점</h4>
+            <h4>관련 역할</h4>
             <ul className="pill-list pill-list-inline">
               {project.rolePerspectives.map((perspective) => (
                 <li className="pill role-pill" key={`${project.title}-${perspective}`}>
@@ -172,7 +172,7 @@ const ProjectCard = ({
 
           {tags.length ? (
             <div className="sub-list">
-              <h4>근거 태그</h4>
+              <h4>역량 태그</h4>
               <ul className="pill-list pill-list-inline">
                 {tags.map((tag) => (
                   <li className="pill" key={`${project.title}-${tag.id}`}>

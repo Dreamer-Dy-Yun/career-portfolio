@@ -1,7 +1,19 @@
-# styles
+# src/styles
 
-Global CSS for the portfolio.
+정적 포트폴리오 화면의 전역 스타일을 책임별 CSS 파일로 나눈다.
 
-- `global.css`: page bands, hero layout, repeated cards, project evidence blocks, responsive rules, and print rules.
+## 파일 책임
 
-Keep section layout unframed and use cards only for repeated content such as projects, evidence tags, skills, and timeline entries.
+- `global.css`: 스타일 진입점. 실제 스타일 정의를 직접 늘리지 않고 하위 CSS를 import한다.
+- `tokens.css`: 색상, 그림자, 반경, 간격, 최대 폭 등 디자인 토큰.
+- `base.css`: reset, 기본 타이포그래피, 링크, 포커스 스타일.
+- `layout.css`: 헤더, 히어로, 섹션, 푸터처럼 페이지 골격을 만드는 스타일.
+- `cards.css`: 버튼, 카드, 프로젝트, 태그, 타임라인 등 반복 UI 블록 스타일.
+- `responsive.css`: 모바일 반응형 규칙과 print 규칙.
+
+## 유지보수 규칙
+
+- 줄 수보다 책임 경계를 우선한다.
+- 새 스타일이 특정 컴포넌트/섹션에 종속되면 가장 가까운 책임 파일에 둔다.
+- 공통 값은 `tokens.css`에 추가하고, 임의 색상/간격을 여러 파일에 반복하지 않는다.
+- 역할이 애매하면 큰 파일에 숨기지 말고 이 문서에 경계 문제를 먼저 기록한다.

@@ -1,0 +1,87 @@
+@media (max-width: 920px) {
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0.75rem 0;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-photo {
+    order: -1;
+    width: min(250px, 100%);
+  }
+
+  .signal-strip {
+    margin-top: -1.4rem;
+  }
+
+  .signal-card,
+  .identity-card,
+  .strength-item,
+  .evidence-index-card,
+  .skill-group,
+  .project-card {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .header-inner,
+  .section > h2,
+  .section > div,
+  .hero-layout,
+  .signal-strip,
+  .footer {
+    width: min(var(--max-width), calc(100% - 1.2rem));
+  }
+
+  .project-card-head {
+    flex-direction: column;
+  }
+
+  .project-problem-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button-primary,
+  .button-secondary,
+  .job-target-button {
+    width: 100%;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .site-header,
+  .target-selector,
+  .hero-actions,
+  .footer-note {
+    display: none !important;
+  }
+
+  .hero {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .section,
+  .project-card,
+  .timeline-item,
+  .evidence-index-card,
+  .skill-group {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
