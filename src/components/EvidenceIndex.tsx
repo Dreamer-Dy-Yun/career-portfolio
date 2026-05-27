@@ -48,7 +48,7 @@ const EvidenceIndex = ({
   });
 
   if (sortedItems.length === 0) {
-    return <p className="evidence-index-empty">No evidence tags are currently referenced.</p>;
+    return <p className="evidence-index-empty">표시할 근거 태그가 없습니다.</p>;
   }
 
   return (
@@ -62,14 +62,12 @@ const EvidenceIndex = ({
           <article className="evidence-index-card" key={tag.id}>
             <h3>
               {tag.label}
-              {isRelevantToTarget ? (
-                <span className="evidence-target-badge">Relevant to selected focus</span>
-              ) : null}
+              {isRelevantToTarget ? <span className="evidence-target-badge">현재 포커스 핵심</span> : null}
             </h3>
             <p>{tag.description}</p>
-            <p>Projects: {projectCount}</p>
-            <p>Experiences: {experienceCount}</p>
-            <p>Related: {tag.relatedRolePerspectives.join(', ')}</p>
+            <p>프로젝트: {projectCount}</p>
+            <p>경력: {experienceCount}</p>
+            <p>관련 관점: {tag.relatedRolePerspectives.join(', ')}</p>
           </article>
         );
       })}

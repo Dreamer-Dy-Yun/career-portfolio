@@ -19,10 +19,10 @@ export type Profile = {
 
 export const profile: Profile = {
   name: 'Yun Dae-Young',
-  title: 'Backend / Data Pipeline / System Design Engineer',
-  tagline: 'Turning undefined operations into structured, verifiable systems.',
+  title: '백엔드 / 데이터 파이프라인 / 시스템 설계 엔지니어',
+  tagline: '불명확한 운영 업무를 구조화해 유지보수 가능한 데이터와 실행 흐름으로 연결합니다.',
   summary:
-    'I design practical systems that transform fragmented business operations, Excel data, OCR results, API responses, and manual workflows into structured, maintainable, and verifiable data flows.',
+    '비즈니스 운영 데이터, Excel 파일, OCR 결과, API 응답, 수동 처리 결과를 분석해 구조화하고 추적 가능한 데이터 흐름으로 바꾸는 데 집중했습니다.',
   location: 'South Korea',
   email: 'contact@example.com',
   links: [],
@@ -30,32 +30,32 @@ export const profile: Profile = {
   resumeUrl: '/resume.pdf',
   coreStrengths: [
     {
-      title: 'Data Pipeline Design',
+      title: '데이터 파이프라인 설계',
       description:
-        'Designs data flows that convert raw, inconsistent operational data into structured and reusable forms.',
+        '분산된 원천 데이터를 단계별로 연결해 품질, 정합성, 추적 가능성을 확보하는 흐름을 만듭니다.',
     },
     {
-      title: 'Backend / API Integration',
+      title: '백엔드 / API 연동',
       description:
-        'Builds API-centered workflows that reduce dependency on fragile manual or UI-based operations.',
+        'UI 중심 구현보다 API 계약 기반 통합과 예외 처리, 상태 추적을 함께 고려해 설계합니다.',
     },
     {
-      title: 'PostgreSQL Data Modeling',
+      title: 'PostgreSQL 데이터 모델링',
+      description: '스키마, 인덱스, 실행 단위를 구분해 재사용 가능한 데이터 구조를 유지합니다.',
+    },
+    {
+      title: 'OCR / LLM 워크플로우',
       description:
-        'Designs relational structures for consistency, traceability, and operational use.',
+        'OCR/LLM 결과를 검증 가능한 구조로 분리해 후속 보정과 데이터 적재가 가능하도록 처리합니다.',
     },
     {
-      title: 'OCR / LLM Workflow Design',
+      title: '프로세스 설계',
+      description: '자동화 규칙을 검증 규칙과 분리해 장기 운영에서 회귀 대응이 쉬운 구조로 구성합니다.',
+    },
+    {
+      title: '시스템 리팩터링',
       description:
-        'Structures AI extraction results so they can be validated, corrected, and used in business workflows.',
-    },
-    {
-      title: 'Process Automation Architecture',
-      description: 'Treats automation as system design, not just task scripting.',
-    },
-    {
-      title: 'System Refactoring',
-      description: 'Reorganizes scattered logic into reusable modules and clearer execution flows.',
+        '조직별 과제 흐름을 하나의 스크립트로 몰아넣기보다 모듈로 나눠 유지보수가 쉬운 형태로 바꿉니다.',
     },
   ],
 };

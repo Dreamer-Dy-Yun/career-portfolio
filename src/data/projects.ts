@@ -31,77 +31,66 @@ export const projects: Project[] = [
     period: '2025',
     role: 'Backend / DB / Frontend / System Design',
     summary:
-      'A duty-free settlement workflow system integrating EDI Excel uploads, receipt images, passport images, OCR/LLM parsing, validation, and mapping.',
+      'EDI Excel 업로드, 영수증 이미지, 여권 이미지, OCR/LLM 추출, 검증, 매핑을 통합해 정산 흐름을 구조화한 시스템입니다.',
     problem:
-      'The business process involved heterogeneous Excel formats, unstructured receipt/passport images, OCR uncertainty, and manual matching work.',
+      '사업 현장에서 Excel 형식이 제각각이고, 영수증/여권 이미지와 OCR 결과는 신뢰도가 다르며, 수기 매칭 작업이 필요했습니다.',
     solution:
-      'Designed relational schema, parsing pipeline, OCR/LLM result structure, validation flow, and React-based image verification UI.',
+      '관계형 스키마, 파싱 파이프라인, OCR/LLM 결과 구조, 검증 흐름, 그리고 React 기반 이미지 검수 UI를 연결해 정산 절차를 정형화했습니다.',
     impact: [
-      'Converted fragmented operational data into structured workflow data.',
-      'Reduced manual matching burden through rule-based mapping.',
-      'Prepared tenant-aware usage and LLM token tracking.',
+      '분산된 운영 데이터 흐름을 하나의 구조화된 작업 흐름으로 통합했습니다.',
+      '규칙 기반 매핑으로 수동 매칭 의존도를 줄였습니다.',
+      '테넌트/사용량 단위를 고려한 사용 추적 포맷 기반 설계를 반영했습니다.',
     ],
     techStack: ['Python', 'FastAPI', 'PostgreSQL', 'SQLAlchemy', 'React', 'TypeScript', 'OCR', 'LLM API'],
     keywords: ['Data Pipeline', 'OCR', 'LLM', 'Settlement', 'PostgreSQL'],
     category: 'Data Pipeline',
     rolePerspectives: ['Backend / Data Pipeline', 'System Design', 'AI / OCR / LLM'],
     evidence: [
-      'Designed receipt/passport/EDI data flow',
-      'Structured OCR/LLM parsing result format',
-      'Built validation-oriented image verification UI',
-      'Prepared usage and token tracking structure',
+      '원천 데이터와 Excel/EDI 입력을 구분해 처리했습니다.',
+      'OCR/LLM 결과를 구조화해 정합성 기반으로 관리했습니다.',
+      '이미지 기반 검수 UI를 통해 리뷰 가능한 상태를 설계했습니다.',
+      '테넌트 기반 운영을 위한 추적 가능한 정산 흐름을 만들었습니다.',
     ],
     fitByTarget: {
       'backend-data':
-        'Shows backend/data pipeline fit through EDI parsing, OCR result handling, relational schema design, and workflow-oriented data mapping.',
+        'EDI 입력 파싱, OCR 결과 처리, 관계형 스키마 설계, 워크플로우형 매핑 처리로 데이터 파이프라인 역량을 보여줍니다.',
       'system-design':
-        'Shows system design fit through structuring unclear settlement operations into validation, mapping, and verification flows.',
+        '불명확한 정산 규칙을 검증, 매핑, 승인 단계로 분해해 시스템 구조를 정리했습니다.',
       'ai-ocr-llm':
-        'Shows AI/OCR workflow fit through receipt/passport image parsing, field validation, and human verification design.',
+        '영수증/여권 이미지 처리와 필드 검증, UI 검수 결합으로 AI 추출 결과를 실무 데이터로 전환했습니다.',
     },
-    evidenceTagIds: [
-      'data-pipeline',
-      'postgresql-data-modeling',
-      'ocr-llm-workflow',
-      'system-design',
-      'qa-validation',
-    ],
-    decisionTags: [
-      'Structured mapping',
-      'Validation-first design',
-      'Traceable data flow',
-      'Human verification',
-    ],
+    evidenceTagIds: ['data-pipeline', 'postgresql-data-modeling', 'ocr-llm-workflow', 'system-design', 'qa-validation'],
+    decisionTags: ['구조화된 매핑', '검증 우선 설계', '추적 가능한 데이터 흐름', '인간 검수'],
     caseStudy: {
       context:
-        'A business workflow involving duty-free EDI Excel uploads, receipt images, passport images, OCR/LLM parsing, validation, and mapping needed to be structured into a maintainable settlement process.',
+        '면세 B2C 정산 과정은 EDI Excel, 영수증 이미지, 여권 이미지, OCR/LLM 파싱, 유효성 검증, 매핑이 한 번에 연결되는 구조였습니다. 이들을 유지보수 가능한 정산 구조로 정리했습니다.',
       constraints: [
-        'Source data came from different formats including Excel files, images, OCR results, and manually verified records.',
-        'OCR and LLM outputs required validation before they could be trusted as business data.',
-        'Receipt, passport, and EDI records needed to be connected without assuming perfect input quality.',
-        'The system needed to support future usage tracking and LLM token aggregation.',
+        '입력 원천이 Excel, 이미지, OCR 결과, 수기 검증값으로 분산되어 있었습니다.',
+        'OCR/LLM 결과는 신뢰성 점검 없이 바로 비즈니스 데이터로 쓰기 어렵습니다.',
+        '영수증, 여권, EDI 기록 간 연결은 입력 품질이 일정하지 않습니다.',
+        '향후 사용량 추적과 토큰 집계 확장을 고려해야 했습니다.',
       ],
       decisions: [
         {
-          title: 'Separate raw inputs from verified records',
+          title: '원천 데이터와 검증 데이터 분리',
           description:
-            'Kept raw images, parsed OCR/LLM outputs, and human-verified data conceptually separate so each stage could be traced and corrected.',
+            '원본 이미지, OCR/LLM 결과, 인간 검수 완료 데이터 계층을 분리해 각 단계의 수정 이력을 추적할 수 있도록 설계했습니다.',
         },
         {
-          title: 'Use structured mapping flow',
+          title: '구조화된 매핑 흐름 도입',
           description:
-            'Designed the workflow around receipt-passport-EDI mapping rather than treating image parsing as an isolated task.',
+            '이미지 파싱 결과를 개별 작업이 아닌 영수증-여권-EDI 매핑 단계로 연결해 일괄적인 처리 경로를 만들었습니다.',
         },
         {
-          title: 'Prepare validation-first UI',
+          title: '검증 우선 UI 설계',
           description:
-            'Built the image verification flow around review and correction instead of assuming automatic extraction would always be correct.',
+            '자동 추출이 항상 정답이 아니므로, 조회/수정/승인 경로가 가능한 검수 인터페이스를 먼저 구성했습니다.',
         },
       ],
       result: [
-        'The project data flow became easier to reason about across image upload, OCR/LLM parsing, validation, and settlement mapping.',
-        'The design made human verification and later correction workflows explicit.',
-        'The structure prepared the system for usage tracking and token-based operational monitoring.',
+        '입력-추출-검증-매핑 흐름이 한 번에 추적 가능해졌습니다.',
+        '인간 검수와 재작업 경로를 명시해 운영 상태 복구가 쉬워졌습니다.',
+        '토큰 사용량 집계 및 사용 이력 연계 설계가 가능한 기반을 마련했습니다.',
       ],
     },
   },
@@ -110,63 +99,64 @@ export const projects: Project[] = [
     period: '2025',
     role: 'Backend / Database Architecture',
     summary:
-      'An asynchronous PostgreSQL utility layer designed for schema management, table creation, batch upsert/update, and tenant-style data separation.',
-    problem: 'Repeated database operations needed to be reusable across projects without hardcoding schema/table behavior.',
+      '스키마 관리, 테이블 생성, 배치 upsert/update, 테넌트 분리를 반복 구현 가능한 유틸 계층으로 재사용 가능하게 정리했습니다.',
+    problem:
+      '프로젝트별로 DB 스키마/테이블 실행 로직이 중복되어 한 번 작성한 코드가 반복 사용되지 못했습니다.',
     solution:
-      'Built reusable async database manager using SQLAlchemy and asyncpg with schema-scoped execution, batch operations, and metadata-based helpers.',
+      '스키마 단위 실행 구조와 반복 SQL 패턴 추상화를 통해 비동기 환경에서 재사용 가능한 DB 관리기를 만들었습니다.',
     impact: [
-      'Improved database operation reuse.',
-      'Reduced duplicated DB handling logic.',
-      'Supported schema-level separation.',
+      'DB 작업 재작성량을 줄이고 실행 규칙의 재사용성을 높였습니다.',
+      '프로젝트 간 하드코딩 의존도를 감소시켰습니다.',
+      '스키마 구분 작업의 반복 구현을 줄였습니다.',
     ],
     techStack: ['Python', 'PostgreSQL', 'SQLAlchemy', 'asyncpg'],
     keywords: ['Database', 'Async', 'Schema', 'Reusability'],
     category: 'Backend / Database',
     rolePerspectives: ['Backend / Data Pipeline', 'System Design'],
     evidence: [
-      'Implemented async session handling',
-      'Designed schema-scoped execution pattern',
-      'Added reusable batch upsert/update helpers',
-      'Supported tenant-style schema separation',
+      '스키마 범위 실행 컨텍스트 설계',
+      '비동기 배치 upsert/update 처리',
+      '테이블/제약 조건 메타데이터 기반 처리',
+      '반복 작업 삭제를 위한 공통 헬퍼 정리',
     ],
     fitByTarget: {
       'backend-data':
-        'Shows backend/database fit through reusable async database operations, schema-scoped execution, and batch upsert/update handling.',
+        'API/데이터 처리에서 DB 입출력 작업을 재사용할 수 있는 형태로 설계한 점과 배치 업데이트 패턴이 연결됩니다.',
       'system-design':
-        'Shows system design fit through generalizing repeated database operations into reusable execution patterns.',
+        '반복 패턴을 실행 규칙으로 추상화해 구현 단위를 분리한 점이 시스템 설계 관점과 일치합니다.',
     },
     evidenceTagIds: ['postgresql-data-modeling', 'data-pipeline', 'system-design'],
-    decisionTags: ['Schema-scoped execution', 'Batch database operations', 'Traceable data flow'],
+    decisionTags: ['스키마 스코프 실행', '배치 upsert/update', '추적 가능한 데이터 흐름'],
     caseStudy: {
       context:
-        'Repeated PostgreSQL operations across schema management, table creation, batch upsert/update, and tenant-style separation needed to be reusable instead of being handled as one-off database scripts.',
+        '스키마 생성, 테이블 생성, 업서트/업데이트 등 PostgreSQL 작업이 프로젝트별 스크립트로 흩어져 있던 부분을 재사용 가능한 유틸로 통합했습니다.',
       constraints: [
-        'Database logic had to support schema-scoped execution.',
-        'Repeated insert/update patterns needed reusable handling.',
-        'The utility layer needed to work with asynchronous SQLAlchemy and asyncpg.',
-        'The design had to avoid hardcoding a single table or schema assumption.',
+        'DB 실행 로직이 스키마/테이블을 고정 가정해 재사용이 어려웠습니다.',
+        'insert/update 패턴이 중복 구현되어 유지보수가 부담되었습니다.',
+        '비동기 SQLAlchemy와 asyncpg를 함께 사용할 때 실행 컨텍스트가 안정적으로 관리되어야 했습니다.',
+        '단일 스키마 가정이 남아 있으면 텐턴트 분리에 확장이 어렵습니다.',
       ],
       decisions: [
         {
-          title: 'Use schema-scoped execution',
+          title: '스키마 스코프 실행 구조',
           description:
-            'Designed database operations so schema context could be injected and controlled during execution.',
+            '스키마 정보를 실행 시점에 주입받아 동일 로직으로 다중 스키마를 처리할 수 있게 만들었습니다.',
         },
         {
-          title: 'Generalize batch operations',
+          title: '배치 작업 추상화',
           description:
-            'Built reusable helpers for batch upsert and update instead of repeating project-specific SQL logic.',
+            'upsert/update를 패턴화해 반복 SQL 대신 공통 헬퍼 호출로 처리하도록 바꿨습니다.',
         },
         {
-          title: 'Keep metadata-driven behavior',
+          title: '메타데이터 기반 처리',
           description:
-            'Used table and constraint metadata to reduce hardcoded assumptions in database operations.',
+            '테이블/제약 조건 정보를 메타로 다루어 고정값 의존을 줄이고 변경 유연성을 높였습니다.',
         },
       ],
       result: [
-        'Repeated database operations became easier to reuse across projects.',
-        'Schema-level separation became easier to manage.',
-        'The design reduced duplicated database handling logic.',
+        'DB 실행 코드의 재사용이 쉬워졌습니다.',
+        '다중 스키마 분리 작업의 일관성이 높아졌습니다.',
+        '기능 추가 시 중복 구현이 크게 줄었습니다.',
       ],
     },
   },
@@ -175,75 +165,66 @@ export const projects: Project[] = [
     period: '2025',
     role: 'AI Workflow / Data Structuring',
     summary:
-      'A document parsing workflow for converting passport and receipt images into structured fields with coordinates, masking rules, and validation metadata.',
-    problem: 'OCR results are uncertain and require structured validation before business use.',
+      '여권/영수증 이미지에서 추출한 값을 구조화해 재검토·수정 가능한 형태로 관리하는 파이프라인을 설계했습니다.',
+    problem:
+      'OCR 결과는 필드 오류나 신뢰도 이슈가 있어 그대로 운영 데이터로 쓰기 어렵고, 마스킹과 좌표 정보도 화면 환경별로 관리가 필요했습니다.',
     solution:
-      'Designed JSON structures for parsed fields, coordinate handling, image/result hashing, and human verification workflow.',
+      '필드 단위 검증, 좌표/마스킹 처리, 원본 이미지와 파싱 결과 분리를 통해 추적 가능한 검증 흐름을 만들었습니다.',
     impact: [
-      'Made OCR output verifiable.',
-      'Improved traceability of extracted fields.',
-      'Separated raw image management from structured recognition results.',
+      'OCR/LLM 결과 신뢰성 이슈 대응을 체계화했습니다.',
+      '수정/보정이 가능한 검증 데이터 경로를 확보했습니다.',
+      '원본 이미지와 파싱 결과의 추적 연결을 명확히 만들었습니다.',
     ],
     techStack: ['Python', 'OCR', 'LLM API', 'JSON', 'PostgreSQL'],
     keywords: ['OCR', 'LLM', 'Validation', 'Data Structuring'],
     category: 'AI / OCR / LLM',
     rolePerspectives: ['AI / OCR / LLM', 'System Design', 'Backend / Data Pipeline'],
     evidence: [
-      'Defined field-level extraction structure',
-      'Designed coordinate and masking rule handling',
-      'Separated raw image storage from parsed result records',
-      'Added validation-ready metadata concept',
+      'AI 결과 불확실성을 반영한 검증 설계',
+      '좌표 기반 값 표시 및 수정',
+      '이미지/파싱 결과 분리',
+      '검토 가능한 메타 데이터 구조',
     ],
     fitByTarget: {
       'ai-ocr-llm':
-        'Shows AI/OCR workflow fit through structured extraction formats, coordinate handling, masking rules, and validation metadata.',
+        'OCR/LLM 추출 결과의 구조화와 검증/보정 설계를 통해 AI/OCR 운영 파이프라인 역량을 보여줍니다.',
       'system-design':
-        'Shows system design fit through separating raw image handling, parsed results, and validation-ready metadata.',
+        '원천 입력, 추출 결과, 검증 단계의 책임 경계를 분리해 구현 체계를 정리했습니다.',
       'backend-data':
-        'Shows backend/data pipeline fit by converting unstructured OCR results into database-ready structured records.',
+        '추출 결과를 후처리 테이블로 적재하기 위한 구조적 파이프라인 설계가 데이터 처리 흐름에 적합합니다.',
     },
-    evidenceTagIds: [
-      'ocr-llm-workflow',
-      'data-pipeline',
-      'system-design',
-      'qa-validation',
-    ],
-    decisionTags: [
-      'Provisional AI output',
-      'Validation-first design',
-      'Human verification',
-      'Traceable data flow',
-    ],
+    evidenceTagIds: ['ocr-llm-workflow', 'data-pipeline', 'system-design', 'qa-validation'],
+    decisionTags: ['가변 AI 출력 처리', '검증 우선 설계', '인간 검수', '추적 가능한 데이터 흐름'],
     caseStudy: {
       context:
-        'Passport and receipt images needed to be converted into structured fields that could be reviewed, corrected, and used in downstream business workflows.',
+        '여권 및 영수증 이미지를 운영 데이터로 사용하려면, OCR 결과를 즉시 신뢰할 수 없습니다. 추출값을 검토 가능한 형태로 만들어 사람이 보정 가능한 과정이 필요했습니다.',
       constraints: [
-        'OCR output could contain uncertainty and field-level errors.',
-        'Masked values needed to preserve visible character structure.',
-        'Coordinate information needed to remain usable even when images were resized or displayed differently.',
-        'Raw image management and parsed result management needed to remain separate.',
+        'OCR 결과에 오류가 섞일 수 있어 필드 신뢰도 관리가 필요했습니다.',
+        '마스킹 문자열을 보존하면서 가시성을 유지해야 했습니다.',
+        '이미지 크기 변환 시에도 좌표 기준을 유지해야 했습니다.',
+        '원본 이미지와 추출 레코드는 분리되어야 했습니다.',
       ],
       decisions: [
         {
-          title: 'Treat AI output as provisional data',
+          title: 'AI 출력은 임시 데이터로 취급',
           description:
-            'Designed OCR/LLM extraction results as validation-ready data rather than final trusted records.',
+            'OCR/LLM 결과를 즉시 최종값이 아닌 provisional 데이터로 보고, 보정 가능한 구조를 기본값으로 두었습니다.',
         },
         {
-          title: 'Preserve coordinate and masking metadata',
+          title: '좌표/마스킹 정보 보존',
           description:
-            'Included coordinate and masking-related structure so extracted fields could be reviewed against the source image.',
+            '필드의 좌표와 마스킹 규칙을 함께 저장해 화면/검수 과정에서 값의 출처를 추적할 수 있게 했습니다.',
         },
         {
-          title: 'Separate raw and parsed layers',
+          title: '원본-파싱 계층 분리',
           description:
-            'Kept image files and parsed field records conceptually separate to improve traceability and correction handling.',
+            '이미지 자산과 파싱 레코드를 분리하여 회수성 및 보정 이력을 안정적으로 남기도록 구성했습니다.',
         },
       ],
       result: [
-        'OCR/LLM output became easier to validate and correct.',
-        'The data structure supported review workflows instead of only extraction.',
-        'The design improved traceability from source image to parsed field.',
+        '추출값 검토/수정 프로세스가 분명해졌습니다.',
+        '추적이 가능한 검증 메타와 연결된 AI 추출이 가능해졌습니다.',
+        '운영 데이터로의 연결 경로가 명확해졌습니다.',
       ],
     },
   },
@@ -252,62 +233,61 @@ export const projects: Project[] = [
     period: '2025',
     role: 'Data Engineering / Visualization',
     summary:
-      'A parser and normalization workflow for ICT inspection data, separating raw CSV data, specification values, measured values, and visual normalization metrics.',
-    problem: 'Measurement data had different ranges, units, and specification boundaries, making direct comparison difficult.',
-    solution:
-      'Built extraction and normalization logic based on specification-centered scaling rather than mean/std-based scaling.',
+      'ICT 측정 CSV의 다양한 단위/범위를 기준 데이터와 규격 데이터로 나누어 정규화 기준을 통일했습니다.',
+    problem: '측정점마다 단위와 범위가 달라 직접 비교가 어렵고, 평균표준편차 방식의 정규화가 목적 적합하지 않았습니다.',
+    solution: '측정값과 규격값을 분리해 LSL/USL 중심 정규화로 가시성 중심 파이프라인을 구성했습니다.',
     impact: [
-      'Enabled consistent visual comparison across heterogeneous measurement points.',
-      'Prepared data for high-dimensional analysis and visualization.',
+      '이질적인 측정값을 한 화면에서 비교 가능한 형태로 바꿨습니다.',
+      '규격 기준 정규화로 도메인 의미를 유지했습니다.',
+      '후속 시각화/분석에 바로 이어지는 출력 구조를 만들었습니다.',
     ],
     techStack: ['Python', 'Pandas', 'PostgreSQL', 'Data Visualization'],
     keywords: ['Data Engineering', 'Normalization', 'Visualization'],
     category: 'Data Visualization',
     rolePerspectives: ['Backend / Data Pipeline', 'System Design'],
     evidence: [
-      'Parsed raw CSV inspection data',
-      'Separated measured values and specification values',
-      'Designed specification-centered normalization',
-      'Prepared data for visual comparison',
+      '측정 데이터와 규격 데이터의 분리 저장',
+      '규격 기준 정규화 모델 설계',
+      '시각화를 위한 정규화 출력 형식 정의',
     ],
     fitByTarget: {
       'backend-data':
-        'Shows data pipeline fit through CSV parsing, specification separation, and normalized measurement data preparation.',
+        '원천 CSV 수집, 측정값 분해, 정규화 출력 생성으로 데이터 파이프라인 역할이 드러납니다.',
       'system-design':
-        'Shows system design fit through defining a consistent normalization model for heterogeneous measurement points.',
+        '변량이 다른 측정 데이터를 규격 기반 모델로 통일해 실행 가능한 시스템 구조를 제시했습니다.',
     },
     evidenceTagIds: ['data-pipeline', 'visualization', 'qa-validation', 'system-design'],
-    decisionTags: ['Specification-centered normalization', 'Traceable data flow', 'Validation-first design'],
+    decisionTags: ['규격 중심 정규화', '추적 가능한 데이터 흐름', '검증 우선 설계'],
     caseStudy: {
       context:
-        'ICT inspection CSV data contained many measurement points with different units, ranges, and specification boundaries, making direct comparison difficult.',
+        'ICT 점검 CSV는 항목별 단위와 범위가 달라 직접 비교가 어려웠고, 규격값까지 함께 다뤄야 하는 요구가 있었습니다.',
       constraints: [
-        'Raw measurement data and specification data needed to be separated.',
-        'Mean/std-based normalization was not suitable for the intended visual comparison.',
-        'Measurement points needed a consistent visual scale despite different units and ranges.',
-        'The output needed to support later visualization and high-dimensional comparison.',
+        '원천 CSV에서 측정값과 규격값을 함께 정리해야 했습니다.',
+        '평균/표준편차 기반 정규화는 도메인 규격 해석에 적합하지 않았습니다.',
+        '항목마다 사용 단위가 달라 시각 비교 기준을 통일해야 했습니다.',
+        '출력은 단순 수치값보다 분석/시각화를 고려해야 했습니다.',
       ],
       decisions: [
         {
-          title: 'Separate measured values and specification values',
+          title: '측정값/규격값 분리',
           description:
-            'Parsed and represented measurement data separately from specification boundaries to keep the normalization logic explicit.',
+            '측정치와 사양치의 성격을 분리해 파이프라인 단계에서 각 역할을 명확히 구분했습니다.',
         },
         {
-          title: 'Use specification-centered normalization',
+          title: '규격 중심 정규화',
           description:
-            'Used LSL/USL-centered scaling so visual comparison remained tied to domain limits rather than distribution statistics.',
+            '항목별 LSL/USL 범위를 기준으로 정규화해, 분포 추정보다 규격 준수 판단이 쉽도록 했습니다.',
         },
         {
-          title: 'Prepare visualization-ready output',
+          title: '시각화 친화 출력',
           description:
-            'Structured the normalized data so it could be used directly for visual review and comparison.',
+            '정규화된 결과를 시각 검토에 바로 사용할 수 있는 형태로 정리해 분석 단계 진입 장벽을 낮췄습니다.',
         },
       ],
       result: [
-        'Heterogeneous measurement points became easier to compare visually.',
-        'The normalization model remained tied to domain specifications.',
-        'The output became more suitable for downstream visualization.',
+        '항목 간 비교가 안정적으로 가능해졌습니다.',
+        '규격 기반 해석이 일관적으로 유지됩니다.',
+        '분석/시각화 단계와의 연결이 쉬워졌습니다.',
       ],
     },
   },

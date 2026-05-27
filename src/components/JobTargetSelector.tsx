@@ -11,9 +11,9 @@ type JobTargetSelectorProps = {
 
 const JobTargetSelector = ({ options, selectedId, onChange }: JobTargetSelectorProps) => {
   return (
-    <div className="target-selector" aria-label="Job target selector">
-      <p className="filter-label">Job Target</p>
-      <div className="job-targets" role="group" aria-label="Select job target">
+    <div className="target-selector" aria-label="타겟 직무 선택">
+      <p className="filter-label">포지션 선택</p>
+      <div className="job-targets" role="group" aria-label="타겟 직무 선택">
         {options.map((option) => (
           <button
             key={option.id}

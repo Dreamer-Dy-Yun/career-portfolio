@@ -36,44 +36,45 @@ const getIsProjectRelevantToTarget = (
 };
 
 const GENERAL_APPLICATION_SUMMARY = [
-  'Yun Dae-Young is a developer with experience in backend-oriented workflow design, PostgreSQL data modeling, API integration, OCR/LLM data processing, and automation refactoring.',
-  'He has worked across planning, development, testing, QA, and stakeholder communication, often in projects where requirements were unclear or operational data was fragmented.',
-  'His strongest fit is in roles that require structuring undefined business processes into maintainable systems, reusable data flows, and verifiable execution logic.',
+  '운영 환경이 정돈되지 않은 상황에서 데이터를 수집하고, 모델링하고, 실행 가능한 형태로 정리해 본 경험이 있습니다.',
+  'PostgreSQL 기반의 데이터 모델 설계, API 연동, OCR/LLM 파싱, 자동화 흐름 관리까지 아우르며 유지보수 가능한 구조를 만들기 위해 작업해 왔습니다.',
+  '기술을 도입하는 것보다 검증 가능성과 추적 가능성을 먼저 고려하는 실무형 접근을 선호합니다.',
 ];
 
 const GENERAL_PROFILE_FIT_POINTS = [
-  'Experience across backend, database, API, OCR/LLM workflow, automation, QA, and operational IT contexts.',
-  'Strong fit for roles that require structuring fragmented business processes into maintainable systems.',
-  'Useful where implementation requires both technical design and practical operational understanding.',
+  '백엔드와 데이터 파이프라인, API 연계, OCR/LLM 기반 추출, QA/운영 전반에서 실무형 연결고리를 연결해온 이력이 있습니다.',
+  '요구사항이 명확하지 않아도 단계별로 분해해 실행 가능한 형태로 정리해 온 경험이 있습니다.',
+  '단기 결과보다 장기 운영에서 신뢰성과 확장성을 유지하는 데 초점을 둡니다.',
 ];
 
 const TECHNICAL_REVIEW_SUMMARY = [
-  'This portfolio emphasizes project structure, data flow, validation logic, and maintainability rather than UI screenshots or superficial feature lists.',
-  'The project descriptions focus on the problem context, constraints, engineering decisions, and evidence of implementation. This is intended to make the work easier to review from a backend, data pipeline, and system design perspective.',
+  '이 포트폴리오는 UI 데모보다 데이터 흐름, 제약, 엔지니어링 결정, 검증 과정을 중심으로 구성했습니다.',
+  '문제 맥락과 결정 근거를 근거 기반으로 정리해 기술 리뷰에서 흐름을 빠르게 확인할 수 있게 했습니다.',
 ];
 
 const App = () => {
   const categoryFilters = [
-    'All',
-    'Data Pipeline',
-    'Backend / Database',
-    'AI / OCR / LLM',
-    'Data Visualization',
-    'API Integration',
+    { value: 'All', label: '전체' },
+    { value: 'Data Pipeline', label: '데이터 파이프라인' },
+    { value: 'Backend / Database', label: '백엔드 / DB' },
+    { value: 'AI / OCR / LLM', label: 'AI / OCR / LLM' },
+    { value: 'Data Visualization', label: '데이터 시각화' },
+    { value: 'API Integration', label: 'API 연동' },
   ];
 
   const rolePerspectiveFilters = [
-    'All',
-    'Backend / Data Pipeline',
-    'System Design',
-    'AI / OCR / LLM',
-    'Automation Refactoring',
+    { value: 'All', label: '전체' },
+    { value: 'Backend / Data Pipeline', label: '백엔드 / 데이터 파이프라인' },
+    { value: 'System Design', label: '시스템 설계' },
+    { value: 'AI / OCR / LLM', label: 'AI / OCR / LLM' },
+    { value: 'Automation Refactoring', label: '자동화 리팩토링' },
   ];
 
-  const [selectedCategoryFilter, setSelectedCategoryFilter] = useState(categoryFilters[0]);
-  const [selectedRolePerspective, setSelectedRolePerspective] = useState(rolePerspectiveFilters[0]);
+  const [selectedCategoryFilter, setSelectedCategoryFilter] = useState(categoryFilters[0].value);
+  const [selectedRolePerspective, setSelectedRolePerspective] = useState(rolePerspectiveFilters[0].value);
   const [selectedJobTargetId, setSelectedJobTargetId] = useState(GENERAL_TARGET_ID);
   const [showCaseStudyDetails, setShowCaseStudyDetails] = useState(false);
+
   const email = profile.email?.trim() ?? '';
   const hasRealEmail = Boolean(email) && !/example\./i.test(email);
   const isResumeAvailable = Boolean(profile.resumeAvailable);
@@ -81,6 +82,7 @@ const App = () => {
   const isDownloadableResume = Boolean(
     isResumeAvailable && resumeUrl && !/example\./i.test(resumeUrl),
   );
+
   const selectedJobTarget = jobTargets.find((target) => target.id === selectedJobTargetId) ?? null;
   const isGeneralTarget = selectedJobTargetId === GENERAL_TARGET_ID || !selectedJobTarget;
 
@@ -89,8 +91,8 @@ const App = () => {
       const matchesCategory =
         selectedCategoryFilter === 'All' || project.category === selectedCategoryFilter;
       const matchesRolePerspective =
-        selectedRolePerspective === 'All' ||
-        project.rolePerspectives.includes(selectedRolePerspective);
+        selectedRolePerspective === 'All' || project.rolePerspectives.includes(selectedRolePerspective);
+
       return matchesCategory && matchesRolePerspective;
     });
 
@@ -137,6 +139,7 @@ const App = () => {
 
     return hasLabel && hasUrl && !isPlaceholder && isLikelyRealUrl;
   });
+
   const hasRealContact = hasRealEmail || validLinks.length > 0 || isDownloadableResume;
   const applicationSummary = isGeneralTarget
     ? GENERAL_APPLICATION_SUMMARY
@@ -151,11 +154,11 @@ const App = () => {
       <main className="portfolio-container">
         <Hero selectedJobTarget={selectedJobTarget} />
 
-        <Section id="current-focus" title="Current Focus">
+        <Section id="current-focus" title="현재 포커스">
           <div className="target-selector">
             <JobTargetSelector
               options={[
-                { id: GENERAL_TARGET_ID, label: 'General' },
+                { id: GENERAL_TARGET_ID, label: '전체' },
                 ...jobTargets.map((target) => ({ id: target.id, label: target.label })),
               ]}
               selectedId={selectedJobTargetId}
@@ -164,20 +167,19 @@ const App = () => {
           </div>
           {isGeneralTarget ? (
             <p className="current-focus-copy">
-              This portfolio presents a general view of backend, data pipeline, system design, AI/OCR workflow, and
-              automation refactoring experience.
+              현재는 백엔드, 데이터 파이프라인, API, OCR/LLM, 자동화 리팩토링 경험을 함께 보여주는 방식으로 정리해 두었습니다.
             </p>
           ) : (
             <div className="current-focus-copy">
               <p>
-                <strong>Current focus: {selectedJobTarget?.label}</strong>
+                <strong>현재 포커스: {selectedJobTarget?.label}</strong>
               </p>
               <p>{selectedJobTarget?.summary}</p>
             </div>
           )}
         </Section>
 
-        <Section id="application-summary" title="Application Summary">
+        <Section id="application-summary" title="지원자 요약">
           <div className="application-summary">
             {applicationSummary.map((paragraph, index) => (
               <p key={`application-summary-${index}`}>{paragraph}</p>
@@ -185,7 +187,7 @@ const App = () => {
           </div>
         </Section>
 
-        <Section id="why-fits" title="Why This Profile Fits">
+        <Section id="why-fits" title="적합성">
           <ul className="why-fit-list">
             {whyThisProfileFits.map((item, index) => (
               <li key={`why-fit-${index}`}>{item}</li>
@@ -193,7 +195,7 @@ const App = () => {
           </ul>
         </Section>
 
-        <Section id="evidence-index" title="Evidence Index">
+        <Section id="evidence-index" title="근거 지표">
           <EvidenceIndex
             evidenceTags={evidenceTags}
             projects={projects}
@@ -202,7 +204,7 @@ const App = () => {
           />
         </Section>
 
-        <Section id="technical-review" title="Technical Review Summary">
+        <Section id="technical-review" title="기술 리뷰 요약">
           <div className="technical-review-summary">
             {TECHNICAL_REVIEW_SUMMARY.map((paragraph, index) => (
               <p key={`technical-review-summary-${index}`}>{paragraph}</p>
@@ -210,7 +212,7 @@ const App = () => {
           </div>
         </Section>
 
-        <Section id="strengths" title="Core Strengths">
+        <Section id="strengths" title="핵심 강점">
           <div className="strength-list">
             {profile.coreStrengths.map((strength) => (
               <article className="strength-item" key={strength.title}>
@@ -221,18 +223,18 @@ const App = () => {
           </div>
         </Section>
 
-        <Section id="projects" title="Featured Projects">
+        <Section id="projects" title="주요 프로젝트">
           <div className="filter-panel">
             <div className="project-filters">
               <FilterBar
-                label="Project Category"
-                options={categoryFilters.map((value) => ({ value }))}
+                label="프로젝트 카테고리"
+                options={categoryFilters}
                 activeValue={selectedCategoryFilter}
                 onChange={setSelectedCategoryFilter}
               />
               <FilterBar
-                label="Role Perspective"
-                options={rolePerspectiveFilters.map((value) => ({ value }))}
+                label="역할 관점"
+                options={rolePerspectiveFilters}
                 activeValue={selectedRolePerspective}
                 onChange={setSelectedRolePerspective}
               />
@@ -243,7 +245,7 @@ const App = () => {
                 checked={showCaseStudyDetails}
                 onChange={(event) => setShowCaseStudyDetails(event.target.checked)}
               />
-              <span>Show case study details</span>
+              <span>케이스 스터디 상세 보기</span>
             </label>
           </div>
           <div className="project-grid">
@@ -258,50 +260,39 @@ const App = () => {
                 />
               </div>
             ))}
-            {filteredProjects.length === 0 ? (
-              <p className="empty-state">No projects match the selected filters.</p>
-            ) : null}
+            {filteredProjects.length === 0 ? <p className="empty-state">조건에 맞는 프로젝트가 없습니다.</p> : null}
           </div>
         </Section>
 
-        <Section id="skills" title="Technical Stack">
+        <Section id="skills" title="기술 스택">
           <SkillMatrix skillGroups={skillGroups} />
         </Section>
 
-        <Section id="timeline" title="Career Timeline">
+        <Section id="timeline" title="경력 타임라인">
           <ExperienceTimeline experiences={experiences} evidenceTags={evidenceTags} />
         </Section>
 
-        <Section id="narrative" title="Career Narrative">
+        <Section id="narrative" title="경력 스토리">
           <p>
-            My career started from QA and operational IT environments, then moved into automation, API integration,
-            database design, and system-oriented development.
+            초기에는 QA와 운영 지원 경험을 시작으로 API 연계, 백엔드 아키텍처, 데이터 파이프라인 작업까지 확장해 왔습니다.
+            현재는 단기 구현보다 구현이 유지될 수 있는 실행 구조를 만드는 방식에 익숙합니다.
           </p>
           <p>
-            Although many projects were categorized under automation, the core work was often broader: defining unclear
-            requirements, structuring data flows, replacing fragile manual processes, and building reusable execution
-            logic. This portfolio presents my work through the lens of backend systems, data pipelines, and practical
-            system design rather than tool-specific automation alone.
+            반복되는 업무에서는 요구사항을 정리하고, 데이터 구조를 고정화하고, 재사용 가능한 실행 단위를 잡는 방식으로 개선합니다.
+            '자동화'를 목표가 아니라 '운영 가능한 시스템'을 목표로 정렬합니다.
           </p>
         </Section>
 
         <Section
           id="contact"
-          title="Contact"
+          title="연락처"
           className={hasRealContact ? 'contact-section' : 'contact-section contact-section--placeholder'}
         >
-          <p>
-            For collaboration, technical review, or career-related discussion, please contact me through the listed
-            contact channel.
-          </p>
+          <p>문의는 아래 채널을 통해 가능합니다.</p>
           <div className={hasRealContact ? 'contact-card' : 'contact-placeholder'}>
             {hasRealContact ? (
               <>
-                {hasRealEmail ? (
-                  <a className="contact-link" href={`mailto:${email}`} aria-label={`Email ${email}`}>
-                    {email}
-                  </a>
-                ) : null}
+                {hasRealEmail ? <a className="contact-link" href={`mailto:${email}`}> {email} </a> : null}
                 {profile.location ? <p>{profile.location}</p> : null}
                 {validLinks.length ? (
                   <ul className="contact-links">
@@ -315,25 +306,25 @@ const App = () => {
                   </ul>
                 ) : null}
                 <div className="resume-action">
-                  <span>Resume</span>
+                  <span>이력서</span>
                   {isDownloadableResume ? (
                     <a
                       href={resumeUrl as string}
                       className="resume-button"
-                      aria-label="Download resume PDF"
+                      aria-label="이력서 PDF 다운로드"
                       download
                     >
-                      Download Resume PDF
+                      이력서 PDF 다운로드
                     </a>
                   ) : (
                     <button type="button" className="resume-button resume-button--disabled" disabled>
-                      Resume PDF Coming Soon
+                      이력서 PDF 추후 공개
                     </button>
                   )}
                 </div>
               </>
             ) : (
-              <p>Contact information will be added later.</p>
+              <p>연락처 공개 준비 전이라면 추후 업데이트 예정입니다.</p>
             )}
           </div>
         </Section>

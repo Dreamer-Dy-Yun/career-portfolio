@@ -10,7 +10,7 @@ const TargetRoleCard = ({ role }: TargetRoleCardProps) => {
       <h3>{role.title}</h3>
       <p>{role.description}</p>
       <div className="sub-list">
-        <h4>Evidence</h4>
+        <h4>근거</h4>
         <ul>
           {role.evidence.map((item) => (
             <li key={item}>{item}</li>

@@ -1,16 +1,16 @@
 const navItems = [
-  { href: '#hero', label: 'Hero' },
-  { href: '#current-focus', label: 'Current Focus' },
-  { href: '#application-summary', label: 'Application Summary' },
-  { href: '#why-fits', label: 'Why This Profile Fits' },
-  { href: '#evidence-index', label: 'Evidence Index' },
-  { href: '#technical-review', label: 'Technical Review Summary' },
-  { href: '#strengths', label: 'Core Strengths' },
-  { href: '#projects', label: 'Featured Projects' },
-  { href: '#skills', label: 'Technical Stack' },
-  { href: '#timeline', label: 'Career Timeline' },
-  { href: '#narrative', label: 'Career Narrative' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#hero', label: '홈' },
+  { href: '#current-focus', label: '현재 포커스' },
+  { href: '#application-summary', label: '지원자 요약' },
+  { href: '#why-fits', label: '적합성' },
+  { href: '#evidence-index', label: '근거 지표' },
+  { href: '#technical-review', label: '기술 리뷰 요약' },
+  { href: '#strengths', label: '핵심 강점' },
+  { href: '#projects', label: '주요 프로젝트' },
+  { href: '#skills', label: '기술 스택' },
+  { href: '#timeline', label: '경력 타임라인' },
+  { href: '#narrative', label: '경력 스토리' },
+  { href: '#contact', label: '연락처' },
 ];
 
 const Header = () => {
@@ -20,7 +20,7 @@ const Header = () => {
         <a className="brand" href="#hero">
           Yun Dae-Young
         </a>
-        <nav aria-label="Primary Navigation">
+        <nav aria-label="메인 메뉴">
           <ul className="nav-list">
             {navItems.map((item) => (
               <li key={item.href}>

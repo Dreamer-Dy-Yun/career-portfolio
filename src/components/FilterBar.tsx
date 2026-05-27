@@ -1,5 +1,6 @@
 type FilterOption = {
   value: string;
+  label?: string;
 };
 
 type FilterBarProps = {
@@ -15,15 +16,15 @@ const FilterBar = ({ label, options, activeValue, onChange }: FilterBarProps) =>
       <p className="filter-label">{label}</p>
       <div className="project-filter" role="group" aria-label={label}>
         {options.map((option) => (
-          <button
-            type="button"
-            key={option.value}
-            className={activeValue === option.value ? 'filter-button active' : 'filter-button'}
-            onClick={() => onChange(option.value)}
-            aria-pressed={activeValue === option.value}
-          >
-            {option.value}
-          </button>
+            <button
+              type="button"
+              key={option.value}
+              className={activeValue === option.value ? 'filter-button active' : 'filter-button'}
+              onClick={() => onChange(option.value)}
+              aria-pressed={activeValue === option.value}
+            >
+              {option.label ?? option.value}
+            </button>
         ))}
       </div>
     </div>
