@@ -5,8 +5,8 @@ type HeaderProps = {
 const navItems = [
   { label: 'Position', href: '#roles' },
   { label: 'Evidence', href: '#projects' },
-  { label: '경력', href: '#career' },
-  { label: '기술', href: '#skills' },
+  { label: 'Career', href: '#career' },
+  { label: 'Stack', href: '#skills' },
   { label: '문의', href: '#contact' },
 ];
 

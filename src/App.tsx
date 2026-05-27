@@ -44,10 +44,10 @@ const App = () => {
         <Section id="projects" eyebrow="Project Work" title="Evidence">
           <ProjectGrid projects={content.projects} />
         </Section>
-        <Section id="career" eyebrow="Career" title="경력 이력">
+        <Section id="career" eyebrow="Career" title="Career">
           <CareerTimeline experiences={content.experiences} />
         </Section>
-        <Section id="skills" eyebrow="Stack" title="기술 스택">
+        <Section id="skills" eyebrow="Stack" title="Stack">
           <SkillCloud skillGroups={content.skillGroups} />
         </Section>
         <Section id="contact" eyebrow="Contact" title="문의">
