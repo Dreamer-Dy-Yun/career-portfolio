@@ -4,6 +4,7 @@ type HeaderProps = {
 
 const navItems = [
   { label: 'Position', href: '#roles' },
+  { label: 'How I Work', href: '#principles' },
   { label: 'Evidence', href: '#projects' },
   { label: 'Career', href: '#career' },
   { label: 'Stack', href: '#skills' },
@@ -13,20 +14,16 @@ const navItems = [
 const Header = ({ siteTitle }: HeaderProps) => {
   return (
     <header className="site-header">
-      <div className="header-inner">
-        <a className="brand" href="#top" aria-label="첫 화면으로 이동">
-          {siteTitle}
-        </a>
-        <nav aria-label="주요 섹션">
-          <ul className="nav-list">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <a href={item.href}>{item.label}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+      <a className="brand" href="#top" aria-label="Go to top">
+        {siteTitle}
+      </a>
+      <nav aria-label="Primary navigation">
+        {navItems.map((item) => (
+          <a key={item.href} href={item.href}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
     </header>
   );
 };

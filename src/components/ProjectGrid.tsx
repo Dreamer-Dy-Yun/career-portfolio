@@ -19,7 +19,7 @@ const ProjectGrid = ({ projects }: ProjectGridProps) => {
           <p className="project-summary">{project.summary}</p>
           <div className="project-evidence">
             <div>
-              <h4>입력</h4>
+              <h4>Inputs</h4>
               <ul>
                 {project.inputs.map((item) => (
                   <li key={item}>{item}</li>
@@ -27,7 +27,7 @@ const ProjectGrid = ({ projects }: ProjectGridProps) => {
               </ul>
             </div>
             <div>
-              <h4>설계 선택</h4>
+              <h4>Design Decisions</h4>
               <ul>
                 {project.decisions.map((item) => (
                   <li key={item}>{item}</li>
@@ -35,7 +35,7 @@ const ProjectGrid = ({ projects }: ProjectGridProps) => {
               </ul>
             </div>
             <div>
-              <h4>결과물</h4>
+              <h4>Outputs</h4>
               <ul>
                 {project.output.map((item) => (
                   <li key={item}>{item}</li>
@@ -43,7 +43,7 @@ const ProjectGrid = ({ projects }: ProjectGridProps) => {
               </ul>
             </div>
           </div>
-          <ul className="chip-list">
+          <ul className="chip-list" aria-label={`${project.title} tech stack`}>
             {project.stack.map((item) => (
               <li key={item}>{item}</li>
             ))}

@@ -4,6 +4,7 @@ import ContactPanel from './components/ContactPanel';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import OperatingPrinciples from './components/OperatingPrinciples';
 import ProjectGrid from './components/ProjectGrid';
 import RoleGrid from './components/RoleGrid';
 import Section from './components/Section';
@@ -40,6 +41,9 @@ const App = () => {
         <Hero hero={content.hero} />
         <Section id="roles" eyebrow="Role Fit" title="Position">
           <RoleGrid roles={content.roles} />
+        </Section>
+        <Section id="principles" eyebrow="Operating Principle" title="How I Work">
+          <OperatingPrinciples principles={content.operatingPrinciples ?? fallbackContent.operatingPrinciples} />
         </Section>
         <Section id="projects" eyebrow="Project Work" title="Evidence">
           <ProjectGrid projects={content.projects} />

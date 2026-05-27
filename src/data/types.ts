@@ -12,6 +12,11 @@ export type RoleContent = {
   focus: string[];
 };
 
+export type OperatingPrincipleContent = {
+  title: string;
+  description: string;
+};
+
 export type ProjectContent = {
   title: string;
   period: string;
@@ -44,6 +49,7 @@ export type PortfolioContent = {
   siteTitle: string;
   hero: HeroContent;
   roles: RoleContent[];
+  operatingPrinciples?: OperatingPrincipleContent[];
   projects: ProjectContent[];
   experiences: ExperienceContent[];
   skillGroups: SkillGroup[];

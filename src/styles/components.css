@@ -48,6 +48,7 @@
 }
 
 .role-grid,
+.principle-grid,
 .project-grid,
 .skill-grid {
   display: grid;
@@ -56,6 +57,7 @@
 }
 
 .role-card,
+.principle-card,
 .skill-card,
 .project-card,
 .timeline-item,
@@ -68,10 +70,15 @@
 }
 
 .role-card,
+.principle-card,
 .skill-card {
   grid-column: span 4;
   display: grid;
   gap: 0.75rem;
+}
+
+.principle-card {
+  border-top: 3px solid rgba(37, 99, 235, 0.22);
 }
 
 .project-card {
@@ -101,6 +108,7 @@
 }
 
 .project-summary,
+.principle-card p,
 .contact-panel p {
   color: var(--ink);
   font-weight: 800;
@@ -195,4 +203,10 @@
 .button-secondary {
   color: var(--ink);
   background: #e8f0ff;
+}
+
+@media (max-width: 860px) {
+  .principle-card {
+    grid-column: 1 / -1;
+  }
 }
