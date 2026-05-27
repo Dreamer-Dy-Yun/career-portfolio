@@ -3,8 +3,8 @@ type HeaderProps = {
 };
 
 const navItems = [
-  { label: '포지션', href: '#roles' },
-  { label: '프로젝트', href: '#projects' },
+  { label: 'Position', href: '#roles' },
+  { label: 'Evidence', href: '#projects' },
   { label: '경력', href: '#career' },
   { label: '기술', href: '#skills' },
   { label: '문의', href: '#contact' },

@@ -38,10 +38,10 @@ const App = () => {
       <Header siteTitle={content.siteTitle} />
       <main>
         <Hero hero={content.hero} />
-        <Section id="roles" eyebrow="Position" title="지원 포지션">
+        <Section id="roles" eyebrow="Role Fit" title="Position">
           <RoleGrid roles={content.roles} />
         </Section>
-        <Section id="projects" eyebrow="Evidence" title="프로젝트 근거">
+        <Section id="projects" eyebrow="Project Work" title="Evidence">
           <ProjectGrid projects={content.projects} />
         </Section>
         <Section id="career" eyebrow="Career" title="경력 이력">
