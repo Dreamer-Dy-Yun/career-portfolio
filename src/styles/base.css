@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -10,46 +12,35 @@ body {
   margin: 0;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 32rem),
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.1), transparent 34rem),
     linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
   font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', sans-serif;
-  line-height: 1.62;
 }
 
-h1, h2, h3, h4, p {
+h1,
+h2,
+h3,
+h4,
+p {
   margin: 0;
 }
 
 h1 {
-  color: #f8fafc;
-  font-size: clamp(3rem, 7vw, 6rem);
-  line-height: 0.94;
-  letter-spacing: -0.09em;
+  color: #ffffff;
+  font-size: clamp(3.4rem, 10vw, 7.6rem);
+  line-height: 0.9;
+  letter-spacing: -0.1em;
 }
 
 h2 {
-  color: var(--surface-strong);
-  font-size: clamp(1.55rem, 3vw, 2.35rem);
-  line-height: 1.1;
-  letter-spacing: -0.055em;
+  color: var(--ink);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: -0.07em;
 }
 
 h3 {
-  color: var(--surface-strong);
-  font-size: 1.12rem;
-  line-height: 1.35;
-  letter-spacing: -0.025em;
-}
-
-h4 {
-  color: var(--surface-strong);
-  font-size: 0.82rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-p, li {
-  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-size: 1.15rem;
 }
 
 a {
@@ -57,13 +48,13 @@ a {
   text-decoration: none;
 }
 
-button, input {
+button,
+input {
   font: inherit;
 }
 
 a:focus-visible,
-button:focus-visible,
-summary:focus-visible {
-  outline: 3px solid var(--focus);
+button:focus-visible {
+  outline: 3px solid #38bdf8;
   outline-offset: 3px;
 }

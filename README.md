@@ -1,109 +1,45 @@
-# Career Portfolio
+# Yun Dae-Young Career Portfolio
 
-## Version
+Version: rebuild-2026.05
 
-v1.1
+React + TypeScript + Vite 기반의 정적 단일 페이지 포트폴리오입니다.
 
-## Project name
+## 기본 환경
 
-Career Portfolio
+- 콘텐츠 관리: Google Sheets 공개 JSON URL
+- 문의 접수: Google Form 또는 이메일
+- 배포: GitHub Actions + GitHub Pages
+- 프론트엔드: React, TypeScript, Vite
 
-## Purpose
+## 로컬 실행
 
-Korean-first single-page career portfolio for Yun Dae-Young. The v1.1 direction is a recruiter/technical-review screen for a backend and data pipeline engineer whose value also comes from QA, operations, manufacturing quality, and communication experience.
+```bash
+npm install
+npm run dev
+npm run build
+npm run preview
+```
 
-## Tech stack
+## Google Sheets 연결
 
-- React
-- TypeScript
-- Vite
+`VITE_GOOGLE_SHEET_JSON_URL` 환경 변수를 설정하면 런타임에 공개 JSON 콘텐츠를 읽습니다.
+설정하지 않으면 `src/data/portfolioContent.ts`의 로컬 seed 데이터를 사용합니다.
 
-## Features
+자세한 구조는 `docs/google-sheets-content-contract.md`를 기준으로 합니다.
 
-- Korean-first positioning and redesigned page structure
-- Role-target switching without hiding non-matching projects
-- Project relevance sorting and target fit badges
-- Evidence index and evidence tags shared across projects/experiences
-- Case-study section for major projects
-- Career base section that keeps non-IT experience explicit
-- Google Sheets CMS template for future read-only content operation
-- Placeholder-safe contact and resume rendering
+## GitHub Pages 배포
 
-## Deployment
+`main` 브랜치에 push하면 `.github/workflows/deploy.yml`이 실행되고 `dist`가 GitHub Pages로 배포됩니다.
 
-- GitHub Pages workflow: `.github/workflows/deploy.yml`
-- Workflow triggers:
-  - `push` on `main`
-  - `workflow_dispatch`
-- Build step uses `npm run build`
-- Deployment uses `actions/deploy-pages@v4`
-- Base path note in `vite.config.ts`:
-  - Keep `base: "/"` for user pages.
-  - Use repository path (for example `"/career-portfolio/"`) only if repository is explicitly deployed as a project page.
+현재 Vite base는 repository page 기준입니다.
 
-Current deployment uses `base: "/career-portfolio/"`.
+```ts
+base: '/career-portfolio/'
+```
 
-## Data updates
+## 콘텐츠 원칙
 
-- `src/data/profile.ts`
-  - Name/title/tagline/summary
-  - Core strengths
-  - Contact and resume availability
-- `src/data/projects.ts`
-  - Project metadata, evidence, fit mapping, case studies, decision tags
-  - `category`, `rolePerspectives`, `evidenceTagIds`, `fitByTarget`, `caseStudy`, `decisionTags`
-- `src/data/experiences.ts`
-  - Timeline items and optional `functionHighlights`, `evidenceTagIds`
-- `src/data/skills.ts`
-  - Technical stack groups and labels
-- `src/data/jobTargets.ts`
-  - Target presets and role-specific summary copy
-- `src/data/evidenceTags.ts`
-  - Shared evidence labels used in projects and timeline
-- `src/data/targetRoles.ts`
-  - Optional role-positioning reference section data
-- `docs/google-sheets-cms-template.md`
-  - Paste-ready Google Sheets tabs
-- `docs/career-portfolio-cms-template.xlsx`
-  - Spreadsheet template that can be imported into Google Sheets
-
-## Local development commands
-
-- `npm install`
-- `npm run dev`
-- `npm run build`
-- `npm run preview`
-
-## Release checklist
-
-- `npm run build` passes
-- Page order and headings are coherent and readable
-- Job target selector and case study details still work
-- No fake links, no sensitive personal data, and no placeholder-sensitive render paths
-- Print layout contains the core release sections
-- Version label is shown as `v1.1`
-
-## Privacy and content safety
-
-- Do not add sensitive personal information (phone number, address, internal identifiers).
-- Do not add fake metrics or unsupported achievements.
-- Do not add fake external links.
-- Do not expose internal client names or internal project secrets unless explicitly intended for public sharing.
-- Do not force non-IT career history into IT wording. Manufacturing QA, operations, and communication work should remain factual.
-
-## v1.1 Release Notes
-
-- Korean-first public screen redesign.
-- Clearer identity around backend, data pipelines, QA/operations background, and system design.
-- Reduced filter-heavy layout in favor of recruiter and technical-review scanability.
-- Added Google Sheets CMS design and import template.
-- Replaced temporary browser-only photo upload with a stable profile photo placeholder.
-
-## v1.0 Release Notes
-
-- First public-ready version.
-- Single-page static career portfolio.
-- Job-target based positioning.
-- Evidence-based project presentation.
-- GitHub Pages deployment workflow.
-- Privacy-conscious placeholder handling.
+- 확인되지 않은 경력 해석을 쓰지 않습니다.
+- 가짜 성과 수치와 외부 링크를 넣지 않습니다.
+- 비공개 고객 정보, 전화번호, 주소, 내부 URL, API key를 넣지 않습니다.
+- 경력 상세는 실제 이력 원문이 확보된 뒤 추가합니다.

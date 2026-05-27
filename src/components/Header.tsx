@@ -1,18 +1,23 @@
+type HeaderProps = {
+  siteTitle: string;
+};
+
 const navItems = [
-  { href: '#identity', label: '프로필' },
-  { href: '#evidence-index', label: '근거' },
-  { href: '#projects', label: '프로젝트' },
-  { href: '#career-base', label: '경력' },
+  { label: '포지션', href: '#roles' },
+  { label: '프로젝트', href: '#projects' },
+  { label: '경력', href: '#career' },
+  { label: '기술', href: '#skills' },
+  { label: '문의', href: '#contact' },
 ];
 
-const Header = () => {
+const Header = ({ siteTitle }: HeaderProps) => {
   return (
-    <header className="header site-header">
+    <header className="site-header">
       <div className="header-inner">
-        <a className="brand" href="#hero">
-          윤대영
+        <a className="brand" href="#top" aria-label="첫 화면으로 이동">
+          {siteTitle}
         </a>
-        <nav aria-label="메인 메뉴">
+        <nav aria-label="주요 섹션">
           <ul className="nav-list">
             {navItems.map((item) => (
               <li key={item.href}>

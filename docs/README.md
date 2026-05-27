@@ -1,9 +1,12 @@
-# Docs
+# docs
 
-이 폴더는 포트폴리오의 화면 설계, 콘텐츠 운영 방식, Google Sheets CMS 구조를 설명한다.
+포트폴리오 운영 문서를 둔다.
 
-- `portfolio-v1.1-design.md`: v1.1 화면 정체성과 정보 구조.
-- `google-sheets-cms-template.md`: Google Sheets 탭 구조와 붙여넣기용 데이터 템플릿.
-- `career-portfolio-cms-template.xlsx`: Google Sheets로 가져오기 위한 다중 탭 템플릿.
+## 파일 책임
 
-문서의 역할은 구현 코드보다 먼저 포지셔닝과 데이터 경계를 고정하는 것이다. 화면 구조나 콘텐츠 운영 방식이 바뀌면 이 폴더의 문서를 함께 갱신한다.
+- `google-sheets-content-contract.md`: Google Sheets에서 내보내야 하는 공개 JSON 구조와 운영 주의사항.
+
+## 문서 원칙
+
+- 현재 구현과 맞지 않는 예전 설계 문서는 유지하지 않는다.
+- Google Sheets, Google Form, GitHub Pages 운영에 필요한 문서만 남긴다.

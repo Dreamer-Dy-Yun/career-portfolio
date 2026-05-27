@@ -1,0 +1,51 @@
+export type HeroContent = {
+  name: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  chips: string[];
+};
+
+export type RoleContent = {
+  title: string;
+  description: string;
+  focus: string[];
+};
+
+export type ProjectContent = {
+  title: string;
+  period: string;
+  role: string;
+  summary: string;
+  inputs: string[];
+  decisions: string[];
+  output: string[];
+  stack: string[];
+};
+
+export type ExperienceContent = {
+  company: string;
+  period: string;
+  role: string;
+};
+
+export type SkillGroup = {
+  title: string;
+  items: string[];
+};
+
+export type ContactContent = {
+  formUrl?: string;
+  email?: string;
+  note: string;
+};
+
+export type PortfolioContent = {
+  siteTitle: string;
+  hero: HeroContent;
+  roles: RoleContent[];
+  projects: ProjectContent[];
+  experiences: ExperienceContent[];
+  skillGroups: SkillGroup[];
+  contact: ContactContent;
+};
