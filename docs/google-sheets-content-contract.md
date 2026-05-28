@@ -1,61 +1,91 @@
 # Google Sheets Content Contract
 
-포트폴리오 콘텐츠는 Google Sheets에서 관리할 수 있으며, 화면은 아래 JSON 구조를 기준으로 읽는다.
+포트폴리오 콘텐츠는 Google Sheets를 원본으로 사용할 수 있다. 앱은 `VITE_GOOGLE_SHEET_ID`가 있으면 아래 탭을 CSV로 읽어 `PortfolioContent`로 조립한다.
 
-## 운영 방식
+## 연결 방식
 
-1. Google Sheets에 콘텐츠를 입력한다.
-2. Apps Script 또는 공개 JSON 변환 레이어로 `PortfolioContent` JSON을 반환한다.
-3. GitHub Pages 빌드 환경에 `VITE_GOOGLE_SHEET_JSON_URL`을 설정한다.
-4. 문의는 Google Form URL을 `contact.formUrl`에 넣는다.
+GitHub repository의 Actions variable에 아래 값을 설정한다.
 
-## 최상위 구조
-
-```json
-{
-  "siteTitle": "Yun Dae-Young's Portfolio",
-  "hero": {},
-  "roles": [],
-  "operatingPrinciples": [],
-  "projects": [],
-  "experiences": [],
-  "skillGroups": [],
-  "contact": {}
-}
+```text
+GOOGLE_SHEET_ID=<spreadsheet id>
 ```
 
-## SkillGroup 구조
+배포 workflow는 이 값을 `VITE_GOOGLE_SHEET_ID`로 전달한다.
 
-```json
-{
-  "title": "Database",
-  "items": ["PostgreSQL", "SQLAlchemy", "Schema design"]
-}
-```
+시트는 브라우저에서 읽을 수 있어야 하므로 공개 읽기 또는 웹 게시 상태여야 한다. 비공개 시트는 GitHub Pages에서 직접 읽을 수 없다.
 
-`items`는 기본적으로 문자열 배열을 사용한다. 출처, 숙련도, AI 도움 여부는 사용자가 명시적으로 확인한 경우에만 별도 필드로 확장한다.
+## 탭 구조
 
-## ProjectContent 구조
+필수 탭:
 
-```json
-{
-  "title": "Project title",
-  "period": "2025",
-  "role": "Workflow Modeling / Backend / DB / UI",
-  "summary": "One sentence summary",
-  "problem": "Problem situation",
-  "constraints": ["Constraint 1"],
-  "decisions": ["Design decision 1"],
-  "deliverables": ["Deliverable 1"],
-  "meaning": "Why this project matters",
-  "stack": ["Python", "PostgreSQL"]
-}
-```
+- `Meta`
+- `Hero`
+- `Roles`
+- `OperatingPrinciples`
+- `Projects`
+- `Experiences`
+- `SkillGroups`
+- `Contact`
+
+리스트 값은 `|` 또는 줄바꿈으로 구분한다.
+
+## Meta
+
+| key | value |
+|---|---|
+| siteTitle | Yun Dae-Young's Portfolio |
+
+## Hero
+
+| field | value |
+|---|---|
+| name | Yun Dae-Young |
+| title | Workflow & Data System Designer |
+| subtitle | ... |
+| description | ... |
+| chips | Workflow Modeling\|Data Boundary Design |
+
+## Roles
+
+| title | description | focus |
+|---|---|---|
+| Workflow & Data Modeling | ... | input / state / output boundary\|validation flow |
+
+## OperatingPrinciples
+
+| title | description |
+|---|---|
+| Input, state, output first | ... |
+
+## Projects
+
+| title | period | role | summary | problem | constraints | decisions | deliverables | meaning | stack |
+|---|---|---|---|---|---|---|---|---|---|
+| Project title | 2025 | Role | Summary | Problem | A\|B | A\|B | A\|B | Meaning | Python\|PostgreSQL |
+
+## Experiences
+
+| company | period | role |
+|---|---|---|
+| Company | 2025 | Role |
+
+## SkillGroups
+
+| title | items |
+|---|---|
+| Database | PostgreSQL\|SQLAlchemy\|Schema design |
+
+## Contact
+
+| field | value |
+|---|---|
+| formUrl |  |
+| email |  |
+| note |  |
 
 ## 주의
 
-- 공개 JSON에는 전화번호, 주소, 내부 API URL, 계약 금액, 비공개 고객 정보를 넣지 않는다.
+- 공개 시트에는 전화번호, 주소, 내부 API URL, 계약 금액, 비공개 고객 정보를 넣지 않는다.
 - 확인되지 않은 성과 수치나 과장된 문장을 넣지 않는다.
-- Backend, DB, API, UI는 업무 구조를 구현하는 수단으로 적는다.
-- Google Form URL이 확정되지 않았다면 빈 문자열로 둔다.
-- Google Form URL이 비어 있으면 Contact 페이지는 표시하지 않는다.
+- Stack 항목의 출처나 숙련도를 임의로 분류하지 않는다.
+- Google Form URL이 확정되지 않았다면 `Contact.formUrl`은 빈 값으로 둔다.

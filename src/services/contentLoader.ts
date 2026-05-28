@@ -1,5 +1,6 @@
 import { fallbackContent } from '../data/portfolioContent';
 import type { PortfolioContent, ProjectContent } from '../data/types';
+import { loadPortfolioContentFromGoogleSheet } from './googleSheetTables';
 
 type ContentLoadResult = {
   content: PortfolioContent;
@@ -7,6 +8,7 @@ type ContentLoadResult = {
 };
 
 const contentUrl = import.meta.env.VITE_GOOGLE_SHEET_JSON_URL?.trim() ?? '';
+const sheetId = import.meta.env.VITE_GOOGLE_SHEET_ID?.trim() ?? '';
 
 const hasProjectShape = (project: Partial<ProjectContent>) => {
   return Boolean(
@@ -42,25 +44,39 @@ const isPortfolioContent = (value: unknown): value is PortfolioContent => {
 };
 
 export const loadPortfolioContent = async (): Promise<ContentLoadResult> => {
-  if (!contentUrl) {
-    return { content: fallbackContent, source: 'local' };
-  }
+  if (contentUrl) {
+    try {
+      const response = await fetch(contentUrl);
 
-  try {
-    const response = await fetch(contentUrl);
+      if (!response.ok) {
+        return { content: fallbackContent, source: 'local' };
+      }
 
-    if (!response.ok) {
+      const data = await response.json();
+
+      if (!isPortfolioContent(data)) {
+        return { content: fallbackContent, source: 'local' };
+      }
+
+      return { content: data, source: 'google-sheet' };
+    } catch {
       return { content: fallbackContent, source: 'local' };
     }
+  }
 
-    const data = await response.json();
+  if (sheetId) {
+    try {
+      const data = await loadPortfolioContentFromGoogleSheet(sheetId);
 
-    if (!isPortfolioContent(data)) {
+      if (!isPortfolioContent(data)) {
+        return { content: fallbackContent, source: 'local' };
+      }
+
+      return { content: data, source: 'google-sheet' };
+    } catch {
       return { content: fallbackContent, source: 'local' };
     }
-
-    return { content: data, source: 'google-sheet' };
-  } catch {
-    return { content: fallbackContent, source: 'local' };
   }
+
+  return { content: fallbackContent, source: 'local' };
 };
