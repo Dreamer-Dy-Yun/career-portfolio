@@ -7,6 +7,8 @@
 
 .site-shell {
   min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 .site-header {
@@ -55,8 +57,14 @@
   color: var(--accent);
 }
 
-.page-stack {
-  display: block;
+.nav-list a[aria-current='page'] {
+  background: var(--ink);
+  color: #ffffff;
+}
+
+.page-frame {
+  min-height: calc(100dvh - 4.25rem);
+  overflow: hidden;
 }
 
 .page-section {
@@ -65,8 +73,7 @@
   align-content: start;
   padding: clamp(2rem, 5vh, 3.4rem) 0 clamp(2.4rem, 5vw, 4.5rem);
   border-top: 1px solid rgba(15, 23, 42, 0.07);
-  scroll-margin-top: 4.25rem;
-  scroll-snap-align: start;
+  overflow: auto;
 }
 
 .page-section-hero {
@@ -105,8 +112,8 @@
 }
 
 .site-footer {
+  display: none;
   padding: 1.5rem 0 2.5rem;
-  scroll-snap-align: end;
 }
 
 .footer-inner {

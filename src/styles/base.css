@@ -8,11 +8,6 @@ html {
   scroll-behavior: smooth;
 }
 
-@media (min-width: 921px) {
-  html {
-    scroll-snap-type: y mandatory;
-  }
-}
 
 body {
   margin: 0;

@@ -1,31 +1,26 @@
 type HeaderProps = {
+  activePageId: string;
+  pages: {
+    id: string;
+    label: string;
+  }[];
   siteTitle: string;
-  showContact: boolean;
 };
 
-const navItems = [
-  { label: 'Position', href: '#roles' },
-  { label: 'Thinking Pattern', href: '#principles' },
-  { label: 'Evidence', href: '#projects' },
-  { label: 'Career', href: '#career' },
-  { label: 'Stack', href: '#skills' },
-  { label: '문의', href: '#contact', requiresContact: true },
-];
-
-const Header = ({ siteTitle, showContact }: HeaderProps) => {
-  const visibleNavItems = navItems.filter((item) => !item.requiresContact || showContact);
-
+const Header = ({ activePageId, pages, siteTitle }: HeaderProps) => {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a className="brand" href="#top" aria-label="Go to top">
+        <a className="brand" href="#/home" aria-label="Go to home">
           {siteTitle}
         </a>
         <nav aria-label="Primary navigation">
           <ul className="nav-list">
-            {visibleNavItems.map((item) => (
-              <li key={item.href}>
-                <a href={item.href}>{item.label}</a>
+            {pages.map((page) => (
+              <li key={page.id}>
+                <a aria-current={activePageId === page.id ? 'page' : undefined} href={`#/${page.id}`}>
+                  {page.label}
+                </a>
               </li>
             ))}
           </ul>

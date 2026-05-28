@@ -4,8 +4,8 @@
 
 ## 파일 책임
 
-- `Header.tsx`: 상단 내비게이션. `layout.css`의 `.header-inner`, `.nav-list` 구조를 사용하고, Google Form URL이 없으면 문의 링크를 숨깁니다.
-- `PageSection.tsx`: 한 화면 단위 페이지 섹션 공통 컴포넌트. Hero, Position, Thinking Pattern, Evidence, Career, Stack, Contact가 모두 이 컴포넌트를 통해 렌더링됩니다.
+- `Header.tsx`: 상단 내비게이션. `#/page-id` hash page 링크를 사용하고 현재 페이지를 `aria-current="page"`로 표시합니다.
+- `PageSection.tsx`: 한 화면 단위 페이지 공통 컴포넌트. App은 현재 선택된 페이지 하나만 렌더링합니다.
 - `Hero.tsx`: 첫 화면 내부 콘텐츠와 사진/시각 패널 영역.
 - `CardCarousel.tsx`: 카드 묶음을 일정 시간마다 전환하는 공통 carousel. `itemsPerPage`로 한 화면에 보일 카드 수를 조정합니다.
 - `RoleGrid.tsx`: Position 카드를 carousel로 표시합니다.
@@ -20,5 +20,5 @@
 
 - 컴포넌트는 데이터를 해석하거나 새 경력 의미를 만들지 않습니다.
 - 데이터 변경은 `src/data` 또는 Google Sheets에서 처리합니다.
-- 페이지 단위 레이아웃은 `PageSection.tsx`와 `src/styles/layout.css`가 책임집니다.
+- 페이지 단위 레이아웃은 `PageSection.tsx`, `App.tsx`, `src/styles/layout.css`가 책임집니다.
 - 카드 반복 UI는 `CardCarousel.tsx`와 `src/styles/components.css`가 책임집니다.
