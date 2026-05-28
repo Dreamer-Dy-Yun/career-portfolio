@@ -16,6 +16,7 @@ import { loadPortfolioContent } from './services/contentLoader';
 const App = () => {
   const [content, setContent] = useState<PortfolioContent>(fallbackContent);
   const [contentSource, setContentSource] = useState<'local' | 'google-sheet'>('local');
+  const hasContactChannel = Boolean(content.contact.formUrl?.trim() || content.contact.email?.trim());
 
   useEffect(() => {
     let isMounted = true;
@@ -36,7 +37,7 @@ const App = () => {
 
   return (
     <div className="site-shell">
-      <Header siteTitle={content.siteTitle} />
+      <Header siteTitle={content.siteTitle} showContact={hasContactChannel} />
       <main>
         <Hero hero={content.hero} />
         <Section id="roles" eyebrow="Role Fit" title="Position">
@@ -54,9 +55,11 @@ const App = () => {
         <Section id="skills" eyebrow="Stack" title="Stack">
           <SkillCloud skillGroups={content.skillGroups} />
         </Section>
-        <Section id="contact" eyebrow="Contact" title="문의">
-          <ContactPanel contact={content.contact} />
-        </Section>
+        {hasContactChannel ? (
+          <Section id="contact" eyebrow="Contact" title="문의">
+            <ContactPanel contact={content.contact} />
+          </Section>
+        ) : null}
       </main>
       <Footer contentSource={contentSource} />
     </div>

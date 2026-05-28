@@ -24,6 +24,20 @@
 }
 ```
 
+## SkillGroup 구조
+
+```json
+{
+  "title": "Database",
+  "items": [
+    { "label": "PostgreSQL", "evidence": "direct" },
+    { "label": "Schema design", "evidence": "ai-assisted" }
+  ]
+}
+```
+
+`evidence`는 직접 사용한 항목이면 `direct`, AI가 표현을 정리했거나 사용자 확인이 더 필요한 역량 라벨이면 `ai-assisted`를 사용합니다.
+
 ## ProjectContent 구조
 
 ```json
@@ -47,3 +61,4 @@
 - 확인되지 않은 성과 수치나 과장된 문장을 넣지 않습니다.
 - 백엔드, DB, API, UI는 정체성이 아니라 업무 구조를 구현하는 수단으로 씁니다.
 - Google Form URL이 확정되지 않았다면 빈 문자열로 둡니다.
+- Google Form URL과 이메일이 모두 비어 있으면 Contact 섹션은 표시하지 않습니다.

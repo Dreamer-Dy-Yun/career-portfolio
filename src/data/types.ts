@@ -36,9 +36,16 @@ export type ExperienceContent = {
   role: string;
 };
 
+export type SkillItem =
+  | string
+  | {
+  label: string;
+  evidence: 'direct' | 'ai-assisted';
+};
+
 export type SkillGroup = {
   title: string;
-  items: string[];
+  items: SkillItem[];
 };
 
 export type ContactContent = {

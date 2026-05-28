@@ -12,7 +12,7 @@ const ContactPanel = ({ contact }: ContactPanelProps) => {
 
   return (
     <div className="contact-panel">
-      <p>{contact.note}</p>
+      {contact.note ? <p>{contact.note}</p> : null}
       <div className="contact-actions">
         {hasForm ? (
           <a className="button-primary" href={contact.formUrl} target="_blank" rel="noreferrer">
@@ -21,10 +21,9 @@ const ContactPanel = ({ contact }: ContactPanelProps) => {
         ) : null}
         {hasEmail ? (
           <a className="button-secondary" href={`mailto:${contact.email}`}>
-            이메일
+            Email
           </a>
         ) : null}
-        {!hasForm && !hasEmail ? <span className="muted-label">문의 채널 준비 중</span> : null}
       </div>
     </div>
   );

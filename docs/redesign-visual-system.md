@@ -333,7 +333,7 @@ Skills 섹션은 로고 나열보다 책임 기반 분류를 우선한다.
 예시 분류는 다음과 같다.
 
 - Backend / API: FastAPI, REST API, request/response 구조
-- Data / Database: PostgreSQL, schema design, SQLAlchemy, asyncpg
+- Data / Database: PostgreSQL, schema design, SQLAlchemy
 - OCR / LLM Workflow: field structure, JSON output, validation metadata
 - Automation / QA: process automation, QA flow, verification checklist
 - Operations / Communication: 일본 IT 운영, 문서 기반 커뮤니케이션, 변경 이력 관리

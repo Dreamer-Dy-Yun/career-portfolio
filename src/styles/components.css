@@ -140,6 +140,7 @@
 
 .skill-card {
   grid-column: span 3;
+  align-content: start;
 }
 
 .principle-card {
@@ -226,6 +227,8 @@
 .chip-list {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
   gap: 0.5rem;
 }
 
@@ -237,6 +240,35 @@
   background: #ffffff;
   font-size: 0.86rem;
   font-weight: 800;
+}
+
+.skill-card .chip-list {
+  gap: 0.42rem;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+  max-width: 100%;
+  line-height: 1.2;
+}
+
+.skill-chip small {
+  border-radius: 999px;
+  padding: 0.12rem 0.36rem;
+  color: #475569;
+  background: #eef2f7;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.skill-chip-ai-assisted small {
+  color: #9a3412;
+  background: #ffedd5;
 }
 
 .timeline {
