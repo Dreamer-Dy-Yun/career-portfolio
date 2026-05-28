@@ -19,7 +19,7 @@ const SkillCloud = ({ skillGroups }: SkillCloudProps) => {
         </article>
   ));
 
-  return <CardCarousel ariaLabel="Stack carousel" className="skill-carousel" items={items} intervalMs={5200} itemsPerPage={3} />;
+  return <CardCarousel ariaLabel="Stack carousel" className="skill-carousel" items={items} intervalMs={10400} itemsPerPage={3} />;
 };
 
 export default SkillCloud;

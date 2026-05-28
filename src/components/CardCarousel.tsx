@@ -8,7 +8,7 @@ type CardCarouselProps = {
   itemsPerPage?: number;
 };
 
-const CardCarousel = ({ ariaLabel, className = '', items, intervalMs = 4200, itemsPerPage = 1 }: CardCarouselProps) => {
+const CardCarousel = ({ ariaLabel, className = '', items, intervalMs = 8400, itemsPerPage = 1 }: CardCarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const pageCount = Math.max(1, Math.ceil(items.length / itemsPerPage));
   const pages = Array.from({ length: pageCount }, (_, pageIndex) =>

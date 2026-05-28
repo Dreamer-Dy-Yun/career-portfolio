@@ -55,7 +55,7 @@ const ProjectGrid = ({ projects }: ProjectGridProps) => {
         </article>
   ));
 
-  return <CardCarousel ariaLabel="Project evidence carousel" className="project-carousel" items={items} intervalMs={6800} />;
+  return <CardCarousel ariaLabel="Project evidence carousel" className="project-carousel" items={items} intervalMs={13600} />;
 };
 
 export default ProjectGrid;
