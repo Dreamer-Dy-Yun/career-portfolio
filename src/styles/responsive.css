@@ -11,6 +11,7 @@
 
   .hero-grid,
   .carousel-page,
+  .skill-row,
   .project-detail-grid,
   .timeline {
     grid-template-columns: 1fr;
@@ -72,7 +73,7 @@
   .timeline-item,
   .role-card,
   .principle-card,
-  .skill-card {
+  .skill-row {
     break-inside: avoid;
     box-shadow: none;
   }

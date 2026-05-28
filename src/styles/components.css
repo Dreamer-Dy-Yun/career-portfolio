@@ -51,10 +51,6 @@
   max-width: 100%;
 }
 
-.skill-carousel {
-  max-width: 100%;
-}
-
 .carousel-viewport {
   overflow: hidden;
   border-radius: var(--radius);
@@ -79,10 +75,6 @@
 .carousel-page > .role-card,
 .carousel-page > .principle-card {
   min-height: 230px;
-}
-
-.carousel-page > .skill-card {
-  min-height: 260px;
 }
 
 .carousel-controls {
@@ -127,7 +119,6 @@
 
 .role-card,
 .principle-card,
-.skill-card,
 .project-card,
 .timeline-item,
 .contact-panel {
@@ -139,8 +130,7 @@
 }
 
 .role-card,
-.principle-card,
-.skill-card {
+.principle-card {
   display: grid;
   gap: 0.85rem;
   align-content: start;
@@ -241,6 +231,29 @@
 
 .skill-card .chip-list {
   gap: 0.42rem;
+}
+
+.skill-stack-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.skill-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.24fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 20px;
+  padding: 1rem 1.1rem;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.skill-row h3 {
+  font-size: 1rem;
+  font-weight: 950;
+  letter-spacing: -0.03em;
 }
 
 .skill-chip {
