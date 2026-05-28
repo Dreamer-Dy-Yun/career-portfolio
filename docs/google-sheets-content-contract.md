@@ -13,7 +13,7 @@
 
 ```json
 {
-  "siteTitle": "Yun Dae-Young Portfolio",
+  "siteTitle": "Yun Dae-Young's Portfolio",
   "hero": {},
   "roles": [],
   "operatingPrinciples": [],

@@ -1,7 +1,7 @@
 import type { PortfolioContent } from './types';
 
 export const fallbackContent: PortfolioContent = {
-  siteTitle: 'Yun Dae-Young Portfolio',
+  siteTitle: "Yun Dae-Young's Portfolio",
   hero: {
     name: 'Yun Dae-Young',
     title: 'Workflow & Data System Designer',
@@ -13,45 +13,45 @@ export const fallbackContent: PortfolioContent = {
   roles: [
     {
       title: 'Workflow & Data Modeling',
-      description: '불명확한 업무 입력을 원본 데이터, 처리 상태, 검증 결과, 출력 구조로 분해합니다.',
+      description: '불명확한 업무 입력을 원본 데이터, 처리 상태, 검증 결과, 출력 구조로 분해',
       focus: ['input / state / output boundary', 'validation flow', 'business data modeling'],
     },
     {
       title: 'Rule-based System Design',
-      description: '예외를 개별 분기로 누적하기보다, 반복 가능한 규칙과 처리 구조로 일반화합니다.',
+      description: '예외를 개별 분기로 누적하기보다, 반복 가능한 규칙과 처리 구조로 일반화',
       focus: ['reusable processing logic', 'rule / condition separation', 'workflow engine thinking'],
     },
     {
       title: 'Verification-oriented AI Workflow',
-      description: 'OCR/LLM 결과를 확정값이 아니라 검증 전 데이터로 취급하고, 사람이 확인 가능한 흐름으로 연결합니다.',
+      description: 'OCR/LLM 결과를 확정값이 아니라 검증 전 데이터로 취급하고, 사람이 확인 가능한 흐름으로 연결',
       focus: ['raw / parsed / verified separation', 'coordinate and masking metadata', 'human verification loop'],
     },
     {
       title: 'Backend / DB Implementation',
-      description: '설계한 업무 구조를 API, DB, 배치 처리, UI 흐름으로 구현합니다.',
+      description: '설계한 업무 구조를 API, DB, 배치 처리, UI 흐름으로 구현',
       focus: ['PostgreSQL', 'FastAPI', 'batch processing', 'React workflow UI'],
     },
   ],
   operatingPrinciples: [
     {
       title: 'Input, state, output first',
-      description: '불명확한 요구사항을 입력, 출력, 상태, 책임 경계로 분해합니다.',
+      description: '불명확한 요구사항을 입력, 출력, 상태, 책임 경계로 분해',
     },
     {
       title: 'Separate verification stages',
-      description: '원본 데이터, 자동 처리 결과, 사람이 검증한 값을 분리합니다.',
+      description: '원본 데이터, 자동 처리 결과, 사람이 검증한 값을 분리',
     },
     {
       title: 'Prefer system workflow over screen automation',
-      description: '단순 화면 자동화보다 API, DB, 배치, 상태 기반 흐름으로 재구성할 수 있는지 먼저 봅니다.',
+      description: '단순 화면 자동화보다 API, DB, 배치, 상태 기반 흐름으로 재구성 가능한지 먼저 검토',
     },
     {
       title: 'Turn exceptions into rules',
-      description: '예외 케이스를 개별 처리하기보다 규칙과 구조로 일반화합니다.',
+      description: '예외 케이스를 개별 처리보다 규칙과 구조로 일반화',
     },
     {
       title: 'Make operation boundaries visible',
-      description: '운영 리스크와 책임 경계를 문서와 시스템 구조에 남깁니다.',
+      description: '운영 리스크와 책임 경계를 문서와 시스템 구조에 기록',
     },
   ],
   projects: [

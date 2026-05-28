@@ -47,8 +47,70 @@
   letter-spacing: -0.1em;
 }
 
-.role-grid,
-.principle-grid,
+.card-carousel {
+  max-width: 760px;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 360ms ease;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.carousel-slide > .role-card,
+.carousel-slide > .principle-card {
+  min-height: 230px;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.8rem;
+}
+
+.carousel-button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.42rem 0.72rem;
+  color: var(--muted);
+  background: #ffffff;
+  font-weight: 900;
+}
+
+.carousel-button:hover,
+.carousel-dot:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.42rem;
+}
+
+.carousel-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.carousel-dot[aria-pressed='true'] {
+  border-color: var(--primary);
+  background: var(--primary);
+}
+
 .project-grid,
 .skill-grid {
   display: grid;
@@ -65,21 +127,22 @@
   border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.92);
-  padding: 1.15rem;
+  padding: 1.35rem;
   box-shadow: 0 12px 36px rgba(15, 23, 42, 0.07);
 }
 
 .role-card,
+.principle-card,
+.skill-card {
+  display: grid;
+  gap: 0.85rem;
+}
+
 .skill-card {
   grid-column: span 3;
-  display: grid;
-  gap: 0.75rem;
 }
 
 .principle-card {
-  grid-column: span 4;
-  display: grid;
-  gap: 0.75rem;
   border-top: 3px solid rgba(37, 99, 235, 0.22);
 }
 
@@ -111,6 +174,7 @@
 
 .project-summary,
 .principle-card p,
+.role-card p,
 .contact-panel p {
   color: var(--ink);
   font-weight: 800;

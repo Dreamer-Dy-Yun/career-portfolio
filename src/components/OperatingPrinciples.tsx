@@ -1,24 +1,19 @@
 import type { OperatingPrincipleContent } from '../data/types';
+import CardCarousel from './CardCarousel';
 
 type OperatingPrinciplesProps = {
   principles?: OperatingPrincipleContent[];
 };
 
 const OperatingPrinciples = ({ principles = [] }: OperatingPrinciplesProps) => {
-  if (principles.length === 0) {
-    return null;
-  }
+  const items = principles.map((principle) => (
+    <article className="principle-card" key={principle.title}>
+      <h3>{principle.title}</h3>
+      <p>{principle.description}</p>
+    </article>
+  ));
 
-  return (
-    <div className="principle-grid">
-      {principles.map((principle) => (
-        <article className="principle-card" key={principle.title}>
-          <h3>{principle.title}</h3>
-          <p>{principle.description}</p>
-        </article>
-      ))}
-    </div>
-  );
+  return <CardCarousel ariaLabel="Thinking pattern carousel" items={items} />;
 };
 
 export default OperatingPrinciples;

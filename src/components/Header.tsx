@@ -14,16 +14,20 @@ const navItems = [
 const Header = ({ siteTitle }: HeaderProps) => {
   return (
     <header className="site-header">
-      <a className="brand" href="#top" aria-label="Go to top">
-        {siteTitle}
-      </a>
-      <nav aria-label="Primary navigation">
-        {navItems.map((item) => (
-          <a key={item.href} href={item.href}>
-            {item.label}
-          </a>
-        ))}
-      </nav>
+      <div className="header-inner">
+        <a className="brand" href="#top" aria-label="Go to top">
+          {siteTitle}
+        </a>
+        <nav aria-label="Primary navigation">
+          <ul className="nav-list">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 };

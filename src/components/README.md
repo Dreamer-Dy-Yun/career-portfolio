@@ -4,11 +4,12 @@
 
 ## 파일 책임
 
-- `Header.tsx`: 상단 내비게이션.
+- `Header.tsx`: 상단 내비게이션. `layout.css`의 `.header-inner`, `.nav-list` 구조를 사용합니다.
 - `Hero.tsx`: 첫 화면과 사진/시각 패널 영역.
 - `Section.tsx`: 공통 섹션 래퍼.
-- `RoleGrid.tsx`: Position 카드.
-- `OperatingPrinciples.tsx`: How I Structure Problems 작업 원칙 카드.
+- `CardCarousel.tsx`: Position과 Thinking Pattern 카드의 자동 순환 carousel.
+- `RoleGrid.tsx`: Position 카드를 carousel로 표시합니다.
+- `OperatingPrinciples.tsx`: How I Structure Problems 작업 원칙 카드를 carousel로 표시합니다.
 - `ProjectGrid.tsx`: Evidence 프로젝트 카드. Problem, Constraints, Design Decisions, Deliverables, Meaning 구조를 표시합니다.
 - `CareerTimeline.tsx`: 회사, 기간, 역할 중심의 Career 타임라인.
 - `SkillCloud.tsx`: Stack 그룹.

@@ -9,5 +9,6 @@
 ## 경계
 
 - 이 계층은 데이터를 꾸미거나 새로운 경력 값을 만들지 않습니다.
-- Google Sheets 데이터 구조가 맞지 않으면 조용히 로컬 seed로 돌아가지만, 성공처럼 가짜 데이터를 만들지 않습니다.
+- Google Sheets 데이터 구조가 맞지 않으면 로컬 seed로 돌아가며, 성공처럼 가짜 데이터를 만들지 않습니다.
+- 프로젝트 데이터는 `problem`, `constraints`, `decisions`, `deliverables`, `meaning`, `stack` 필드가 있어야 유효한 콘텐츠로 봅니다.
 - 콘텐츠 계약은 `src/data/types.ts`와 `docs/google-sheets-content-contract.md`를 기준으로 합니다.

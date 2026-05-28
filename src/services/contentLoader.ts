@@ -1,5 +1,5 @@
 import { fallbackContent } from '../data/portfolioContent';
-import type { PortfolioContent } from '../data/types';
+import type { PortfolioContent, ProjectContent } from '../data/types';
 
 type ContentLoadResult = {
   content: PortfolioContent;
@@ -7,6 +7,21 @@ type ContentLoadResult = {
 };
 
 const contentUrl = import.meta.env.VITE_GOOGLE_SHEET_JSON_URL?.trim() ?? '';
+
+const hasProjectShape = (project: Partial<ProjectContent>) => {
+  return Boolean(
+    typeof project.title === 'string' &&
+      typeof project.period === 'string' &&
+      typeof project.role === 'string' &&
+      typeof project.summary === 'string' &&
+      typeof project.problem === 'string' &&
+      Array.isArray(project.constraints) &&
+      Array.isArray(project.decisions) &&
+      Array.isArray(project.deliverables) &&
+      typeof project.meaning === 'string' &&
+      Array.isArray(project.stack),
+  );
+};
 
 const isPortfolioContent = (value: unknown): value is PortfolioContent => {
   if (!value || typeof value !== 'object') {
@@ -19,6 +34,7 @@ const isPortfolioContent = (value: unknown): value is PortfolioContent => {
     candidate.hero &&
       Array.isArray(candidate.roles) &&
       Array.isArray(candidate.projects) &&
+      candidate.projects.every((project) => hasProjectShape(project)) &&
       Array.isArray(candidate.experiences) &&
       Array.isArray(candidate.skillGroups) &&
       candidate.contact,
