@@ -1,4 +1,5 @@
 import type { ProjectContent } from '../data/types';
+import CardCarousel from './CardCarousel';
 
 type ProjectGridProps = {
   projects: ProjectContent[];
@@ -12,9 +13,7 @@ const detailSections = [
 ] as const;
 
 const ProjectGrid = ({ projects }: ProjectGridProps) => {
-  return (
-    <div className="project-grid">
-      {projects.map((project) => (
+  const items = projects.map((project) => (
         <article className="project-card" key={project.title}>
           <div className="project-head">
             <div>
@@ -54,9 +53,9 @@ const ProjectGrid = ({ projects }: ProjectGridProps) => {
             ))}
           </ul>
         </article>
-      ))}
-    </div>
-  );
+  ));
+
+  return <CardCarousel ariaLabel="Project evidence carousel" className="project-carousel" items={items} intervalMs={6800} />;
 };
 
 export default ProjectGrid;

@@ -61,4 +61,4 @@
 - 확인되지 않은 성과 수치나 과장된 문장을 넣지 않습니다.
 - 백엔드, DB, API, UI는 정체성이 아니라 업무 구조를 구현하는 수단으로 씁니다.
 - Google Form URL이 확정되지 않았다면 빈 문자열로 둡니다.
-- Google Form URL과 이메일이 모두 비어 있으면 Contact 섹션은 표시하지 않습니다.
+- Google Form URL이 비어 있으면 Contact 섹션은 표시하지 않습니다.

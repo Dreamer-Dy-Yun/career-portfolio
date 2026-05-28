@@ -6,7 +6,7 @@
   text-transform: uppercase;
 }
 
-.hero .eyebrow {
+.page-section-hero .eyebrow {
   color: #67e8f9;
 }
 
@@ -51,6 +51,14 @@
   max-width: 760px;
 }
 
+.project-carousel {
+  max-width: 100%;
+}
+
+.skill-carousel {
+  max-width: 600px;
+}
+
 .carousel-viewport {
   overflow: hidden;
   border-radius: var(--radius);
@@ -69,6 +77,10 @@
 .carousel-slide > .role-card,
 .carousel-slide > .principle-card {
   min-height: 230px;
+}
+
+.carousel-slide > .skill-card {
+  min-height: 260px;
 }
 
 .carousel-controls {
@@ -111,13 +123,6 @@
   background: var(--primary);
 }
 
-.project-grid,
-.skill-grid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 1rem;
-}
-
 .role-card,
 .principle-card,
 .skill-card,
@@ -136,10 +141,6 @@
 .skill-card {
   display: grid;
   gap: 0.85rem;
-}
-
-.skill-card {
-  grid-column: span 3;
   align-content: start;
 }
 
@@ -148,15 +149,9 @@
 }
 
 .project-card {
-  grid-column: 1 / -1;
   display: grid;
   gap: 1rem;
   border-top: 4px solid var(--primary);
-}
-
-.project-card:first-child,
-.project-card:nth-child(4) {
-  border-top-color: var(--accent);
 }
 
 .project-head {

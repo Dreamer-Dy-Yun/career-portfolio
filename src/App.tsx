@@ -5,9 +5,9 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import OperatingPrinciples from './components/OperatingPrinciples';
+import PageSection from './components/PageSection';
 import ProjectGrid from './components/ProjectGrid';
 import RoleGrid from './components/RoleGrid';
-import Section from './components/Section';
 import SkillCloud from './components/SkillCloud';
 import { fallbackContent } from './data/portfolioContent';
 import type { PortfolioContent } from './data/types';
@@ -16,7 +16,7 @@ import { loadPortfolioContent } from './services/contentLoader';
 const App = () => {
   const [content, setContent] = useState<PortfolioContent>(fallbackContent);
   const [contentSource, setContentSource] = useState<'local' | 'google-sheet'>('local');
-  const hasContactChannel = Boolean(content.contact.formUrl?.trim() || content.contact.email?.trim());
+  const hasContactForm = Boolean(content.contact.formUrl?.trim());
 
   useEffect(() => {
     let isMounted = true;
@@ -37,28 +37,30 @@ const App = () => {
 
   return (
     <div className="site-shell">
-      <Header siteTitle={content.siteTitle} showContact={hasContactChannel} />
-      <main>
-        <Hero hero={content.hero} />
-        <Section id="roles" eyebrow="Role Fit" title="Position">
+      <Header siteTitle={content.siteTitle} showContact={hasContactForm} />
+      <main className="page-stack">
+        <PageSection id="top" variant="hero">
+          <Hero hero={content.hero} />
+        </PageSection>
+        <PageSection id="roles" eyebrow="Role Fit" title="Position">
           <RoleGrid roles={content.roles} />
-        </Section>
-        <Section id="principles" eyebrow="Thinking Pattern" title="How I Structure Problems">
+        </PageSection>
+        <PageSection id="principles" eyebrow="Thinking Pattern" title="How I Structure Problems">
           <OperatingPrinciples principles={content.operatingPrinciples ?? fallbackContent.operatingPrinciples} />
-        </Section>
-        <Section id="projects" eyebrow="Project Work" title="Evidence">
+        </PageSection>
+        <PageSection id="projects" eyebrow="Project Work" title="Evidence">
           <ProjectGrid projects={content.projects} />
-        </Section>
-        <Section id="career" eyebrow="Career" title="Career">
+        </PageSection>
+        <PageSection id="career" eyebrow="Career" title="Career">
           <CareerTimeline experiences={content.experiences} />
-        </Section>
-        <Section id="skills" eyebrow="Stack" title="Stack">
+        </PageSection>
+        <PageSection id="skills" eyebrow="Stack" title="Stack">
           <SkillCloud skillGroups={content.skillGroups} />
-        </Section>
-        {hasContactChannel ? (
-          <Section id="contact" eyebrow="Contact" title="문의">
+        </PageSection>
+        {hasContactForm ? (
+          <PageSection id="contact" eyebrow="Contact" title="문의">
             <ContactPanel contact={content.contact} />
-          </Section>
+          </PageSection>
         ) : null}
       </main>
       <Footer contentSource={contentSource} />

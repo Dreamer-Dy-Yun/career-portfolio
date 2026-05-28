@@ -5,6 +5,11 @@
     flex-direction: column;
   }
 
+  .page-section {
+    min-height: auto;
+    scroll-snap-align: none;
+  }
+
   .hero-grid,
   .project-detail-grid,
   .timeline {
@@ -15,20 +20,11 @@
     order: -1;
     width: min(260px, 100%);
   }
-
-  .role-card,
-  .principle-card,
-  .skill-card,
-  .project-card {
-    grid-column: 1 / -1;
-  }
 }
 
 @media (max-width: 560px) {
   .header-inner,
-  .hero-grid,
-  .section-heading,
-  .section-body,
+  .page-section-inner,
   .footer-inner {
     width: min(var(--max), calc(100% - 1.2rem));
   }
@@ -44,17 +40,28 @@
 }
 
 @media print {
+  html {
+    scroll-snap-type: none;
+  }
+
   body {
     background: #ffffff;
     color: #000000;
   }
 
   .site-header,
-  .site-footer {
+  .site-footer,
+  .carousel-controls {
     display: none;
   }
 
-  .hero {
+  .page-section {
+    min-height: auto;
+    display: block;
+    break-inside: avoid;
+  }
+
+  .page-section-hero {
     background: #ffffff;
   }
 
@@ -72,6 +79,15 @@
   .skill-card {
     break-inside: avoid;
     box-shadow: none;
+  }
+
+  .carousel-track {
+    display: block;
+    transform: none !important;
+  }
+
+  .carousel-slide {
+    margin-bottom: 1rem;
   }
 
   .project-detail-grid {

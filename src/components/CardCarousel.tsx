@@ -2,11 +2,12 @@ import { useEffect, useState, type ReactNode } from 'react';
 
 type CardCarouselProps = {
   ariaLabel: string;
+  className?: string;
   items: ReactNode[];
   intervalMs?: number;
 };
 
-const CardCarousel = ({ ariaLabel, items, intervalMs = 4200 }: CardCarouselProps) => {
+const CardCarousel = ({ ariaLabel, className = '', items, intervalMs = 4200 }: CardCarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -42,7 +43,7 @@ const CardCarousel = ({ ariaLabel, items, intervalMs = 4200 }: CardCarouselProps
   };
 
   return (
-    <div className="card-carousel" aria-label={ariaLabel}>
+    <div className={`card-carousel ${className}`.trim()} aria-label={ariaLabel}>
       <div className="carousel-viewport" aria-live="polite">
         <div className="carousel-track" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
           {items.map((item, index) => (
