@@ -252,22 +252,6 @@
   line-height: 1.2;
 }
 
-.skill-chip small {
-  border-radius: 999px;
-  padding: 0.12rem 0.36rem;
-  color: #475569;
-  background: #eef2f7;
-  font-size: 0.65rem;
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-.skill-chip-ai-assisted small {
-  color: #9a3412;
-  background: #ffedd5;
-}
-
 .timeline {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));

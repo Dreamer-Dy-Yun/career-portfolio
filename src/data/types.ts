@@ -36,12 +36,7 @@ export type ExperienceContent = {
   role: string;
 };
 
-export type SkillItem =
-  | string
-  | {
-  label: string;
-  evidence: 'direct' | 'ai-assisted';
-};
+export type SkillItem = string;
 
 export type SkillGroup = {
   title: string;

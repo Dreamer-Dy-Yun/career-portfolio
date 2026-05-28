@@ -150,70 +150,31 @@ export const fallbackContent: PortfolioContent = {
   skillGroups: [
     {
       title: 'Analysis / Modeling',
-      items: [
-        { label: 'Requirement structuring', evidence: 'ai-assisted' },
-        { label: 'Workflow modeling', evidence: 'ai-assisted' },
-        { label: 'Data boundary design', evidence: 'ai-assisted' },
-        { label: 'Validation state design', evidence: 'ai-assisted' },
-        { label: 'Operational risk analysis', evidence: 'ai-assisted' },
-        { label: 'Rule-based process design', evidence: 'ai-assisted' },
-      ],
+      items: ['Requirement structuring', 'Workflow modeling', 'Data boundary design', 'Validation state design', 'Operational risk analysis', 'Rule-based process design'],
     },
     {
       title: 'Languages',
-      items: [
-        { label: 'Python', evidence: 'direct' },
-        { label: 'TypeScript', evidence: 'direct' },
-        { label: 'JavaScript', evidence: 'direct' },
-        { label: 'C#', evidence: 'direct' },
-        { label: 'SQL', evidence: 'direct' },
-        { label: 'VBA', evidence: 'direct' },
-      ],
+      items: ['Python', 'TypeScript', 'JavaScript', 'C#', 'SQL', 'VBA'],
     },
     {
       title: 'Backend / API',
-      items: [
-        { label: 'FastAPI', evidence: 'direct' },
-        { label: 'REST API', evidence: 'direct' },
-        { label: 'Async processing', evidence: 'ai-assisted' },
-        { label: 'API integration', evidence: 'direct' },
-      ],
+      items: ['FastAPI', 'REST API', 'Async processing', 'API integration'],
     },
     {
       title: 'Database',
-      items: [
-        { label: 'PostgreSQL', evidence: 'direct' },
-        { label: 'SQLAlchemy', evidence: 'direct' },
-        { label: 'Schema design', evidence: 'ai-assisted' },
-        { label: 'Batch upsert/update', evidence: 'ai-assisted' },
-      ],
+      items: ['PostgreSQL', 'SQLAlchemy', 'Schema design', 'Batch upsert/update'],
     },
     {
       title: 'AI / OCR',
-      items: [
-        { label: 'OCR workflow', evidence: 'direct' },
-        { label: 'LLM API', evidence: 'direct' },
-        { label: 'JSON output', evidence: 'direct' },
-        { label: 'Result validation', evidence: 'ai-assisted' },
-      ],
+      items: ['OCR workflow', 'LLM API', 'JSON output', 'Result validation'],
     },
     {
       title: 'Frontend',
-      items: [
-        { label: 'React', evidence: 'direct' },
-        { label: 'TypeScript', evidence: 'direct' },
-        { label: 'Vite', evidence: 'direct' },
-        { label: 'Workflow UI', evidence: 'ai-assisted' },
-      ],
+      items: ['React', 'TypeScript', 'Vite', 'Workflow UI'],
     },
     {
       title: 'Operations',
-      items: [
-        { label: 'Legacy process refactoring', evidence: 'ai-assisted' },
-        { label: 'Workflow documentation', evidence: 'ai-assisted' },
-        { label: 'QA', evidence: 'direct' },
-        { label: 'Operational handoff', evidence: 'ai-assisted' },
-      ],
+      items: ['Legacy process refactoring', 'Workflow documentation', 'QA', 'Operational handoff'],
     },
   ],
   contact: {
