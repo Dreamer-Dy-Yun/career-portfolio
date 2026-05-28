@@ -62,14 +62,15 @@
 .page-section {
   min-height: calc(100dvh - 4.25rem);
   display: grid;
-  align-content: center;
-  padding: clamp(2.4rem, 5vw, 4.5rem) 0;
+  align-content: start;
+  padding: clamp(2rem, 5vh, 3.4rem) 0 clamp(2.4rem, 5vw, 4.5rem);
   border-top: 1px solid rgba(15, 23, 42, 0.07);
   scroll-margin-top: 4.25rem;
   scroll-snap-align: start;
 }
 
 .page-section-hero {
+  align-content: center;
   border-top: 0;
   color: #ffffff;
   background:

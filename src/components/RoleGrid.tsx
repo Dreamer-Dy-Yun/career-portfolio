@@ -18,7 +18,7 @@ const RoleGrid = ({ roles }: RoleGridProps) => {
     </article>
   ));
 
-  return <CardCarousel ariaLabel="Position carousel" items={items} />;
+  return <CardCarousel ariaLabel="Position carousel" items={items} itemsPerPage={4} />;
 };
 
 export default RoleGrid;

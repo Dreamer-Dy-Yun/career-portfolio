@@ -7,7 +7,7 @@
 - `Header.tsx`: 상단 내비게이션. `layout.css`의 `.header-inner`, `.nav-list` 구조를 사용하고, Google Form URL이 없으면 문의 링크를 숨깁니다.
 - `PageSection.tsx`: 한 화면 단위 페이지 섹션 공통 컴포넌트. Hero, Position, Thinking Pattern, Evidence, Career, Stack, Contact가 모두 이 컴포넌트를 통해 렌더링됩니다.
 - `Hero.tsx`: 첫 화면 내부 콘텐츠와 사진/시각 패널 영역.
-- `CardCarousel.tsx`: 카드 묶음을 일정 시간마다 전환하는 공통 carousel.
+- `CardCarousel.tsx`: 카드 묶음을 일정 시간마다 전환하는 공통 carousel. `itemsPerPage`로 한 화면에 보일 카드 수를 조정합니다.
 - `RoleGrid.tsx`: Position 카드를 carousel로 표시합니다.
 - `OperatingPrinciples.tsx`: How I Structure Problems 작업 원칙 카드를 carousel로 표시합니다.
 - `ProjectGrid.tsx`: Evidence 프로젝트 카드를 carousel로 표시합니다. Problem, Constraints, Design Decisions, Deliverables, Meaning 구조를 사용합니다.

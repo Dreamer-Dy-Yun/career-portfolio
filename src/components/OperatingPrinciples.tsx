@@ -13,7 +13,7 @@ const OperatingPrinciples = ({ principles = [] }: OperatingPrinciplesProps) => {
     </article>
   ));
 
-  return <CardCarousel ariaLabel="Thinking pattern carousel" items={items} />;
+  return <CardCarousel ariaLabel="Thinking pattern carousel" items={items} itemsPerPage={3} />;
 };
 
 export default OperatingPrinciples;

@@ -48,15 +48,11 @@
 }
 
 .card-carousel {
-  max-width: 760px;
-}
-
-.project-carousel {
   max-width: 100%;
 }
 
 .skill-carousel {
-  max-width: 600px;
+  max-width: 100%;
 }
 
 .carousel-viewport {
@@ -74,12 +70,18 @@
   min-width: 0;
 }
 
-.carousel-slide > .role-card,
-.carousel-slide > .principle-card {
+.carousel-page {
+  display: grid;
+  grid-template-columns: repeat(var(--items-per-page), minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.carousel-page > .role-card,
+.carousel-page > .principle-card {
   min-height: 230px;
 }
 
-.carousel-slide > .skill-card {
+.carousel-page > .skill-card {
   min-height: 260px;
 }
 
