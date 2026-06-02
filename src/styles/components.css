@@ -1,6 +1,6 @@
 .eyebrow {
   color: var(--accent);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -8,29 +8,29 @@
 
 .profile-copy h1 {
   color: var(--ink);
-  font-size: clamp(3.2rem, 9vw, 8rem);
-  line-height: 0.86;
-  letter-spacing: -0.11em;
-  max-width: 9ch;
+  font-size: clamp(2.25rem, 4.8vw, 5.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.08em;
+  max-width: 13ch;
 }
 
 .profile-title {
   color: var(--ink);
-  font-size: clamp(1.6rem, 3vw, 3.4rem);
+  font-size: clamp(1.15rem, 2vw, 2.15rem);
   font-weight: 900;
   letter-spacing: -0.08em;
 }
 
 .profile-subtitle {
   color: var(--accent);
-  font-size: clamp(1.15rem, 2vw, 1.7rem);
+  font-size: clamp(1rem, 1.45vw, 1.25rem);
   font-weight: 900;
 }
 
 .profile-description {
-  max-width: 70ch;
-  font-size: clamp(1rem, 1.3vw, 1.25rem);
-  line-height: 1.85;
+  max-width: 76ch;
+  font-size: clamp(0.95rem, 1.05vw, 1.08rem);
+  line-height: 1.65;
 }
 
 .profile-summary span,
@@ -44,14 +44,14 @@
 
 .profile-summary strong {
   color: var(--ink);
-  font-size: clamp(1.7rem, 3vw, 3.2rem);
-  line-height: 1.08;
-  letter-spacing: -0.08em;
+  font-size: clamp(1.25rem, 2vw, 2.15rem);
+  line-height: 1.15;
+  letter-spacing: -0.06em;
 }
 
 .profile-summary p {
   color: var(--muted);
-  line-height: 1.8;
+  line-height: 1.65;
   font-weight: 700;
 }
 
@@ -72,10 +72,10 @@
   max-width: 100%;
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 0.45rem 0.75rem;
+  padding: 0.34rem 0.62rem;
   background: #ffffff;
   color: var(--ink);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 800;
 }
 
@@ -92,21 +92,21 @@
 
 .section-heading h2 {
   color: var(--ink);
-  font-size: clamp(2rem, 5vw, 5rem);
-  line-height: 0.92;
-  letter-spacing: -0.1em;
+  font-size: clamp(1.55rem, 3vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -0.08em;
 }
 
 .section-heading p {
   color: var(--muted);
-  line-height: 1.8;
+  line-height: 1.55;
   font-weight: 700;
 }
 
 .timeline-layout {
   display: grid;
-  grid-template-columns: minmax(520px, 0.9fr) minmax(360px, 0.7fr);
-  gap: clamp(1.5rem, 3vw, 4rem);
+  grid-template-columns: minmax(520px, 1fr) minmax(320px, 0.55fr);
+  gap: clamp(1rem, 2vw, 2.5rem);
   align-items: start;
 }
 
@@ -129,7 +129,7 @@
   position: absolute;
   left: calc(8.6rem + 0.45rem);
   top: 2.2rem;
-  bottom: -1.6rem;
+  bottom: -1.1rem;
   width: 1px;
   background: var(--line-strong);
   content: '';
@@ -141,7 +141,7 @@
   grid-template-columns: 8.6rem 0.9rem minmax(0, 1fr);
   gap: 1.2rem;
   align-items: start;
-  padding: 0 0 1.75rem;
+  padding: 0 0 1.15rem;
   border: 0;
   background: transparent;
   color: inherit;
@@ -151,7 +151,7 @@
 
 .timeline-period {
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.84rem;
   font-weight: 800;
   line-height: 1.55;
 }
@@ -180,13 +180,13 @@
 .timeline-main strong,
 .timeline-detail h3 {
   color: var(--ink);
-  font-size: clamp(1.1rem, 1.8vw, 1.65rem);
+  font-size: clamp(1rem, 1.35vw, 1.3rem);
   letter-spacing: -0.05em;
 }
 
 .timeline-main small {
   color: var(--muted);
-  font-size: 0.98rem;
+  font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.6;
 }
@@ -206,10 +206,10 @@ em {
 
 .timeline-detail {
   position: sticky;
-  top: 5.5rem;
+  top: 4.5rem;
   display: grid;
-  gap: 1rem;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  gap: 0.8rem;
+  padding: clamp(1.1rem, 2vw, 1.8rem);
   background: #151515;
   color: #ffffff;
   border-radius: calc(var(--radius) - 6px);
@@ -217,14 +217,14 @@ em {
 
 .timeline-detail h3 {
   color: #ffffff;
-  font-size: clamp(1.7rem, 3vw, 3.4rem);
-  line-height: 1;
+  font-size: clamp(1.25rem, 2vw, 2.1rem);
+  line-height: 1.08;
 }
 
 .timeline-detail p,
 .detail-list {
   color: #e8e2d7;
-  line-height: 1.8;
+  line-height: 1.65;
 }
 
 .detail-list {
