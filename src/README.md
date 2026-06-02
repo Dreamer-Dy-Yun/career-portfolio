@@ -6,6 +6,7 @@ React + TypeScript + Vite 기반 포트폴리오 소스다.
 
 - `components/`: 화면 구성 컴포넌트.
 - `data/`: 로컬 fallback seed 데이터와 콘텐츠 타입.
+- `modules/`: 컴포넌트 밖에서 관리해야 하는 데이터 변환 모듈.
 - `services/`: Google Sheets table, 공개 JSON endpoint 등 외부 콘텐츠 출처 로더.
 - `styles/`: 전역 CSS와 디자인 토큰.
 

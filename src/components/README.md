@@ -11,7 +11,7 @@
 - `RoleGrid.tsx`: Position 카드 표시.
 - `OperatingPrinciples.tsx`: Thinking Pattern 카드 표시.
 - `ProjectGrid.tsx`: Evidence 프로젝트 카드 표시.
-- `CareerTimeline.tsx`: 회사, 기간, 역할 중심의 Career 표시.
+- `CareerTimeline.tsx`: 회사, 기간, 역할 목록과 hover/click/focus 기반 상세 패널 표시.
 - `SkillCloud.tsx`: Stack 그룹을 왼쪽 분류명과 오른쪽 배지 목록 형태로 표시한다. 항목 출처나 숙련도는 임의로 표시하지 않는다.
 - `ContactPanel.tsx`: Google Form 또는 이메일 문의 채널 표시. 채널이 없으면 App에서 페이지 자체를 숨긴다.
 - `Footer.tsx`: 하단 정보와 콘텐츠 출처 표시.

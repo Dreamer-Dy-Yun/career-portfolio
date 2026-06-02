@@ -65,9 +65,11 @@ GOOGLE_SHEET_ID=<spreadsheet id>
 
 ## Experiences
 
-| company | period | role |
-|---|---|---|
-| Company | 2025 | Role |
+| company | period | role | summary | details | tags |
+|---|---|---|---|---|---|
+| Company | 2025 | Role | One sentence summary | Detail A\|Detail B | Tag A\|Tag B |
+
+`summary`, `details`, `tags`는 연혁 상세 패널에 표시된다. 값이 비어 있으면 화면은 `company`, `period`, `role`만으로 기본 표시한다.
 
 ## SkillGroups
 

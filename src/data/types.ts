@@ -34,6 +34,9 @@ export type ExperienceContent = {
   company: string;
   period: string;
   role: string;
+  summary?: string;
+  details?: string[];
+  tags?: string[];
 };
 
 export type SkillItem = string;

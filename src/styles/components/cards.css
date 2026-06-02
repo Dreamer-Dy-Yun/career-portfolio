@@ -1,0 +1,64 @@
+.role-card,
+.principle-card,
+.contact-panel {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.92);
+  padding: 1.35rem;
+  box-shadow: var(--shadow);
+}
+
+.role-card,
+.principle-card {
+  display: grid;
+  gap: 0.85rem;
+  align-content: start;
+}
+
+.principle-card {
+  border-top: 3px solid rgba(37, 99, 235, 0.22);
+}
+
+.principle-card p,
+.role-card p,
+.contact-panel p {
+  color: var(--ink);
+  font-weight: 800;
+  line-height: 1.65;
+}
+
+.mini-list,
+.chip-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mini-list {
+  border-radius: 18px;
+  background: #f8fafc;
+  padding: 0.85rem;
+}
+
+.mini-list li {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.chip-list li {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.3rem 0.68rem;
+  color: #334155;
+  background: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 800;
+}

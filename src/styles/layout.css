@@ -15,7 +15,7 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(248, 250, 252, 0.86);
+  background: rgba(255, 255, 255, 0.92);
   border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   backdrop-filter: blur(16px);
 }
@@ -73,6 +73,7 @@
   align-content: start;
   padding: clamp(2rem, 5vh, 3.4rem) 0 clamp(2.4rem, 5vw, 4.5rem);
   border-top: 1px solid rgba(15, 23, 42, 0.07);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
   overflow: auto;
 }
 

@@ -12,6 +12,7 @@
   .hero-grid,
   .carousel-page,
   .skill-row,
+  .career-timeline-layout,
   .project-detail-grid,
   .timeline {
     grid-template-columns: 1fr;
@@ -20,6 +21,11 @@
   .hero-panel {
     order: -1;
     width: min(260px, 100%);
+  }
+
+  .timeline-detail {
+    position: static;
+    min-height: auto;
   }
 }
 
@@ -70,7 +76,7 @@
   }
 
   .project-card,
-  .timeline-item,
+  .timeline-detail,
   .role-card,
   .principle-card,
   .skill-row {
@@ -93,5 +99,9 @@
 
   .project-detail-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .career-timeline-layout {
+    display: block;
   }
 }
