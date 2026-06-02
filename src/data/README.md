@@ -4,7 +4,7 @@
 
 ## Files
 
-- `types.ts`: 공개 프로필 화면의 데이터 계약.
+- `types.ts`: 이력서, 자기소개서, 경력기술서 화면의 데이터 계약.
 - `portfolioContent.ts`: Google Sheets 연결 실패 또는 미설정 시 사용하는 fallback 데이터.
 
 ## Content rules
@@ -15,10 +15,12 @@
 - 확인되지 않은 성과 수치나 과장 표현을 넣지 않는다.
 - 경력 병행 여부는 `startDate`, `endDate`로 계산하므로 직접 입력하지 않는다.
 
-## Experience fields
+## Main structures
 
-- `company`: 소속명.
-- `period`: 화면 표시용 기간.
-- `startDate`, `endDate`: 병행 여부 계산용 날짜.
-- `role`: 당시 역할.
-- `summary`, `details`, `tags`: 상세 패널 표시용 선택 데이터.
+- `hero`: 첫 화면 이름, 타이틀, 한 줄 설명, 키워드.
+- `profileSummary`: 이력서형 핵심 요약과 강점.
+- `selfIntroduction`: 자기소개 문단.
+- `experiences`: 회사, 기간, 역할, 한 줄 요약, 상세, 태그.
+- `workCases`: 대표 업무 또는 프로젝트성 경력 기술.
+- `skillGroups`: 기술 사용 맥락.
+- `contact`: Google Form 또는 이메일.

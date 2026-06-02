@@ -1,5 +1,5 @@
 import { fallbackContent } from '../data/portfolioContent';
-import type { ExperienceContent, PortfolioContent } from '../data/types';
+import type { ExperienceContent, PortfolioContent, WorkCaseContent } from '../data/types';
 import { loadPortfolioContentFromGoogleSheet } from './googleSheetTables';
 
 type ContentLoadResult = {
@@ -11,11 +11,11 @@ const contentUrl = import.meta.env.VITE_GOOGLE_SHEET_JSON_URL?.trim() ?? '';
 const sheetId = import.meta.env.VITE_GOOGLE_SHEET_ID?.trim() ?? '';
 
 const hasExperienceShape = (experience: Partial<ExperienceContent>) => {
-  return Boolean(
-    typeof experience.company === 'string' &&
-      typeof experience.period === 'string' &&
-      typeof experience.role === 'string',
-  );
+  return Boolean(experience.company && experience.period && experience.role);
+};
+
+const hasWorkCaseShape = (workCase: Partial<WorkCaseContent>) => {
+  return Boolean(workCase.title && workCase.period && workCase.role && workCase.summary);
 };
 
 const isPortfolioContent = (value: unknown): value is PortfolioContent => {
@@ -28,13 +28,16 @@ const isPortfolioContent = (value: unknown): value is PortfolioContent => {
   return Boolean(
     candidate.siteTitle &&
       candidate.hero &&
-      typeof candidate.hero.name === 'string' &&
-      typeof candidate.hero.title === 'string' &&
-      typeof candidate.hero.subtitle === 'string' &&
-      typeof candidate.hero.description === 'string' &&
       Array.isArray(candidate.hero.keywords) &&
+      candidate.profileSummary &&
+      Array.isArray(candidate.profileSummary.lines) &&
+      Array.isArray(candidate.profileSummary.strengths) &&
+      Array.isArray(candidate.selfIntroduction) &&
       Array.isArray(candidate.experiences) &&
       candidate.experiences.every((experience) => hasExperienceShape(experience)) &&
+      Array.isArray(candidate.workCases) &&
+      candidate.workCases.every((workCase) => hasWorkCaseShape(workCase)) &&
+      Array.isArray(candidate.skillGroups) &&
       candidate.contact,
   );
 };
@@ -43,18 +46,11 @@ export const loadPortfolioContent = async (): Promise<ContentLoadResult> => {
   if (contentUrl) {
     try {
       const response = await fetch(contentUrl);
+      const data = response.ok ? await response.json() : null;
 
-      if (!response.ok) {
-        return { content: fallbackContent, source: 'local' };
+      if (isPortfolioContent(data)) {
+        return { content: data, source: 'google-sheet' };
       }
-
-      const data = await response.json();
-
-      if (!isPortfolioContent(data)) {
-        return { content: fallbackContent, source: 'local' };
-      }
-
-      return { content: data, source: 'google-sheet' };
     } catch {
       return { content: fallbackContent, source: 'local' };
     }
@@ -64,11 +60,9 @@ export const loadPortfolioContent = async (): Promise<ContentLoadResult> => {
     try {
       const data = await loadPortfolioContentFromGoogleSheet(sheetId);
 
-      if (!isPortfolioContent(data)) {
-        return { content: fallbackContent, source: 'local' };
+      if (isPortfolioContent(data)) {
+        return { content: data, source: 'google-sheet' };
       }
-
-      return { content: data, source: 'google-sheet' };
     } catch {
       return { content: fallbackContent, source: 'local' };
     }

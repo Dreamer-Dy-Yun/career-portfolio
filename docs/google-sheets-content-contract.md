@@ -1,12 +1,16 @@
 # Google Sheets Content Contract
 
-이 사이트는 Google Sheets를 공개 읽기 데이터 원본으로 사용할 수 있다. GitHub Actions variable의 `GOOGLE_SHEET_ID`가 설정되어 있으면 브라우저가 아래 탭을 CSV로 읽어 `PortfolioContent`로 조립한다.
+이 사이트는 Google Sheets를 공개 읽기 데이터 원본으로 사용할 수 있다. `GOOGLE_SHEET_ID`가 설정되어 있으면 아래 탭을 CSV로 읽어 화면 데이터를 만든다.
 
 ## Required tabs
 
 - `Meta`
 - `Hero`
+- `ProfileSummary`
+- `SelfIntroduction`
 - `Experiences`
+- `WorkCases`
+- `SkillGroups`
 
 ## Optional tabs
 
@@ -26,17 +30,32 @@
 |---|---|
 | name | Yun Dae-Young |
 | title | Workflow & Data System Designer |
-| subtitle | 업무 흐름과 데이터를 구조화하는 개발자 |
-| description | 불명확한 업무 입력, 흩어진 데이터, 검증 흐름을 실행 가능한 시스템 구조로 정리하는 방향의 경력을 보여준다. |
+| subtitle | 업무 흐름과 데이터를 실행 가능한 구조로 정리하는 사람 |
+| summary | 불명확한 요구, 흩어진 운영 데이터, 검증이 필요한 결과값을 입력·상태·책임·출력 단위로 분해한다. |
 | keywords | Workflow Modeling\|Data Boundary\|Validation Flow |
+
+## ProfileSummary
+
+| key | value |
+|---|---|
+| headline | 이력서, 자기소개서, 경력기술서를 한 화면에서 빠르게 읽히게 구성한 경력 프로필입니다. |
+| lines | Line A\|Line B |
+| strengths | 업무 구조화\|데이터 흐름 정리 |
+
+## SelfIntroduction
+
+| paragraph |
+|---|
+| 자기소개 문단 1 |
+| 자기소개 문단 2 |
 
 ## Experiences
 
 | company | period | startDate | endDate | role | summary | details | tags |
 |---|---|---|---|---|---|---|---|
-| Company | 2025.01 - 2025.12 | 2025-01 | 2025-12 | Role | One sentence summary | Detail A\|Detail B | Tag A\|Tag B |
+| Company | 2025.01 - 2025.12 | 2025-01 | 2025-12 | Role | 한 줄 요약 | Detail A\|Detail B | Tag A\|Tag B |
 
-### Date rules
+### Experience rules
 
 - `period`는 화면 표시용 문자열이다.
 - `startDate`, `endDate`는 병행 여부 계산용 값이다.
@@ -44,6 +63,18 @@
 - 현재 재직 중이면 `endDate`에 `Present`를 넣는다.
 - 여러 경력의 날짜 구간이 겹치면 화면에서 자동으로 `병행` 배지를 표시한다.
 - 사용자가 `병행` 여부를 직접 입력하지 않는다.
+
+## WorkCases
+
+| title | period | role | summary | details | keywords |
+|---|---|---|---|---|---|
+| Work title | 2025 | Role | 한 줄 요약 | Detail A\|Detail B | Python\|PostgreSQL |
+
+## SkillGroups
+
+| title | items |
+|---|---|
+| Backend / Data | Python\|FastAPI\|PostgreSQL |
 
 ## Contact
 
@@ -59,4 +90,3 @@
 - 전화번호, 주소, API URL, API key, 비공개 고객 정보, 계약 금액을 넣지 않는다.
 - 확인되지 않은 성과 수치나 과장된 문장을 넣지 않는다.
 - IT가 아닌 경력을 억지로 IT 경험처럼 바꾸지 않는다.
-- 회사명 공개가 애매하면 사용자 확인 후 일반명으로 바꾼다.

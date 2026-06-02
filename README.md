@@ -1,15 +1,13 @@
 # Yun Dae-Young Career Portfolio
 
-Version: focused-career-layout
-
-React + TypeScript + Vite 기반의 정적 경력 포트폴리오입니다. 현재 버전은 장식적인 섹션을 줄이고, 경력 타임라인과 Google Sheets 기반 데이터 갱신 흐름에 집중합니다.
+React + TypeScript + Vite 기반의 정적 경력 포트폴리오입니다. 현재 구조는 단순 프로필이 아니라 `이력서 + 자기소개서 + 경력기술서`를 한 화면에서 빠르게 읽히게 하는 문서형 웹 이력서입니다.
 
 ## Purpose
 
-- 경력을 첫 화면에서 바로 확인할 수 있게 한다.
-- 시작일과 종료일을 기준으로 겹치는 소속은 자동으로 병행 표기한다.
-- HTML/TSX를 직접 수정하지 않고 Google Sheets 데이터 변경으로 공개 내용을 갱신할 수 있게 한다.
-- Google Form 또는 이메일이 등록되기 전에는 문의 영역을 표시하지 않는다.
+- 첫 화면에서 지원 정체성, 핵심 요약, 최근 연혁, 주요 역량을 함께 보여준다.
+- 경력 연혁은 `기간 · 소속 · 역할 · 요약`을 한 줄 흐름으로 보여주고, 상세는 선택 패널에서만 표시한다.
+- 시작일과 종료일을 기준으로 겹치는 경력은 자동으로 `병행` 표기한다.
+- Google Sheets 데이터만 수정해 이력, 자기소개, 대표 업무, 기술 맥락을 갱신한다.
 
 ## Tech stack
 
@@ -50,13 +48,6 @@ GOOGLE_SHEET_JSON_URL=<public json endpoint>
 `GOOGLE_SHEET_ID`를 사용할 경우 브라우저에서 읽을 수 있도록 시트가 공개 읽기 또는 웹 게시 상태여야 합니다.
 
 필요한 시트 구조는 `docs/google-sheets-content-contract.md`를 따릅니다.
-
-## Data update guide
-
-- `Meta`: 사이트 제목.
-- `Hero`: 이름, 포지션, 설명, 키워드.
-- `Experiences`: 회사, 기간, 시작일, 종료일, 역할, 상세 설명, 태그.
-- `Contact`: Google Form URL 또는 이메일. 값이 없으면 문의 영역을 표시하지 않음.
 
 ## Content safety
 

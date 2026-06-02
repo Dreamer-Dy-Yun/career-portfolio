@@ -5,7 +5,11 @@ type SheetRecord = Record<string, string>;
 const sheetNames = {
   meta: 'Meta',
   hero: 'Hero',
+  profileSummary: 'ProfileSummary',
+  selfIntroduction: 'SelfIntroduction',
   experiences: 'Experiences',
+  workCases: 'WorkCases',
+  skillGroups: 'SkillGroups',
   contact: 'Contact',
 } as const;
 
@@ -22,33 +26,22 @@ const parseCsv = (text: string): string[][] => {
     if (character === '"' && isQuoted && nextCharacter === '"') {
       cell += '"';
       index += 1;
-      continue;
-    }
-
-    if (character === '"') {
+    } else if (character === '"') {
       isQuoted = !isQuoted;
-      continue;
-    }
-
-    if (character === ',' && !isQuoted) {
+    } else if (character === ',' && !isQuoted) {
       row.push(cell);
       cell = '';
-      continue;
-    }
-
-    if ((character === '\n' || character === '\r') && !isQuoted) {
+    } else if ((character === '\n' || character === '\r') && !isQuoted) {
       if (character === '\r' && nextCharacter === '\n') {
         index += 1;
       }
-
       row.push(cell);
       rows.push(row);
       row = [];
       cell = '';
-      continue;
+    } else {
+      cell += character;
     }
-
-    cell += character;
   }
 
   row.push(cell);
@@ -100,10 +93,14 @@ const valueByKey = (records: SheetRecord[], key: string) => {
 };
 
 export const loadPortfolioContentFromGoogleSheet = async (sheetId: string): Promise<PortfolioContent> => {
-  const [meta, hero, experiences, contact] = await Promise.all([
+  const [meta, hero, profileSummary, selfIntroduction, experiences, workCases, skillGroups, contact] = await Promise.all([
     fetchSheetRecords(sheetId, sheetNames.meta),
     fetchSheetRecords(sheetId, sheetNames.hero),
+    fetchSheetRecords(sheetId, sheetNames.profileSummary),
+    fetchSheetRecords(sheetId, sheetNames.selfIntroduction),
     fetchSheetRecords(sheetId, sheetNames.experiences),
+    fetchSheetRecords(sheetId, sheetNames.workCases),
+    fetchSheetRecords(sheetId, sheetNames.skillGroups),
     fetchOptionalSheetRecords(sheetId, sheetNames.contact),
   ]);
 
@@ -113,9 +110,15 @@ export const loadPortfolioContentFromGoogleSheet = async (sheetId: string): Prom
       name: valueByKey(hero, 'name'),
       title: valueByKey(hero, 'title'),
       subtitle: valueByKey(hero, 'subtitle'),
-      description: valueByKey(hero, 'description'),
+      summary: valueByKey(hero, 'summary'),
       keywords: splitList(valueByKey(hero, 'keywords')),
     },
+    profileSummary: {
+      headline: valueByKey(profileSummary, 'headline'),
+      lines: splitList(valueByKey(profileSummary, 'lines')),
+      strengths: splitList(valueByKey(profileSummary, 'strengths')),
+    },
+    selfIntroduction: selfIntroduction.map((row) => row.paragraph).filter(Boolean),
     experiences: experiences.map((experience) => ({
       company: experience.company,
       period: experience.period,
@@ -125,6 +128,18 @@ export const loadPortfolioContentFromGoogleSheet = async (sheetId: string): Prom
       summary: experience.summary,
       details: splitList(experience.details),
       tags: splitList(experience.tags),
+    })),
+    workCases: workCases.map((workCase) => ({
+      title: workCase.title,
+      period: workCase.period,
+      role: workCase.role,
+      summary: workCase.summary,
+      details: splitList(workCase.details),
+      keywords: splitList(workCase.keywords),
+    })),
+    skillGroups: skillGroups.map((group) => ({
+      title: group.title,
+      items: splitList(group.items),
     })),
     contact: {
       formUrl: valueByKey(contact, 'formUrl'),

@@ -1,6 +1,6 @@
 # src
 
-React + TypeScript + Vite 소스 폴더다. 현재 화면은 경력 타임라인 중심의 단일 공개 프로필로 구성한다.
+React + TypeScript + Vite 소스 폴더다. 현재 화면은 `이력서 + 자기소개서 + 경력기술서`를 하나의 문서형 웹 프로필로 구성한다.
 
 ## Folders
 

@@ -5,11 +5,25 @@ export const fallbackContent: PortfolioContent = {
   hero: {
     name: 'Yun Dae-Young',
     title: 'Workflow & Data System Designer',
-    subtitle: '업무 흐름과 데이터를 구조화하는 개발자',
-    description:
-      '불명확한 업무 입력, 흩어진 데이터, 검증 흐름을 실행 가능한 시스템 구조로 정리하는 방향의 경력을 보여준다.',
-    keywords: ['Workflow Modeling', 'Data Boundary', 'Validation Flow', 'Backend / DB', 'Automation Refactoring'],
+    subtitle: '업무 흐름과 데이터를 실행 가능한 구조로 정리하는 사람',
+    summary:
+      '불명확한 요구, 흩어진 운영 데이터, 검증이 필요한 결과값을 입력·상태·책임·출력 단위로 분해해 시스템화 가능한 형태로 정리합니다.',
+    keywords: ['Workflow Modeling', 'Data Boundary', 'Validation Flow', 'Backend / DB', 'Operations'],
   },
+  profileSummary: {
+    headline: '이력서, 자기소개서, 경력기술서를 한 화면에서 빠르게 읽히게 구성한 경력 프로필입니다.',
+    lines: [
+      '경력은 IT 운영, QA, 자동화, API/DB 기반 구현 흐름으로 이어져 있습니다.',
+      '핵심은 특정 도구보다 불명확한 업무를 구조화하고 검증 가능한 실행 흐름으로 바꾸는 방식입니다.',
+      'Google Sheets 데이터만 바꾸면 연혁, 대표 업무, 기술 맥락이 화면에 반영됩니다.',
+    ],
+    strengths: ['업무 구조화', '데이터 흐름 정리', '검증 단계 분리', '운영 관점 반영'],
+  },
+  selfIntroduction: [
+    '업무를 볼 때 먼저 입력, 출력, 상태, 책임 경계를 나눕니다. 요구사항이 명확하지 않은 경우에도 화면이나 코드부터 만들기보다 어떤 데이터가 어디에서 들어오고, 누가 확인하며, 어떤 상태를 거쳐 결과가 되는지 정리합니다.',
+    'IT가 아닌 경력도 억지로 개발 경험처럼 포장하지 않습니다. QA와 운영 환경에서 얻은 절차, 확인, 커뮤니케이션 경험은 이후 자동화와 시스템 구현에서 검증 흐름을 의식하는 기반이 됐습니다.',
+    '최근 작업은 API, PostgreSQL, OCR/LLM, 데이터 파이프라인처럼 운영 데이터를 구조화하고 확인 가능한 결과로 바꾸는 방향으로 확장되고 있습니다.',
+  ],
   experiences: [
     {
       company: 'Mining5000',
@@ -17,8 +31,8 @@ export const fallbackContent: PortfolioContent = {
       startDate: '2023-11',
       endDate: 'Present',
       role: 'PM / PL / Developer',
-      summary: '기획, 개발, 테스트, 이해관계자 커뮤니케이션을 함께 수행한 프로젝트 경험.',
-      details: ['업무 요구사항을 구현 단위로 나누고 실행 흐름을 정리.', 'API, DB, 자동화, 운영 데이터 흐름이 포함된 작업 수행.'],
+      summary: '기획, 개발, 테스트, 커뮤니케이션을 함께 수행하며 업무 흐름을 구현 단위로 정리.',
+      details: ['API, DB, 자동화, 운영 데이터 흐름이 포함된 작업 수행.', '불명확한 요구를 실행 가능한 작업 단위로 분해.'],
       tags: ['Workflow', 'Backend', 'Database'],
     },
     {
@@ -27,8 +41,8 @@ export const fallbackContent: PortfolioContent = {
       startDate: '2023-05',
       endDate: '2023-10',
       role: 'PM / PL / Developer / QA',
-      summary: '자동화 관련 프로젝트에서 일정, 구현, QA, 전달 과정을 함께 다룬 경력.',
-      details: ['프로젝트 진행과 품질 확인 업무를 병행.', '개발 산출물과 운영 요구 사이의 간극을 조정.'],
+      summary: '자동화 관련 프로젝트에서 일정, 구현, QA, 전달 흐름을 함께 다룸.',
+      details: ['프로젝트 진행과 품질 확인 업무를 병행.', '개발 산출물과 운영 요구 사이의 간극 조정.'],
       tags: ['Automation', 'QA', 'Delivery'],
     },
     {
@@ -37,8 +51,8 @@ export const fallbackContent: PortfolioContent = {
       startDate: '2021-09',
       endDate: '2023-04',
       role: 'PM / PL / Developer / QA / Tester',
-      summary: '자동화, 테스트, 납품, 운영 개선 성격의 업무를 수행한 경력.',
-      details: ['프로젝트 실행 과정에서 구현, 테스트, 전달 업무 참여.', '업무 절차를 정리하고 자동화 대상 흐름을 다룸.'],
+      summary: '자동화, 테스트, 납품, 운영 개선 성격의 업무를 수행.',
+      details: ['구현, 테스트, 전달 업무 참여.', '업무 절차와 자동화 대상 흐름 정리.'],
       tags: ['Automation', 'Testing', 'Operations'],
     },
     {
@@ -47,8 +61,8 @@ export const fallbackContent: PortfolioContent = {
       startDate: '2018-10',
       endDate: '2021-07',
       role: 'System Engineer / IT Operations',
-      summary: '일본 IT 운영 환경에서 시스템 엔지니어링과 운영 업무를 경험.',
-      details: ['운영 환경에서 절차와 커뮤니케이션 기반의 업무 수행.', '기술 지원과 운영 흐름을 다루는 경험 축적.'],
+      summary: '일본 IT 운영 환경에서 시스템 엔지니어링과 운영 업무 경험.',
+      details: ['운영 환경에서 절차와 커뮤니케이션 기반 업무 수행.', '기술 지원과 운영 흐름 경험 축적.'],
       tags: ['IT Operations', 'System Engineer'],
     },
     {
@@ -61,6 +75,38 @@ export const fallbackContent: PortfolioContent = {
       details: ['검사, 결함 확인, 품질 관리 프로세스와 연결된 업무 경험.'],
       tags: ['QA'],
     },
+  ],
+  workCases: [
+    {
+      title: 'Dutyfree B2C Settlement Workflow',
+      period: '2025',
+      role: 'Workflow / Backend / DB / UI',
+      summary: 'EDI Excel, 영수증·여권 이미지, OCR/LLM 결과, 수기 검증값을 정산 데이터 흐름으로 정리.',
+      details: ['원본 입력, AI 추출값, 사람이 검증한 값을 분리.', '영수증-여권-EDI 매핑과 검증 UI 흐름 구성.'],
+      keywords: ['PostgreSQL', 'FastAPI', 'OCR/LLM', 'React'],
+    },
+    {
+      title: 'PostgreSQL Multi-schema DB Manager',
+      period: '2025',
+      role: 'Backend / Database',
+      summary: '반복되는 schema 관리, table 생성, batch upsert/update 작업을 재사용 가능한 DB 실행 구조로 정리.',
+      details: ['schema-scoped execution 패턴 구성.', '반복 DB 작업을 helper 단위로 분리.'],
+      keywords: ['PostgreSQL', 'SQLAlchemy', 'Async'],
+    },
+    {
+      title: 'ICT Data Extractor / Visual Normalization',
+      period: '2025',
+      role: 'Data Workflow',
+      summary: 'ICT 검사 CSV 데이터를 규격 기준으로 비교할 수 있도록 측정값, 규격값, 시각 정규화 값을 분리.',
+      details: ['USL/LSL/Spec 중심의 비교 구조 구성.', '시각화와 분석에 사용할 수 있는 데이터 형태로 변환.'],
+      keywords: ['Python', 'Pandas', 'Normalization'],
+    },
+  ],
+  skillGroups: [
+    { title: 'Analysis / Modeling', items: ['Requirement structuring', 'Workflow modeling', 'Data boundary design', 'Validation state design'] },
+    { title: 'Backend / Data', items: ['Python', 'FastAPI', 'REST API', 'PostgreSQL', 'SQLAlchemy'] },
+    { title: 'Automation / Operations', items: ['Process automation', 'Workflow refactoring', 'QA', 'Operational handoff'] },
+    { title: 'Frontend', items: ['React', 'TypeScript', 'Vite', 'Workflow UI'] },
   ],
   contact: {
     formUrl: '',
