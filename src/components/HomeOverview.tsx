@@ -52,7 +52,10 @@ const HomeOverview = ({ hero, experiences, projects, skillGroups }: HomeOverview
                   onMouseEnter={() => setActiveExperienceId(item.id)}
                 >
                   <span>{item.period}</span>
-                  <strong>{item.company}</strong>
+                  <strong>
+                    {item.company}
+                    {item.relation ? <em>{item.relation}</em> : null}
+                  </strong>
                   <small>{item.role}</small>
                 </button>
               </li>
@@ -60,7 +63,10 @@ const HomeOverview = ({ hero, experiences, projects, skillGroups }: HomeOverview
           </ol>
           {activeExperience ? (
             <div className="home-experience-detail" aria-live="polite">
-              <strong>{activeExperience.company}</strong>
+              <strong>
+                {activeExperience.company}
+                {activeExperience.relation ? <em>{activeExperience.relation}</em> : null}
+              </strong>
               <p>{activeExperience.summary}</p>
               {activeExperience.tags.length > 0 ? (
                 <ul className="chip-list" aria-label={`${activeExperience.company} tags`}>

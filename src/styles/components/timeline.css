@@ -45,6 +45,10 @@
 }
 
 .timeline-button strong {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
   font-size: 1.05rem;
 }
 
@@ -65,6 +69,25 @@
   background: rgba(255, 255, 255, 0.92);
   padding: 1.35rem;
   box-shadow: var(--shadow);
+}
+
+.timeline-detail h3 {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.timeline-button em,
+.timeline-detail em {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.12rem 0.42rem;
+  color: var(--primary);
+  background: #eff6ff;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 900;
 }
 
 .timeline-detail p,

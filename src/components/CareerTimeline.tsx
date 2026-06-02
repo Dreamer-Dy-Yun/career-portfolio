@@ -29,7 +29,10 @@ const CareerTimeline = ({ experiences }: CareerTimelineProps) => {
               onMouseEnter={() => setActiveItemId(item.id)}
             >
               <span>{item.period}</span>
-              <strong>{item.company}</strong>
+              <strong>
+                {item.company}
+                {item.relation ? <em>{item.relation}</em> : null}
+              </strong>
               <small>{item.role}</small>
             </button>
           </li>
@@ -37,7 +40,10 @@ const CareerTimeline = ({ experiences }: CareerTimelineProps) => {
       </ol>
       <aside className="timeline-detail" aria-live="polite">
         <span>{activeItem.period}</span>
-        <h3>{activeItem.company}</h3>
+        <h3>
+          {activeItem.company}
+          {activeItem.relation ? <em>{activeItem.relation}</em> : null}
+        </h3>
         <p>{activeItem.summary}</p>
         {activeItem.details.length > 0 ? (
           <ul>

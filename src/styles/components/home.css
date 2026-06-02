@@ -138,6 +138,10 @@
 
 .home-timeline strong,
 .home-project-list strong {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 0.98rem;
 }
 
@@ -153,6 +157,25 @@
   border-left: 3px solid var(--primary);
   margin-left: 7.3rem;
   padding: 0.2rem 0 0.2rem 1rem;
+}
+
+.home-experience-detail strong {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.home-timeline em,
+.home-experience-detail em {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.12rem 0.42rem;
+  color: var(--primary);
+  background: #eff6ff;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 900;
 }
 
 .home-experience-detail p,

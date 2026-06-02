@@ -5,6 +5,7 @@ export type CareerTimelineItem = {
   company: string;
   period: string;
   role: string;
+  relation: string;
   summary: string;
   details: string[];
   tags: string[];
@@ -24,6 +25,7 @@ export const createCareerTimelineItems = (experiences: ExperienceContent[]): Car
     company: experience.company,
     period: experience.period,
     role: experience.role,
+    relation: experience.relation?.trim() ?? '',
     summary: experience.summary?.trim() || buildFallbackSummary(experience),
     details: experience.details ?? [],
     tags: experience.tags ?? [],

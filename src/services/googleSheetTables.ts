@@ -141,6 +141,7 @@ export const loadPortfolioContentFromGoogleSheet = async (sheetId: string): Prom
       company: experience.company,
       period: experience.period,
       role: experience.role,
+      relation: experience.relation,
       summary: experience.summary,
       details: splitList(experience.details),
       tags: splitList(experience.tags),

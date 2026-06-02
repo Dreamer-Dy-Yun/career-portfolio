@@ -13,7 +13,7 @@
 - `roles`: Position 페이지의 역할 카드.
 - `operatingPrinciples`: Thinking Pattern 페이지의 문제 구조화 원칙.
 - `projects`: Evidence 페이지의 프로젝트 카드.
-- `experiences`: Career 페이지의 회사, 기간, 역할, 상세 설명, 태그.
+- `experiences`: Career 페이지의 회사, 기간, 역할, 소속 관계, 상세 설명, 태그.
 - `skillGroups`: Stack 페이지의 역량 그룹.
 - `contact`: Google Form 또는 이메일 문의 채널.
 
@@ -25,7 +25,7 @@
 - Backend, DB, API, UI는 정체성이 아니라 구조를 구현하는 수단으로 표현한다.
 - Stack 항목의 출처나 숙련도를 임의로 분류하지 않는다.
 - 사용자가 기준과 값을 직접 확정하기 전까지 Stack 항목에는 별도 출처 라벨을 붙이지 않는다.
-- Career 연혁은 `summary`, `details`, `tags`만 바꾸면 상세 패널이 자동 갱신되도록 작성한다.
+- Career 연혁은 `relation`, `summary`, `details`, `tags`만 바꾸면 관계 라벨과 상세 패널이 자동 갱신되도록 작성한다.
 - 공개 배포 기준으로 전화번호, 주소, 내부 URL, API key, 비공개 고객 정보는 넣지 않는다.
 
 ## Contact 처리

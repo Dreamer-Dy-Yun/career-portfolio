@@ -5,10 +5,6 @@
     flex-direction: column;
   }
 
-  .page-section {
-    min-height: calc(100dvh - 4.25rem);
-  }
-
   .hero-grid,
   .home-intro,
   .home-board,
