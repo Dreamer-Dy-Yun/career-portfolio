@@ -6,7 +6,7 @@
 
 - `Header.tsx`: 상단 내비게이션. `#/page-id` hash page 링크와 현재 페이지 표시를 담당한다.
 - `PageSection.tsx`: 한 화면 단위의 공통 페이지 레이아웃.
-- `Hero.tsx`: 첫 화면의 이름, 타이틀, 설명, 사진 자리 표시 영역.
+- `HomeOverview.tsx`: 첫 화면 요약 이력서. Hero, Experience, Project Evidence, Skills를 데이터 기반으로 조합한다.
 - `CardCarousel.tsx`: 카드 묶음을 일정 시간마다 전환하는 공통 carousel.
 - `RoleGrid.tsx`: Position 카드 표시.
 - `OperatingPrinciples.tsx`: Thinking Pattern 카드 표시.

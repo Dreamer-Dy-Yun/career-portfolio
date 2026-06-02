@@ -3,7 +3,7 @@ import CareerTimeline from './components/CareerTimeline';
 import ContactPanel from './components/ContactPanel';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import Hero from './components/Hero';
+import HomeOverview from './components/HomeOverview';
 import OperatingPrinciples from './components/OperatingPrinciples';
 import PageSection from './components/PageSection';
 import ProjectGrid from './components/ProjectGrid';
@@ -54,8 +54,8 @@ const App = () => {
         id: 'home',
         label: 'Home',
         element: (
-          <PageSection id="home" variant="hero">
-            <Hero hero={content.hero} />
+          <PageSection id="home">
+            <HomeOverview hero={content.hero} experiences={content.experiences} projects={content.projects} skillGroups={content.skillGroups} />
           </PageSection>
         ),
       },

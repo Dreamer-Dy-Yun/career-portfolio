@@ -5,6 +5,7 @@
 ## 파일 책임
 
 - `base.css`: eyebrow, hero 텍스트, hero 보조 패널.
+- `home.css`: 첫 화면 요약 이력서 레이아웃.
 - `carousel.css`: 공통 carousel 레이아웃과 컨트롤.
 - `cards.css`: role/principle 공통 카드와 기본 리스트.
 - `projects.css`: 프로젝트 카드와 상세 블록.

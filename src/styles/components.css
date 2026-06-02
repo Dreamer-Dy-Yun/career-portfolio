@@ -1,4 +1,5 @@
 @import './components/base.css';
+@import './components/home.css';
 @import './components/carousel.css';
 @import './components/cards.css';
 @import './components/projects.css';

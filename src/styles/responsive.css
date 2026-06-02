@@ -10,6 +10,8 @@
   }
 
   .hero-grid,
+  .home-intro,
+  .home-board,
   .carousel-page,
   .skill-row,
   .career-timeline-layout,
@@ -26,6 +28,14 @@
   .timeline-detail {
     position: static;
     min-height: auto;
+  }
+
+  .home-timeline button {
+    grid-template-columns: 1fr;
+  }
+
+  .home-timeline small {
+    grid-column: auto;
   }
 }
 
