@@ -5,10 +5,8 @@ type FooterProps = {
 const Footer = ({ contentSource }: FooterProps) => {
   return (
     <footer className="site-footer">
-      <div className="footer-inner">
-        <span>Yun Dae-Young&apos;s Portfolio</span>
-        <span>content: {contentSource === 'google-sheet' ? 'Google Sheets' : 'local seed'}</span>
-      </div>
+      <span>Yun Dae-Young&apos;s Portfolio</span>
+      <span>content: {contentSource === 'google-sheet' ? 'Google Sheets' : 'local fallback'}</span>
     </footer>
   );
 };

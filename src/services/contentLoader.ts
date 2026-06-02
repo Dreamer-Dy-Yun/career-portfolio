@@ -1,5 +1,5 @@
 import { fallbackContent } from '../data/portfolioContent';
-import type { PortfolioContent, ProjectContent } from '../data/types';
+import type { ExperienceContent, PortfolioContent } from '../data/types';
 import { loadPortfolioContentFromGoogleSheet } from './googleSheetTables';
 
 type ContentLoadResult = {
@@ -10,18 +10,11 @@ type ContentLoadResult = {
 const contentUrl = import.meta.env.VITE_GOOGLE_SHEET_JSON_URL?.trim() ?? '';
 const sheetId = import.meta.env.VITE_GOOGLE_SHEET_ID?.trim() ?? '';
 
-const hasProjectShape = (project: Partial<ProjectContent>) => {
+const hasExperienceShape = (experience: Partial<ExperienceContent>) => {
   return Boolean(
-    typeof project.title === 'string' &&
-      typeof project.period === 'string' &&
-      typeof project.role === 'string' &&
-      typeof project.summary === 'string' &&
-      typeof project.problem === 'string' &&
-      Array.isArray(project.constraints) &&
-      Array.isArray(project.decisions) &&
-      Array.isArray(project.deliverables) &&
-      typeof project.meaning === 'string' &&
-      Array.isArray(project.stack),
+    typeof experience.company === 'string' &&
+      typeof experience.period === 'string' &&
+      typeof experience.role === 'string',
   );
 };
 
@@ -33,12 +26,15 @@ const isPortfolioContent = (value: unknown): value is PortfolioContent => {
   const candidate = value as Partial<PortfolioContent>;
 
   return Boolean(
-    candidate.hero &&
-      Array.isArray(candidate.roles) &&
-      Array.isArray(candidate.projects) &&
-      candidate.projects.every((project) => hasProjectShape(project)) &&
+    candidate.siteTitle &&
+      candidate.hero &&
+      typeof candidate.hero.name === 'string' &&
+      typeof candidate.hero.title === 'string' &&
+      typeof candidate.hero.subtitle === 'string' &&
+      typeof candidate.hero.description === 'string' &&
+      Array.isArray(candidate.hero.keywords) &&
       Array.isArray(candidate.experiences) &&
-      Array.isArray(candidate.skillGroups) &&
+      candidate.experiences.every((experience) => hasExperienceShape(experience)) &&
       candidate.contact,
   );
 };

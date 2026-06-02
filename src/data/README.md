@@ -1,35 +1,24 @@
 # src/data
 
-화면에 표시되는 포트폴리오 기본 데이터와 Google Sheets 연동 계약을 관리한다.
+화면 데이터 타입과 local fallback seed를 둔다.
 
-## 파일 책임
+## Files
 
-- `types.ts`: 화면 콘텐츠 타입 계약.
-- `portfolioContent.ts`: Google Sheets 연결 실패 또는 미설정 시 사용하는 fallback seed 데이터.
+- `types.ts`: 공개 프로필 화면의 데이터 계약.
+- `portfolioContent.ts`: Google Sheets 연결 실패 또는 미설정 시 사용하는 fallback 데이터.
 
-## 주요 데이터 구조
+## Content rules
 
-- `hero`: 첫 화면 이름, 타이틀, 설명, 키워드.
-- `roles`: Position 페이지의 역할 카드.
-- `operatingPrinciples`: Thinking Pattern 페이지의 문제 구조화 원칙.
-- `projects`: Evidence 페이지의 프로젝트 카드.
-- `experiences`: Career 페이지의 회사, 표시 기간, 계산용 시작일/종료일, 역할, 상세 설명, 태그.
-- `skillGroups`: Stack 페이지의 역량 그룹.
-- `contact`: Google Form 또는 이메일 문의 채널.
+- fallback 데이터는 확인 가능한 최소 경력 정보만 넣는다.
+- IT가 아닌 경력을 억지로 IT 경력처럼 바꾸지 않는다.
+- 전화번호, 주소, 비공개 고객 정보, API URL, API key를 넣지 않는다.
+- 확인되지 않은 성과 수치나 과장 표현을 넣지 않는다.
+- 경력 병행 여부는 `startDate`, `endDate`로 계산하므로 직접 입력하지 않는다.
 
-## 작성 기준
+## Experience fields
 
-- 확인되지 않은 경력 해석, 성과 수치, 외부 링크를 넣지 않는다.
-- IT가 아닌 경력은 억지로 IT 경험처럼 확장하지 않는다.
-- 프로젝트는 기능 나열보다 문제 상황, 제약 조건, 설계 판단, 산출물, 의미를 중심으로 적는다.
-- Backend, DB, API, UI는 정체성이 아니라 구조를 구현하는 수단으로 표현한다.
-- Stack 항목의 출처나 숙련도를 임의로 분류하지 않는다.
-- 사용자가 기준과 값을 직접 확정하기 전까지 Stack 항목에는 별도 출처 라벨을 붙이지 않는다.
-- Career 연혁은 `startDate`, `endDate`로 기간 겹침을 계산해 `병행` 라벨을 자동 표시한다.
-- Career 상세 패널은 `summary`, `details`, `tags`만 바꾸면 자동 갱신된다.
-- 공개 배포 기준으로 전화번호, 주소, 내부 URL, API key, 비공개 고객 정보는 넣지 않는다.
-
-## Contact 처리
-
-- `contact.formUrl`이 비어 있으면 Contact 페이지를 렌더링하지 않는다.
-- 실제 Google Form 또는 이메일 채널이 확정된 뒤에만 문의 UI를 노출한다.
+- `company`: 소속명.
+- `period`: 화면 표시용 기간.
+- `startDate`, `endDate`: 병행 여부 계산용 날짜.
+- `role`: 당시 역할.
+- `summary`, `details`, `tags`: 상세 패널 표시용 선택 데이터.

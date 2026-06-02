@@ -12,14 +12,14 @@ const CareerTimeline = ({ experiences }: CareerTimelineProps) => {
   const activeItem = items.find((item) => item.id === activeItemId) ?? items[0];
 
   if (!activeItem) {
-    return null;
+    return <p className="empty-state">표시할 경력 데이터가 없습니다.</p>;
   }
 
   return (
-    <div className="career-timeline-layout">
-      <ol className="timeline" aria-label="Career history">
+    <div className="timeline-layout">
+      <ol className="timeline-list" aria-label="Career timeline">
         {items.map((item) => (
-          <li className="timeline-item" key={item.id}>
+          <li className="timeline-row" key={item.id}>
             <button
               aria-pressed={activeItem.id === item.id}
               className="timeline-button"
@@ -28,16 +28,20 @@ const CareerTimeline = ({ experiences }: CareerTimelineProps) => {
               onFocus={() => setActiveItemId(item.id)}
               onMouseEnter={() => setActiveItemId(item.id)}
             >
-              <span>{item.period}</span>
-              <strong>
-                {item.company}
-                {item.isConcurrent ? <em>병행</em> : null}
-              </strong>
-              <small>{item.role}</small>
+              <span className="timeline-period">{item.period}</span>
+              <span className="timeline-marker" aria-hidden="true" />
+              <span className="timeline-main">
+                <strong>
+                  {item.company}
+                  {item.isConcurrent ? <em>병행</em> : null}
+                </strong>
+                <small>{item.role}</small>
+              </span>
             </button>
           </li>
         ))}
       </ol>
+
       <aside className="timeline-detail" aria-live="polite">
         <span>{activeItem.period}</span>
         <h3>
@@ -46,14 +50,14 @@ const CareerTimeline = ({ experiences }: CareerTimelineProps) => {
         </h3>
         <p>{activeItem.summary}</p>
         {activeItem.details.length > 0 ? (
-          <ul>
+          <ul className="detail-list">
             {activeItem.details.map((detail) => (
               <li key={detail}>{detail}</li>
             ))}
           </ul>
         ) : null}
         {activeItem.tags.length > 0 ? (
-          <ul className="chip-list" aria-label={`${activeItem.company} tags`}>
+          <ul className="tag-list" aria-label={`${activeItem.company} tags`}>
             {activeItem.tags.map((tag) => (
               <li key={tag}>{tag}</li>
             ))}

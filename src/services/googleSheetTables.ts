@@ -5,11 +5,7 @@ type SheetRecord = Record<string, string>;
 const sheetNames = {
   meta: 'Meta',
   hero: 'Hero',
-  roles: 'Roles',
-  principles: 'OperatingPrinciples',
-  projects: 'Projects',
   experiences: 'Experiences',
-  skillGroups: 'SkillGroups',
   contact: 'Contact',
 } as const;
 
@@ -84,6 +80,14 @@ const fetchSheetRecords = async (sheetId: string, sheetName: string): Promise<Sh
   return rowsToRecords(parseCsv(await response.text()));
 };
 
+const fetchOptionalSheetRecords = async (sheetId: string, sheetName: string): Promise<SheetRecord[]> => {
+  try {
+    return await fetchSheetRecords(sheetId, sheetName);
+  } catch {
+    return [];
+  }
+};
+
 const splitList = (value = '') => {
   return value
     .split(/\n|\|/)
@@ -96,15 +100,11 @@ const valueByKey = (records: SheetRecord[], key: string) => {
 };
 
 export const loadPortfolioContentFromGoogleSheet = async (sheetId: string): Promise<PortfolioContent> => {
-  const [meta, hero, roles, principles, projects, experiences, skillGroups, contact] = await Promise.all([
+  const [meta, hero, experiences, contact] = await Promise.all([
     fetchSheetRecords(sheetId, sheetNames.meta),
     fetchSheetRecords(sheetId, sheetNames.hero),
-    fetchSheetRecords(sheetId, sheetNames.roles),
-    fetchSheetRecords(sheetId, sheetNames.principles),
-    fetchSheetRecords(sheetId, sheetNames.projects),
     fetchSheetRecords(sheetId, sheetNames.experiences),
-    fetchSheetRecords(sheetId, sheetNames.skillGroups),
-    fetchSheetRecords(sheetId, sheetNames.contact),
+    fetchOptionalSheetRecords(sheetId, sheetNames.contact),
   ]);
 
   return {
@@ -114,29 +114,8 @@ export const loadPortfolioContentFromGoogleSheet = async (sheetId: string): Prom
       title: valueByKey(hero, 'title'),
       subtitle: valueByKey(hero, 'subtitle'),
       description: valueByKey(hero, 'description'),
-      chips: splitList(valueByKey(hero, 'chips')),
+      keywords: splitList(valueByKey(hero, 'keywords')),
     },
-    roles: roles.map((role) => ({
-      title: role.title,
-      description: role.description,
-      focus: splitList(role.focus),
-    })),
-    operatingPrinciples: principles.map((principle) => ({
-      title: principle.title,
-      description: principle.description,
-    })),
-    projects: projects.map((project) => ({
-      title: project.title,
-      period: project.period,
-      role: project.role,
-      summary: project.summary,
-      problem: project.problem,
-      constraints: splitList(project.constraints),
-      decisions: splitList(project.decisions),
-      deliverables: splitList(project.deliverables),
-      meaning: project.meaning,
-      stack: splitList(project.stack),
-    })),
     experiences: experiences.map((experience) => ({
       company: experience.company,
       period: experience.period,
@@ -147,14 +126,9 @@ export const loadPortfolioContentFromGoogleSheet = async (sheetId: string): Prom
       details: splitList(experience.details),
       tags: splitList(experience.tags),
     })),
-    skillGroups: skillGroups.map((group) => ({
-      title: group.title,
-      items: splitList(group.items),
-    })),
     contact: {
       formUrl: valueByKey(contact, 'formUrl'),
       email: valueByKey(contact, 'email'),
-      note: valueByKey(contact, 'note'),
     },
   };
 };

@@ -1,67 +1,53 @@
-@media (max-width: 920px) {
-  .header-inner,
-  .footer-inner {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .hero-grid,
-  .home-intro,
-  .home-board,
-  .carousel-page,
-  .skill-row,
-  .career-timeline-layout,
-  .project-detail-grid,
-  .timeline {
+@media (max-width: 1100px) {
+  .profile-hero,
+  .timeline-layout,
+  .section-heading,
+  .contact-section {
     grid-template-columns: 1fr;
   }
 
-  .hero-panel {
-    order: -1;
-    width: min(260px, 100%);
+  .profile-hero {
+    min-height: auto;
   }
 
   .timeline-detail {
     position: static;
-    min-height: auto;
-  }
-
-  .home-timeline button {
-    grid-template-columns: 5.4rem minmax(0, 1fr);
-    gap: 0.18rem 1.5rem;
-  }
-
-  .home-timeline small {
-    grid-column: 2;
-  }
-
-  .home-timeline li::before {
-    left: 5.95rem;
-  }
-
-  .home-timeline li::after {
-    left: calc(5.95rem + 0.25rem);
-  }
-
-  .home-experience-detail {
-    margin-left: 6.2rem;
   }
 }
 
-@media (max-width: 560px) {
-  .header-inner,
-  .page-section-inner,
-  .footer-inner {
-    width: min(var(--max), calc(100% - 1.2rem));
-  }
-
-  .project-head {
+@media (max-width: 640px) {
+  .site-header,
+  .site-footer {
+    align-items: flex-start;
     flex-direction: column;
   }
 
-  .button-primary,
-  .button-secondary {
-    width: 100%;
+  .site-header,
+  .site-footer,
+  .career-profile {
+    width: min(var(--max), calc(100% - 1.25rem));
+  }
+
+  .profile-copy,
+  .profile-summary,
+  .career-section,
+  .contact-section {
+    border-radius: 20px;
+  }
+
+  .timeline-button {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+    padding-bottom: 1.4rem;
+  }
+
+  .timeline-row:not(:last-child)::before,
+  .timeline-marker {
+    display: none;
+  }
+
+  .timeline-period {
+    color: var(--accent);
   }
 }
 
@@ -73,54 +59,38 @@
 
   .site-header,
   .site-footer,
-  .carousel-controls {
+  .contact-section {
     display: none;
   }
 
-  .page-section {
-    min-height: auto;
+  .career-profile,
+  .profile-hero,
+  .timeline-layout {
     display: block;
+  }
+
+  .profile-copy,
+  .profile-summary,
+  .career-section,
+  .timeline-detail {
+    border: 1px solid #999999;
+    background: #ffffff;
+    color: #000000;
     break-inside: avoid;
   }
 
-  .page-section-hero {
-    background: #ffffff;
+  .timeline-detail {
+    position: static;
+    margin-top: 1rem;
   }
 
-  .hero-title,
-  .hero-subtitle,
-  .hero-description,
-  h1 {
+  .timeline-detail h3,
+  .timeline-detail p,
+  .detail-list {
     color: #000000;
   }
 
-  .project-card,
-  .timeline-detail,
-  .role-card,
-  .principle-card,
-  .skill-row {
+  .timeline-button {
     break-inside: avoid;
-    box-shadow: none;
-  }
-
-  .carousel-track {
-    display: block;
-    transform: none !important;
-  }
-
-  .carousel-slide {
-    margin-bottom: 1rem;
-  }
-
-  .carousel-page {
-    grid-template-columns: 1fr;
-  }
-
-  .project-detail-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .career-timeline-layout {
-    display: block;
   }
 }

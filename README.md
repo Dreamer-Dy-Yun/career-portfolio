@@ -1,27 +1,25 @@
 # Yun Dae-Young Career Portfolio
 
-Version: release-2026.05
+Version: focused-career-layout
 
-React + TypeScript + Vite 기반의 정적 커리어 포트폴리오다. 백엔드 기술 자체보다 복잡한 업무 흐름, 데이터, 검증 조건을 시스템 구조로 정리하는 역량을 보여주는 데 초점을 둔다.
+React + TypeScript + Vite 기반의 정적 경력 포트폴리오입니다. 현재 버전은 장식적인 섹션을 줄이고, 경력 타임라인과 Google Sheets 기반 데이터 갱신 흐름에 집중합니다.
 
-## 기본 환경
+## Purpose
 
-- Content: Google Sheets table, Google Sheets 공개 JSON URL, 또는 local fallback seed
-- Contact: Google Form 또는 이메일
-- Deploy: GitHub Actions + GitHub Pages
-- Frontend: React, TypeScript, Vite
+- 경력을 첫 화면에서 바로 확인할 수 있게 한다.
+- 시작일과 종료일을 기준으로 겹치는 소속은 자동으로 병행 표기한다.
+- HTML/TSX를 직접 수정하지 않고 Google Sheets 데이터 변경으로 공개 내용을 갱신할 수 있게 한다.
+- Google Form 또는 이메일이 등록되기 전에는 문의 영역을 표시하지 않는다.
 
-## 주요 화면
+## Tech stack
 
-- Home: Workflow & Data System Designer 중심의 첫 화면
-- Position: 업무 모델링, 규칙 기반 설계, 검증 중심 AI workflow, Backend / DB 구현
-- Thinking Pattern: 문제를 구조화하는 방식
-- Evidence: 프로젝트별 문제, 제약, 설계 판단, 산출물, 의미
-- Career: 회사, 기간, 역할 중심의 이력
-- Stack: Analysis / Modeling을 포함한 기술 및 업무 역량
-- Contact: Google Form URL이 있을 때만 노출
+- React
+- TypeScript
+- Vite
+- GitHub Pages
+- Google Sheets public CSV
 
-## 로컬 실행
+## Local commands
 
 ```bash
 npm install
@@ -30,45 +28,39 @@ npm run build
 npm run preview
 ```
 
-## GitHub Pages 배포
+## GitHub Pages deployment
 
-`main` 브랜치에 push하면 `.github/workflows/deploy.yml`이 실행되고 `dist`가 GitHub Pages로 배포된다.
+`main` 브랜치에 push하면 `.github/workflows/deploy.yml`이 실행되고 `dist`가 GitHub Pages로 배포됩니다.
 
-현재 Vite base는 repository page 기준이다.
+현재 Vite base는 repository page 기준입니다.
 
 ```ts
 base: '/career-portfolio/'
 ```
 
-## Google Sheets 연결
+## Google Sheets content source
 
-GitHub repository의 Actions variable에 값을 넣는다.
+GitHub repository Actions variable에 아래 값 중 하나를 설정합니다.
 
 ```text
 GOOGLE_SHEET_ID=<spreadsheet id>
-```
-
-또는 공개 JSON endpoint를 쓰는 경우:
-
-```text
 GOOGLE_SHEET_JSON_URL=<public json endpoint>
 ```
 
-시트는 브라우저에서 읽을 수 있어야 하므로 공개 읽기 또는 웹 게시 상태여야 한다. 비공개 시트는 GitHub Pages에서 직접 읽을 수 없다.
+`GOOGLE_SHEET_ID`를 사용할 경우 브라우저에서 읽을 수 있도록 시트가 공개 읽기 또는 웹 게시 상태여야 합니다.
 
-Google Sheets 탭 구조는 `docs/google-sheets-content-contract.md`를 따른다.
+필요한 시트 구조는 `docs/google-sheets-content-contract.md`를 따릅니다.
 
-## 데이터 수정
+## Data update guide
 
-- 기본 fallback 콘텐츠는 `src/data/portfolioContent.ts`에서 수정한다.
-- 화면 콘텐츠 타입은 `src/data/types.ts`를 따른다.
-- Google Sheets table 연동은 `src/services/googleSheetTables.ts`에서 처리한다.
-- 공개 JSON endpoint 연동은 `src/services/contentLoader.ts`에서 처리한다.
+- `Meta`: 사이트 제목.
+- `Hero`: 이름, 포지션, 설명, 키워드.
+- `Experiences`: 회사, 기간, 시작일, 종료일, 역할, 상세 설명, 태그.
+- `Contact`: Google Form URL 또는 이메일. 값이 없으면 문의 영역을 표시하지 않음.
 
-## 콘텐츠 안전 기준
+## Content safety
 
-- 확인되지 않은 성과 수치, 경력 해석, 외부 링크를 넣지 않는다.
-- 전화번호, 주소, 내부 URL, API key, 비공개 고객 정보는 넣지 않는다.
-- Stack 항목의 출처나 숙련도를 임의로 분류하지 않는다.
-- 출처나 숙련도 분류가 필요하면 사용자가 기준과 값을 먼저 확정한다.
-- IT가 아닌 경력은 억지로 IT 경험처럼 포장하지 않는다.
+- 확인되지 않은 성과 수치나 과장 표현을 넣지 않는다.
+- 전화번호, 주소, API URL, API key, 계약 금액, 비공개 고객 정보를 넣지 않는다.
+- IT가 아닌 경력을 억지로 IT 경력처럼 포장하지 않는다.
+- 경력 병행 여부는 직접 입력하지 않고 `startDate`, `endDate`로 계산한다.

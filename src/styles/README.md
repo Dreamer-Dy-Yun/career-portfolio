@@ -1,21 +1,19 @@
 # src/styles
 
-전역 스타일을 책임별로 분리한다.
+전역 스타일을 책임 단위로 나눈다.
 
-## 파일 책임
+## Files
 
-- `global.css`: 스타일 import 진입점.
-- `tokens.css`: 색상, 배경, 경계, 그림자, 최대 콘텐츠 폭 같은 디자인 토큰.
-- `base.css`: reset, 기본 타이포그래피, focus-visible 스타일.
-- `layout.css`: header, hash page frame, page section 폭, hero grid, footer 같은 페이지 골격.
-- `components.css`: 반복 UI 스타일 import 진입점.
-- `components/`: card, carousel, project, timeline, button 같은 반복 UI의 세부 스타일.
+- `global.css`: CSS import 진입점.
+- `tokens.css`: 색상, 배경, 간격, 최대 폭 토큰.
+- `base.css`: reset, 기본 타이포그래피, focus-visible.
+- `layout.css`: 전체 페이지, 헤더, 히어로, 섹션, 푸터 레이아웃.
+- `components.css`: 타임라인, 태그, 링크 등 화면 구성 요소 스타일.
 - `responsive.css`: 모바일과 print 대응.
 
-## 레이아웃 기준
+## Rules
 
-- 데스크톱에서는 페이지 공통 컨테이너가 화면을 넓게 사용한다.
-- `--max`는 넓은 화면에서 과도한 중앙 집중 레이아웃을 막기 위한 최대 폭이다.
-- 각 페이지는 `PageSection`을 사용하고, 본문은 상단 정렬한다.
-- 콘텐츠가 길어질 경우 전체 문서 스크롤을 허용한다.
-- 모바일에서는 단일 컬럼으로 전환한다.
+- 화면은 넓게 쓰되, 읽기 폭과 타임라인 구조를 유지한다.
+- 과한 카드 경계와 섀도우는 사용하지 않는다.
+- 모바일에서는 타임라인을 단일 컬럼으로 단순화한다.
+- 프린트에서는 배경과 장식을 제거하고 경력 정보가 읽히게 한다.

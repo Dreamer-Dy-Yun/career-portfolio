@@ -1,15 +1,14 @@
 # src/modules
 
-화면 컴포넌트가 직접 처리하기에는 경계가 필요한 데이터 변환 로직을 둔다.
+컴포넌트가 직접 처리하기에는 경계가 필요한 데이터 변환 로직을 둔다.
 
-## 파일 책임
+## Files
 
-- `careerTimeline.ts`: `ExperienceContent`를 연혁 UI에서 사용할 view model로 변환한다.
+- `careerTimeline.ts`: `ExperienceContent`를 timeline view model로 변환한다.
 
-## 경계
+## Boundary
 
-- 모듈은 데이터를 새로 invent하지 않는다.
-- 누락된 optional 값은 화면이 깨지지 않도록 최소 fallback만 만든다.
-- `startDate`, `endDate`가 겹치는 경력은 자동으로 `병행` 상태로 계산한다.
-- 사용자가 `병행` 여부를 직접 입력하지 않게 한다.
-- UI 이벤트, DOM 상태, CSS 클래스는 컴포넌트 책임이다.
+- 이 모듈은 새 경력 내용을 만들어내지 않는다.
+- `startDate`, `endDate`가 겹치는 경력을 자동으로 `isConcurrent` 상태로 계산한다.
+- 날짜가 없거나 파싱할 수 없으면 병행 계산에서 제외한다.
+- UI 이벤트, DOM 상태, CSS class는 컴포넌트 책임이다.
