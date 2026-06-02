@@ -34,7 +34,8 @@ export type ExperienceContent = {
   company: string;
   period: string;
   role: string;
-  relation?: string;
+  startDate?: string;
+  endDate?: string;
   summary?: string;
   details?: string[];
   tags?: string[];

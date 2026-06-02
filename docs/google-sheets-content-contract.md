@@ -65,11 +65,15 @@ GOOGLE_SHEET_ID=<spreadsheet id>
 
 ## Experiences
 
-| company | period | role | relation | summary | details | tags |
-|---|---|---|---|---|---|---|
-| Company | 2025 | Role | Concurrent | One sentence summary | Detail A\|Detail B | Tag A\|Tag B |
+| company | period | startDate | endDate | role | summary | details | tags |
+|---|---|---|---|---|---|---|---|
+| Company | 2025 | 2025-01 | 2025-12 | Role | One sentence summary | Detail A\|Detail B | Tag A\|Tag B |
 
-`relation`은 `Primary`, `Concurrent`, `Contract`, `Project`, `Part-time`처럼 소속 관계를 표시할 때 사용한다. 비워두면 표시하지 않는다.
+`period`는 화면 표시용 문자열이다. `startDate`, `endDate`는 병행 여부 계산용 값이다.
+
+날짜 형식은 `YYYY-MM`, `YYYY-MM-DD`, `YYYY.MM`, `YYYY.MM.DD`를 사용할 수 있다. 현재 재직 중이면 `endDate`에 `Present`를 넣는다.
+
+여러 Experience의 날짜 구간이 겹치면 화면은 자동으로 `병행` 라벨을 표시한다. 사용자가 `병행` 여부를 직접 입력하지 않는다.
 
 `summary`, `details`, `tags`는 연혁 상세 패널에 표시된다. 값이 비어 있으면 화면은 `company`, `period`, `role`만으로 기본 표시한다.
 

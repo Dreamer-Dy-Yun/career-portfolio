@@ -31,7 +31,7 @@ const CareerTimeline = ({ experiences }: CareerTimelineProps) => {
               <span>{item.period}</span>
               <strong>
                 {item.company}
-                {item.relation ? <em>{item.relation}</em> : null}
+                {item.isConcurrent ? <em>병행</em> : null}
               </strong>
               <small>{item.role}</small>
             </button>
@@ -42,7 +42,7 @@ const CareerTimeline = ({ experiences }: CareerTimelineProps) => {
         <span>{activeItem.period}</span>
         <h3>
           {activeItem.company}
-          {activeItem.relation ? <em>{activeItem.relation}</em> : null}
+          {activeItem.isConcurrent ? <em>병행</em> : null}
         </h3>
         <p>{activeItem.summary}</p>
         {activeItem.details.length > 0 ? (

@@ -54,7 +54,7 @@ const HomeOverview = ({ hero, experiences, projects, skillGroups }: HomeOverview
                   <span>{item.period}</span>
                   <strong>
                     {item.company}
-                    {item.relation ? <em>{item.relation}</em> : null}
+                    {item.isConcurrent ? <em>병행</em> : null}
                   </strong>
                   <small>{item.role}</small>
                 </button>
@@ -65,7 +65,7 @@ const HomeOverview = ({ hero, experiences, projects, skillGroups }: HomeOverview
             <div className="home-experience-detail" aria-live="polite">
               <strong>
                 {activeExperience.company}
-                {activeExperience.relation ? <em>{activeExperience.relation}</em> : null}
+                {activeExperience.isConcurrent ? <em>병행</em> : null}
               </strong>
               <p>{activeExperience.summary}</p>
               {activeExperience.tags.length > 0 ? (
