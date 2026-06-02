@@ -31,11 +31,24 @@
   }
 
   .home-timeline button {
-    grid-template-columns: 1fr;
+    grid-template-columns: 5.4rem minmax(0, 1fr);
+    gap: 0.18rem 1.5rem;
   }
 
   .home-timeline small {
-    grid-column: auto;
+    grid-column: 2;
+  }
+
+  .home-timeline li::before {
+    left: 5.95rem;
+  }
+
+  .home-timeline li::after {
+    left: calc(5.95rem + 0.25rem);
+  }
+
+  .home-experience-detail {
+    margin-left: 6.2rem;
   }
 }
 
