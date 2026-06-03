@@ -35,7 +35,7 @@ const CareerTimeline = ({ experiences }: CareerTimelineProps) => {
                 onMouseEnter={() => setActiveItemId(item.id)}
               >
                 <span className="timeline-period">{item.period}</span>
-                <span className="timeline-marker" aria-hidden="true" />
+                <span className="timeline-axis-dot" aria-hidden="true" />
                 <span className="timeline-line">
                   <strong>{item.company}</strong>
                   <span>{item.role}</span>

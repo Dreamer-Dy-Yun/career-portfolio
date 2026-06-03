@@ -55,8 +55,8 @@
     padding: 0.55rem 0;
   }
 
-  .timeline-row:not(:last-child)::before,
-  .timeline-marker {
+  .timeline-list::before,
+  .timeline-axis-dot {
     display: none;
   }
 
