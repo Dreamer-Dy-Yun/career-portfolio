@@ -4,7 +4,7 @@
 
 ## Files
 
-- `contentLoader.ts`: 공개 JSON, Google Sheets, local fallback의 로딩 우선순위를 관리한다.
+- `contentLoader.ts`: 공개 JSON, Google Sheets, 기본 경력 데이터의 로딩 우선순위를 관리한다.
 - `googleSheetTables.ts`: Google Sheets CSV 탭을 읽어 `PortfolioContent`로 조립한다.
 
 ## Loading order
@@ -16,5 +16,5 @@
 ## Boundary
 
 - 이 계층은 데이터를 새로 발명하지 않는다.
-- 외부 데이터 구조가 맞지 않으면 local fallback으로 돌아간다.
+- 외부 데이터 구조가 맞지 않으면 기본 경력 데이터로 돌아간다.
 - Google Sheets 계약은 `docs/google-sheets-content-contract.md`를 따른다.

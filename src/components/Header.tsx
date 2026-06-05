@@ -8,7 +8,7 @@ const Header = ({ siteTitle }: HeaderProps) => {
       <a className="brand" href="#top" aria-label="Go to top">
         {siteTitle}
       </a>
-      <span>Google Sheets 기반 경력 데이터</span>
+      <span>이력서 · 자기소개서 · 경력기술서</span>
     </header>
   );
 };

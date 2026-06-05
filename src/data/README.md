@@ -1,15 +1,15 @@
 # src/data
 
-화면 데이터 타입과 local fallback seed를 둔다.
+화면 데이터 타입과 기본 경력 데이터를 둔다.
 
 ## Files
 
 - `types.ts`: 이력서, 자기소개서, 경력기술서 화면의 데이터 계약.
-- `portfolioContent.ts`: Google Sheets 연결 실패 또는 미설정 시 사용하는 fallback 데이터.
+- `portfolioContent.ts`: Google Sheets 연결 실패 또는 미설정 시 사용하는 기본 경력 데이터.
 
 ## Content rules
 
-- fallback 데이터는 확인 가능한 최소 경력 정보만 넣는다.
+- 기본 경력 데이터는 확인 가능한 최소 경력 정보만 넣는다.
 - IT가 아닌 경력을 억지로 IT 경력처럼 바꾸지 않는다.
 - 전화번호, 주소, 비공개 고객 정보, API URL, API key를 넣지 않는다.
 - 확인되지 않은 성과 수치나 과장 표현을 넣지 않는다.
