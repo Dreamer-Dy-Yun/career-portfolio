@@ -57,20 +57,12 @@ const getBranchListPosition = (isLeft: boolean) => {
   return 'mr-[calc(50%+3.4rem)] pl-2 text-right max-md:ml-[6.4rem] max-md:mr-0 max-md:pl-0 max-md:text-left';
 };
 
-const getBranchRailPosition = (isLeft: boolean) => {
+const getBranchConnectorPosition = (isLeft: boolean) => {
   if (isLeft) {
-    return 'left-1/2 rounded-r-[2rem] border-y-[3px] border-r-[3px]';
+    return 'before:-left-[3.9rem] after:-left-[3.4rem] max-md:before:-left-[1.65rem]';
   }
 
-  return 'right-1/2 rounded-l-[2rem] border-y-[3px] border-l-[3px]';
-};
-
-const getBranchDotPosition = (isLeft: boolean) => {
-  if (isLeft) {
-    return 'before:-left-[2.9rem]';
-  }
-
-  return 'before:-right-[2.9rem] max-md:before:-left-[1.15rem] max-md:before:right-auto';
+  return 'before:-right-[3.9rem] after:-right-[3.4rem] max-md:before:-left-[1.65rem] max-md:before:right-auto';
 };
 
 const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
@@ -107,15 +99,6 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
 
               return (
                 <li className="relative py-1" key={item.id}>
-                  {hasBranches ? (
-                    <span
-                      aria-hidden="true"
-                      className={`pointer-events-none absolute bottom-6 top-14 hidden w-20 border-teal-700 md:block print:border-black ${getBranchRailPosition(
-                        isLeft,
-                      )}`}
-                    />
-                  ) : null}
-
                   <button
                     className="group relative grid w-full grid-cols-[minmax(0,1fr)_2rem_minmax(0,1fr)] items-center py-2 text-sm max-md:grid-cols-[5.25rem_1.2rem_minmax(0,1fr)]"
                     type="button"
@@ -164,9 +147,10 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
                               className={`
                                 relative w-full rounded-2xl border border-stone-300 bg-white/82 px-4 py-3 text-left text-sm shadow-sm
                                 before:absolute before:top-1/2 before:size-3 before:-translate-y-1/2 before:rounded-full before:border-[3px] before:border-teal-700 before:bg-[#fffaf3]
+                                after:absolute after:top-1/2 after:hidden after:h-px after:w-[3.4rem] after:-translate-y-1/2 after:border-t after:border-dotted after:border-stone-400 md:after:block
                                 hover:border-teal-700 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-700
                                 max-md:text-left print:border-stone-500 print:bg-white print:shadow-none print:before:border-black print:before:bg-white
-                                ${getBranchDotPosition(isLeft)}
+                                ${getBranchConnectorPosition(isLeft)}
                                 ${branchSelected ? 'border-teal-700 bg-white ring-2 ring-teal-700/15 print:ring-0' : ''}
                               `}
                               type="button"
