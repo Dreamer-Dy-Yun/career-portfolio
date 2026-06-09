@@ -43,16 +43,15 @@
     font-size: clamp(2.15rem, 12vw, 3.35rem);
   }
 
-  .timeline-button {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
-    align-items: start;
-    padding: 0.55rem 0;
+  .timeline-list {
+    --timeline-period-width: 5.2rem;
+    --timeline-axis-width: 1rem;
+    --timeline-axis-gap: 0.45rem;
   }
 
-  .timeline-list::before,
-  .timeline-axis-dot {
-    display: none;
+  .timeline-button {
+    min-height: 3.35rem;
+    padding: 0.45rem 0;
   }
 
   .timeline-period {
