@@ -59,18 +59,18 @@ const getMainConnectorPosition = (isLeft: boolean) => {
 
 const getBranchListPosition = (isLeft: boolean) => {
   if (isLeft) {
-    return 'ml-[calc(50%+3.4rem)] pr-2 text-left max-md:ml-[6.4rem] max-md:pr-0';
+    return 'w-[calc(50%-3.4rem)] ml-[calc(50%+3.4rem)] pr-2 text-left max-md:ml-[6.4rem] max-md:w-[calc(100%-6.4rem)] max-md:pr-0';
   }
 
-  return 'mr-[calc(50%+3.4rem)] pl-2 text-right max-md:ml-[6.4rem] max-md:mr-0 max-md:pl-0 max-md:text-left';
+  return 'w-[calc(50%-3.4rem)] mr-[calc(50%+3.4rem)] pl-2 text-left max-md:ml-[6.4rem] max-md:mr-0 max-md:w-[calc(100%-6.4rem)] max-md:pl-0';
 };
 
 const getMilestoneBranchPosition = (isLeft: boolean) => {
   if (isLeft) {
-    return 'right-0 text-left max-md:static max-md:ml-[6.4rem] max-md:w-auto';
+    return 'right-0 text-left max-md:static max-md:ml-[6.4rem] max-md:w-[calc(100%-6.4rem)]';
   }
 
-  return 'left-0 text-left max-md:static max-md:ml-[6.4rem] max-md:w-auto';
+  return 'left-0 text-left max-md:static max-md:ml-[6.4rem] max-md:w-[calc(100%-6.4rem)]';
 };
 
 const getPeriodBranchListSpacing = (hasMilestoneBranches: boolean) => {
