@@ -39,7 +39,6 @@ const CareerTimeline = ({ experiences }: CareerTimelineProps) => {
                 <span className="timeline-line">
                   <strong>{item.company}</strong>
                   <span>{item.role}</span>
-                  <small>{item.summary}</small>
                   {item.isConcurrent ? <em>병행</em> : null}
                 </span>
               </button>

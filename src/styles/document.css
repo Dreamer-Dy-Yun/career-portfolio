@@ -88,15 +88,10 @@
   font-size: 1rem;
 }
 
-.timeline-line span,
-.timeline-line small {
+.timeline-line span {
   color: var(--muted);
   font-size: 0.86rem;
   font-weight: 700;
-}
-
-.timeline-line small {
-  flex-basis: min(42rem, 100%);
 }
 
 em {

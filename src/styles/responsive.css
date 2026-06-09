@@ -64,10 +64,6 @@
     color: var(--accent);
   }
 
-  .timeline-line small {
-    flex-basis: 100%;
-  }
-
   .skill-table section {
     grid-template-columns: 1fr;
   }
