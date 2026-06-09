@@ -57,12 +57,36 @@ const getBranchListPosition = (isLeft: boolean) => {
   return 'mr-[calc(50%+3.4rem)] pl-2 text-right max-md:ml-[6.4rem] max-md:mr-0 max-md:pl-0 max-md:text-left';
 };
 
+const getContainmentRailPosition = (isLeft: boolean) => {
+  if (isLeft) {
+    return 'right-1/2 rounded-l-[2rem] border-y-[3px] border-l-[3px]';
+  }
+
+  return 'left-1/2 rounded-r-[2rem] border-y-[3px] border-r-[3px]';
+};
+
+const getContainmentRailDotPosition = (isLeft: boolean) => {
+  if (isLeft) {
+    return 'right-[calc(50%+4rem)]';
+  }
+
+  return 'left-[calc(50%+4rem)]';
+};
+
 const getBranchConnectorPosition = (isLeft: boolean) => {
   if (isLeft) {
     return 'before:-left-[3.9rem] after:-left-[3.4rem] max-md:before:-left-[1.65rem]';
   }
 
   return 'before:-right-[3.9rem] after:-right-[3.4rem] max-md:before:-left-[1.65rem] max-md:before:right-auto';
+};
+
+const getContainedParentSpacing = (isLeft: boolean, hasBranches: boolean) => {
+  if (!hasBranches) {
+    return '';
+  }
+
+  return isLeft ? 'md:pr-24' : 'md:pl-24';
 };
 
 const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
@@ -99,6 +123,23 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
 
               return (
                 <li className="relative py-1" key={item.id}>
+                  {hasBranches ? (
+                    <>
+                      <span
+                        aria-hidden="true"
+                        className={`pointer-events-none absolute bottom-7 top-10 hidden w-20 border-teal-700 md:block print:border-black ${getContainmentRailPosition(
+                          isLeft,
+                        )}`}
+                      />
+                      <span
+                        aria-hidden="true"
+                        className={`pointer-events-none absolute top-1/2 z-10 hidden size-5 -translate-y-1/2 rounded-full border-[3px] border-teal-700 bg-[#fffaf3] md:block print:border-black print:bg-white ${getContainmentRailDotPosition(
+                          isLeft,
+                        )}`}
+                      />
+                    </>
+                  ) : null}
+
                   <button
                     className="group relative grid w-full grid-cols-[minmax(0,1fr)_2rem_minmax(0,1fr)] items-center py-2 text-sm max-md:grid-cols-[5.25rem_1.2rem_minmax(0,1fr)]"
                     type="button"
@@ -110,7 +151,7 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
                         isLeft,
                       )}`}
                     />
-                    <span className={`row-start-1 grid gap-1 ${getMainContentPosition(isLeft)}`}>
+                    <span className={`row-start-1 grid gap-1 ${getMainContentPosition(isLeft)} ${getContainedParentSpacing(isLeft, hasBranches)}`}>
                       <span className="text-xs font-black text-stone-500 print:text-black">{item.period}</span>
                       <span className="text-[0.95rem] font-black leading-tight text-stone-950">
                         <strong>{item.company}</strong> · {item.role}
