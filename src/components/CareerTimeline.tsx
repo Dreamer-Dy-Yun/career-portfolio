@@ -43,14 +43,14 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
 
       <div className="timeline-layout">
         <ol className="timeline-list" aria-label="Career timeline">
-          {items.map((item) => {
+          {items.map((item, index) => {
             const childWorkCases = workCasesByCompany.get(item.company) ?? [];
             const canExpand = childWorkCases.length > 0;
             const isExpanded = canExpand && expandedItemId === item.id;
             const childPanelId = `timeline-projects-${item.id}`;
 
             return (
-              <li className="timeline-row" key={item.id}>
+              <li className={`timeline-row ${index % 2 === 0 ? 'is-left' : 'is-right'}`} key={item.id}>
                 <button
                   type="button"
                   className="timeline-button"
@@ -117,7 +117,6 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
                           <span className="timeline-branch-period">{branchItem.period}</span>
                           <strong>{branchItem.company}</strong>
                           <span>{branchItem.role}</span>
-                          <em>포함</em>
                         </button>
                       </li>
                     ))}
