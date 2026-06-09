@@ -18,6 +18,12 @@ const hasWorkCaseShape = (workCase: Partial<WorkCaseContent>) => {
   return Boolean(workCase.title && workCase.period && workCase.role && workCase.summary);
 };
 
+const hasBrokenText = (value: unknown) => {
+  const text = JSON.stringify(value);
+
+  return /\uFFFD|\?{3,}/.test(text);
+};
+
 const isPortfolioContent = (value: unknown): value is PortfolioContent => {
   if (!value || typeof value !== 'object') {
     return false;
@@ -26,7 +32,8 @@ const isPortfolioContent = (value: unknown): value is PortfolioContent => {
   const candidate = value as Partial<PortfolioContent>;
 
   return Boolean(
-    candidate.siteTitle &&
+    !hasBrokenText(candidate) &&
+      candidate.siteTitle &&
       candidate.hero &&
       Array.isArray(candidate.hero.keywords) &&
       candidate.profileSummary &&

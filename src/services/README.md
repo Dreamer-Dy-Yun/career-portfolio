@@ -16,5 +16,5 @@
 ## Boundary
 
 - 이 계층은 데이터를 새로 발명하지 않는다.
-- 외부 데이터 구조가 맞지 않으면 기본 경력 데이터로 돌아간다.
+- 외부 데이터 구조가 맞지 않거나 `???`, replacement character 같은 깨진 문자열이 감지되면 기본 경력 데이터로 돌아간다.
 - Google Sheets 계약은 `docs/google-sheets-content-contract.md`를 따른다.
