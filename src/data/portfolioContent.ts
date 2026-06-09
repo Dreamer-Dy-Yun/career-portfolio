@@ -11,11 +11,11 @@ export const fallbackContent: PortfolioContent = {
     keywords: ['Workflow Modeling', 'Data Boundary', 'Validation Flow', 'Backend / DB', 'Operations'],
   },
   profileSummary: {
-    headline: '이력서, 자기소개서, 경력기술서를 한 화면에서 빠르게 읽히게 구성한 경력 프로필입니다.',
+    headline: '불명확한 업무와 흩어진 데이터를 실행 가능한 시스템 흐름으로 바꾸는 개발자',
     lines: [
-      '경력은 IT 운영, QA, 자동화, API/DB 기반 구현 흐름으로 이어져 있습니다.',
-      '핵심은 특정 도구보다 불명확한 업무를 구조화하고 검증 가능한 실행 흐름으로 바꾸는 방식입니다.',
-      'Google Sheets 데이터만 바꾸면 연혁, 대표 업무, 기술 맥락이 화면에 반영됩니다.',
+      'QA, IT 운영, 자동화 프로젝트를 거쳐 API, DB, 데이터 처리 중심 구현으로 확장.',
+      '업무를 입력, 상태, 검증, 책임, 출력 단위로 나누고 지속 가능한 데이터 흐름을 우선 검토.',
+      '최근 작업의 중심은 PostgreSQL, FastAPI, OCR/LLM 결과 처리, 정산 데이터 흐름 설계와 구현.',
     ],
     strengths: ['업무 구조화', '데이터 흐름 정리', '검증 단계 분리', '운영 관점 반영'],
   },
