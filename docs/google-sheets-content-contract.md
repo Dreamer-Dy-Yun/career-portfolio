@@ -51,16 +51,18 @@
 
 ## Experiences
 
-| company | period | startDate | endDate | role | summary | details | tags |
-|---|---|---|---|---|---|---|---|
-| Company | 2025.01 - 2025.12 | 2025-01 | 2025-12 | Role | 한 줄 요약 | Detail A\|Detail B | Tag A\|Tag B |
+| company | period | startDate | endDate | entryType | role | summary | details | tags |
+|---|---|---|---|---|---|---|---|---|
+| Company | 2025.01 - 2025.12 | 2025-01 | 2025-12 | period | Role | 한 줄 요약 | Detail A\|Detail B | Tag A\|Tag B |
 
 ### Experience rules
 
 - `period`는 화면 표시용 문자열이다.
 - `startDate`, `endDate`는 병행 여부 계산용 값이다.
+- `entryType`은 비워두거나 `period`를 쓰면 기간형 항목, `milestone`을 쓰면 전과/입학/졸업 같은 특정 시점 이벤트다.
 - 날짜 형식은 `YYYY-MM`, `YYYY-MM-DD`, `YYYY.MM`, `YYYY.MM.DD`를 사용한다.
 - 현재 재직 중이면 `endDate`에 `Present`를 넣는다.
+- `milestone`은 보통 같은 `startDate`, `endDate`를 사용한다.
 - 여러 경력의 날짜 구간이 겹치면 화면에서 자동으로 `병행` 배지를 표시한다.
 - 사용자가 `병행` 여부를 직접 입력하지 않는다.
 - 회사 경력뿐 아니라 학력, 군 복무, 연수/교육도 연혁에 포함할 수 있다.

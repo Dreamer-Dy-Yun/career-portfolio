@@ -120,6 +120,7 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
               const isSelected = selectedId === item.id;
               const hasBranches = item.branchItems.length > 0;
               const hasWorkCases = itemWorkCases.length > 0;
+              const isMilestone = item.entryType === 'milestone';
 
               return (
                 <li className="relative py-1" key={item.id}>
@@ -157,6 +158,7 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
                         <strong>{item.company}</strong> · {item.role}
                       </span>
                       <span className="flex flex-wrap gap-1 max-md:justify-start">
+                        {isMilestone ? <span className={darkChip}>시점</span> : null}
                         {item.isConcurrent ? <span className={darkChip}>병행</span> : null}
                         {hasBranches ? <span className={darkChip}>포함 기간</span> : null}
                         {hasWorkCases ? <span className={chip}>업무 {itemWorkCases.length}</span> : null}
@@ -201,6 +203,11 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
                               <span className="mt-1 block font-black text-stone-950">
                                 {branchItem.company} · {branchItem.role}
                               </span>
+                              {branchItem.entryType === 'milestone' ? (
+                                <span className="mt-2 inline-flex w-fit rounded-full bg-teal-950 px-2 py-0.5 text-[0.68rem] font-black text-white print:border print:border-stone-500 print:bg-white print:text-black">
+                                  시점
+                                </span>
+                              ) : null}
                             </button>
                           </li>
                         );

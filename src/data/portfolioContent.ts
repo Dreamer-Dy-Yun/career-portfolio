@@ -106,6 +106,17 @@ export const fallbackContent: PortfolioContent = {
       tags: ['Education', 'Electronics'],
     },
     {
+      company: '동아대학교',
+      period: '2008.03',
+      startDate: '2008-03-03',
+      endDate: '2008-03-03',
+      entryType: 'milestone',
+      role: '서양화과 → 전자공학과 / 전과',
+      summary: '전공 변경 시점.',
+      details: ['입학 전공과 졸업 전공이 달라지는 전환 지점.'],
+      tags: ['Education', 'Major Transfer'],
+    },
+    {
       company: '龍谷大学',
       period: '2009.04 - 2010.02',
       startDate: '2009-04-01',

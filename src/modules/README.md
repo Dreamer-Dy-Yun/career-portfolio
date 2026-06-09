@@ -10,5 +10,6 @@
 
 - 이 모듈은 새 경력 내용을 만들어내지 않는다.
 - `startDate`, `endDate`가 겹치는 경력을 자동으로 `isConcurrent` 상태로 계산한다.
+- `entryType: "milestone"` 항목은 기간형 경력이 아니라 특정 시점 이벤트로 전달한다.
 - 날짜가 없거나 파싱할 수 없으면 병행 계산에서 제외한다.
 - UI 이벤트, DOM 상태, CSS class는 컴포넌트 책임이다.

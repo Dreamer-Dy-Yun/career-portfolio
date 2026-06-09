@@ -12,10 +12,13 @@ export type ProfileSummaryContent = {
   strengths: string[];
 };
 
+export type ExperienceEntryType = 'period' | 'milestone';
+
 export type ExperienceContent = {
   company: string;
   period: string;
   role: string;
+  entryType?: ExperienceEntryType;
   startDate?: string;
   endDate?: string;
   summary?: string;

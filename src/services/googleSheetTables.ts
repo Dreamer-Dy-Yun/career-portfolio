@@ -123,6 +123,7 @@ export const loadPortfolioContentFromGoogleSheet = async (sheetId: string): Prom
       company: experience.company,
       period: experience.period,
       role: experience.role,
+      entryType: experience.entryType === 'milestone' ? 'milestone' : undefined,
       startDate: experience.startDate,
       endDate: experience.endDate,
       summary: experience.summary,

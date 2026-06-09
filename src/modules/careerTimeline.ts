@@ -1,10 +1,11 @@
-import type { ExperienceContent } from '../data/types';
+import type { ExperienceContent, ExperienceEntryType } from '../data/types';
 
 export type CareerTimelineBranchItem = {
   id: string;
   company: string;
   period: string;
   role: string;
+  entryType: ExperienceEntryType;
   summary: string;
   details: string[];
   tags: string[];
@@ -89,6 +90,7 @@ const createBranchItem = (experience: ExperienceContent, index: number): CareerT
   company: experience.company,
   period: experience.period,
   role: experience.role,
+  entryType: experience.entryType ?? 'period',
   summary: experience.summary?.trim() || buildFallbackSummary(experience),
   details: experience.details ?? [],
   tags: experience.tags ?? [],
