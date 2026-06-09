@@ -73,24 +73,32 @@ const getMilestoneBranchPosition = (isLeft: boolean) => {
   return 'left-0 text-left max-md:static max-md:ml-[6.4rem] max-md:w-[calc(100%-6.4rem)]';
 };
 
+const getContainedParentPosition = (isLeft: boolean) => {
+  if (isLeft) {
+    return 'right-[calc(50%+3.4rem)] max-md:static max-md:ml-[6.4rem] max-md:w-[calc(100%-6.4rem)] max-md:translate-y-0';
+  }
+
+  return 'left-[calc(50%+3.4rem)] max-md:static max-md:ml-[6.4rem] max-md:w-[calc(100%-6.4rem)] max-md:translate-y-0';
+};
+
 const getPeriodBranchListSpacing = (hasMilestoneBranches: boolean) => {
   return hasMilestoneBranches ? 'mt-24' : 'mt-1';
 };
 
 const getContainmentRailPosition = (isLeft: boolean) => {
   if (isLeft) {
-    return 'right-1/2 rounded-l-[2rem] border-y-[3px] border-l-[3px]';
+    return 'left-1/2 rounded-r-[2rem] border-y-[3px] border-r-[3px]';
   }
 
-  return 'left-1/2 rounded-r-[2rem] border-y-[3px] border-r-[3px]';
+  return 'right-1/2 rounded-l-[2rem] border-y-[3px] border-l-[3px]';
 };
 
 const getContainmentRailDotPosition = (isLeft: boolean) => {
   if (isLeft) {
-    return 'right-[calc(50%+5rem)]';
+    return 'left-[calc(50%+5rem)]';
   }
 
-  return 'left-[calc(50%+5rem)]';
+  return 'right-[calc(50%+5rem)]';
 };
 
 const getBranchConnectorPosition = (isLeft: boolean) => {
@@ -99,14 +107,6 @@ const getBranchConnectorPosition = (isLeft: boolean) => {
   }
 
   return 'before:-right-[3.9rem] after:-right-[3.4rem] max-md:before:-left-[1.65rem] max-md:before:right-auto';
-};
-
-const getContainedParentSpacing = (isLeft: boolean, hasBranches: boolean) => {
-  if (!hasBranches) {
-    return '';
-  }
-
-  return isLeft ? 'md:pr-32' : 'md:pl-32';
 };
 
 const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
@@ -163,39 +163,76 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
                     </>
                   ) : null}
 
-                  <button
-                    className="group relative grid w-full grid-cols-[minmax(0,1fr)_2rem_minmax(0,1fr)] items-center py-2 text-sm max-md:grid-cols-[5.25rem_1.2rem_minmax(0,1fr)]"
-                    type="button"
-                    onClick={() => setSelectedId(item.id)}
-                  >
-                    <span
+                  {hasBranches ? (
+                    <div
+                      className="relative grid w-full grid-cols-[minmax(0,1fr)_2rem_minmax(0,1fr)] items-center py-2 text-sm max-md:grid-cols-[5.25rem_1.2rem_minmax(0,1fr)]"
                       aria-hidden="true"
-                      className={`absolute top-1/2 hidden w-14 border-t border-dotted border-stone-400 md:block ${
-                        hasBranches ? 'md:hidden' : ''
-                      } ${getMainConnectorPosition(
-                        isLeft,
-                      )}`}
-                    />
-                    <span className={`row-start-1 grid gap-1 ${getMainContentPosition(isLeft)} ${getContainedParentSpacing(isLeft, hasBranches)}`}>
-                      <span className="text-xs font-black text-stone-500 print:text-black">{item.period}</span>
-                      <span className="text-[0.95rem] font-black leading-tight text-stone-950">
-                        <strong>{item.company}</strong> · {item.role}
+                    >
+                      <span className="col-start-2 row-start-1 flex justify-center">
+                        <span
+                          className={`relative z-10 size-4 rounded-full border-[3px] border-teal-700 bg-[#fffaf3] print:border-black print:bg-white ${
+                            isSelected ? 'ring-4 ring-teal-700/20 print:ring-0' : ''
+                          }`}
+                        />
                       </span>
-                      <span className="flex flex-wrap gap-1 max-md:justify-start">
+                    </div>
+                  ) : (
+                    <button
+                      className="group relative grid w-full grid-cols-[minmax(0,1fr)_2rem_minmax(0,1fr)] items-center py-2 text-sm max-md:grid-cols-[5.25rem_1.2rem_minmax(0,1fr)]"
+                      type="button"
+                      onClick={() => setSelectedId(item.id)}
+                    >
+                      <span
+                        aria-hidden="true"
+                        className={`absolute top-1/2 hidden w-14 border-t border-dotted border-stone-400 md:block ${getMainConnectorPosition(
+                          isLeft,
+                        )}`}
+                      />
+                      <span className={`row-start-1 grid gap-1 ${getMainContentPosition(isLeft)}`}>
+                        <span className="text-xs font-black text-stone-500 print:text-black">{item.period}</span>
+                        <span className="text-[0.95rem] font-black leading-tight text-stone-950">
+                          <strong>{item.company}</strong> · {item.role}
+                        </span>
+                        <span className="flex flex-wrap gap-1 max-md:justify-start">
+                          {isMilestone ? <span className={darkChip}>시점</span> : null}
+                          {item.isConcurrent ? <span className={darkChip}>병행</span> : null}
+                          {hasWorkCases ? <span className={chip}>업무 {itemWorkCases.length}</span> : null}
+                        </span>
+                      </span>
+                      <span className="col-start-2 row-start-1 flex justify-center">
+                        <span
+                          aria-hidden="true"
+                          className={`relative z-10 size-4 rounded-full border-[3px] border-teal-700 bg-[#fffaf3] print:border-black print:bg-white ${
+                            isSelected ? 'ring-4 ring-teal-700/20 print:ring-0' : ''
+                          }`}
+                        />
+                      </span>
+                    </button>
+                  )}
+
+                  {hasBranches ? (
+                    <button
+                      className={`
+                        absolute top-1/2 z-20 w-[calc(50%-3.4rem)] -translate-y-1/2 rounded-2xl border border-stone-300 bg-white/90 px-4 py-3 text-left text-sm shadow-sm
+                        hover:border-teal-700 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-700
+                        max-md:relative max-md:top-auto max-md:mt-2 print:border-stone-500 print:bg-white print:shadow-none
+                        ${getContainedParentPosition(isLeft)}
+                        ${isSelected ? 'border-teal-700 bg-white ring-2 ring-teal-700/15 print:ring-0' : ''}
+                      `}
+                      type="button"
+                      onClick={() => setSelectedId(item.id)}
+                    >
+                      <span className="block text-xs font-black text-stone-500 print:text-black">{item.period}</span>
+                      <span className="mt-1 block font-black leading-tight text-stone-950">
+                        {item.company} · {item.role}
+                      </span>
+                      <span className="mt-2 flex flex-wrap gap-1">
                         {isMilestone ? <span className={darkChip}>시점</span> : null}
                         {item.isConcurrent ? <span className={darkChip}>병행</span> : null}
                         {hasWorkCases ? <span className={chip}>업무 {itemWorkCases.length}</span> : null}
                       </span>
-                    </span>
-                    <span className="col-start-2 row-start-1 flex justify-center">
-                      <span
-                        aria-hidden="true"
-                        className={`relative z-10 size-4 rounded-full border-[3px] border-teal-700 bg-[#fffaf3] print:border-black print:bg-white ${
-                          isSelected ? 'ring-4 ring-teal-700/20 print:ring-0' : ''
-                        }`}
-                      />
-                    </span>
-                  </button>
+                    </button>
+                  ) : null}
 
                   {milestoneBranchItems.map((milestoneItem) => {
                     const milestoneSelected = selectedId === milestoneItem.id;
