@@ -154,61 +154,51 @@ em {
 
 .timeline-branches {
   display: grid;
-  gap: 0.15rem;
-  margin: -0.1rem 0 0.55rem calc(var(--timeline-axis-center) + var(--timeline-axis-gap));
-  padding: 0;
+  gap: 0.25rem;
+  margin: -0.15rem 0 0.65rem calc(var(--timeline-period-width) + var(--timeline-axis-width) + (var(--timeline-axis-gap) * 2));
+  padding: 0 0 0 0.75rem;
+  border-left: 2px solid var(--line);
   list-style: none;
 }
 
 .timeline-branch-button {
   width: 100%;
-  display: grid;
-  grid-template-columns: minmax(6.4rem, 0.22fr) 1.15rem minmax(0, 1fr);
-  gap: 0.45rem;
-  align-items: center;
-  min-height: 2.45rem;
-  padding: 0.25rem 0;
-  border: 0;
-  background: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  align-items: baseline;
+  min-height: 2rem;
+  padding: 0.34rem 0.55rem;
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.5);
   color: inherit;
   text-align: left;
   cursor: pointer;
 }
 
-.timeline-branch-connector {
-  position: relative;
-  display: block;
-  min-height: 1.4rem;
+.timeline-branch-button::before {
+  color: var(--accent);
+  font-weight: 900;
+  content: '↳';
 }
 
-.timeline-branch-connector::before,
-.timeline-branch-connector::after {
-  position: absolute;
-  content: '';
+.timeline-branch-button:hover,
+.timeline-branch-button[aria-pressed='true'] {
+  border-color: var(--line);
+  background: #fff;
 }
 
-.timeline-branch-connector::before {
-  left: -1.05rem;
-  top: 50%;
-  width: 1.4rem;
-  height: 2px;
-  background: var(--line-strong);
+.timeline-branch-period,
+.timeline-branch-button > span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
 }
 
-.timeline-branch-connector::after {
-  left: 0.18rem;
-  top: calc(50% - 0.28rem);
-  width: 0.56rem;
-  height: 0.56rem;
-  border: 2px solid var(--line-strong);
-  border-radius: 999px;
-  background: var(--paper);
-}
-
-.timeline-branch-button[aria-pressed='true'] .timeline-branch-connector::after,
-.timeline-branch-button:hover .timeline-branch-connector::after {
-  background: var(--accent);
-  border-color: var(--accent);
+.timeline-branch-button strong {
+  color: var(--ink);
+  font-size: 0.9rem;
 }
 
 .timeline-projects {

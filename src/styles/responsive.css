@@ -55,12 +55,7 @@
   }
 
   .timeline-branches {
-    margin-left: calc(var(--timeline-axis-center) + 0.35rem);
-  }
-
-  .timeline-branch-button {
-    grid-template-columns: minmax(4.4rem, 0.28fr) 1rem minmax(0, 1fr);
-    gap: 0.35rem;
+    margin-left: calc(var(--timeline-period-width) + var(--timeline-axis-width) + (var(--timeline-axis-gap) * 2));
   }
 
   .timeline-period {

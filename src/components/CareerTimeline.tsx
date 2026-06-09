@@ -114,13 +114,10 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
                           onFocus={() => setActiveItemId(branchItem.id)}
                           onMouseEnter={() => setActiveItemId(branchItem.id)}
                         >
-                          <span className="timeline-period">{branchItem.period}</span>
-                          <span className="timeline-branch-connector" aria-hidden="true" />
-                          <span className="timeline-line">
-                            <strong>{branchItem.company}</strong>
-                            <span>{branchItem.role}</span>
-                            <em>포함</em>
-                          </span>
+                          <span className="timeline-branch-period">{branchItem.period}</span>
+                          <strong>{branchItem.company}</strong>
+                          <span>{branchItem.role}</span>
+                          <em>포함</em>
                         </button>
                       </li>
                     ))}
