@@ -24,11 +24,10 @@ const groupWorkCasesByCompany = (workCases: WorkCaseContent[]): Map<string, Work
 
 const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
   const items = useMemo(() => createCareerTimelineItems(experiences), [experiences]);
-  const selectableItems = useMemo(() => items.flatMap((item) => [item, ...item.branchItems]), [items]);
   const workCasesByCompany = useMemo(() => groupWorkCasesByCompany(workCases), [workCases]);
-  const [activeItemId, setActiveItemId] = useState(selectableItems[0]?.id ?? '');
+  const [activeItemId, setActiveItemId] = useState(items[0]?.id ?? '');
   const [expandedItemId, setExpandedItemId] = useState('');
-  const activeItem = selectableItems.find((item) => item.id === activeItemId) ?? selectableItems[0];
+  const activeItem = items.find((item) => item.id === activeItemId) ?? items[0];
 
   if (items.length === 0 || !activeItem) {
     return null;
@@ -101,31 +100,6 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
                     </ul>
                   </div>
                 ) : null}
-
-                {item.branchItems.length > 0 ? (
-                  <ol className="timeline-branches" aria-label={`${item.company} branch timeline`}>
-                    {item.branchItems.map((branchItem) => (
-                      <li className="timeline-branch-row" key={branchItem.id}>
-                        <button
-                          type="button"
-                          className="timeline-branch-button"
-                          aria-pressed={activeItem.id === branchItem.id}
-                          onClick={() => setActiveItemId(branchItem.id)}
-                          onFocus={() => setActiveItemId(branchItem.id)}
-                          onMouseEnter={() => setActiveItemId(branchItem.id)}
-                        >
-                          <span className="timeline-period">{branchItem.period}</span>
-                          <span className="timeline-branch-connector" aria-hidden="true" />
-                          <span className="timeline-line">
-                            <strong>{branchItem.company}</strong>
-                            <span>{branchItem.role}</span>
-                            <em>포함</em>
-                          </span>
-                        </button>
-                      </li>
-                    ))}
-                  </ol>
-                ) : null}
               </li>
             );
           })}
@@ -135,7 +109,7 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
           <span>{activeItem.period}</span>
           <h3>
             {activeItem.company} · {activeItem.role}
-            {'isConcurrent' in activeItem && activeItem.isConcurrent ? <small>병행 기간 포함</small> : null}
+            {activeItem.isConcurrent ? <small>병행 기간 포함</small> : null}
           </h3>
           <p>{activeItem.summary}</p>
           {activeItem.details.length > 0 ? (

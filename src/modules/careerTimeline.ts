@@ -1,14 +1,18 @@
 import type { ExperienceContent } from '../data/types';
 
-export type CareerTimelineItem = {
+export type CareerTimelineBranchItem = {
   id: string;
   company: string;
   period: string;
   role: string;
-  isConcurrent: boolean;
   summary: string;
   details: string[];
   tags: string[];
+};
+
+export type CareerTimelineItem = CareerTimelineBranchItem & {
+  isConcurrent: boolean;
+  branchItems: CareerTimelineBranchItem[];
 };
 
 const buildTimelineId = (experience: ExperienceContent, index: number) => {
@@ -72,15 +76,66 @@ const hasOverlap = (current: ExperienceContent, others: ExperienceContent[]) => 
   });
 };
 
+const getRangeDuration = (range: { start: number; end: number }) => {
+  return range.end - range.start;
+};
+
+const isContainedRange = (child: { start: number; end: number }, parent: { start: number; end: number }) => {
+  return child.start >= parent.start && child.end <= parent.end && getRangeDuration(child) < getRangeDuration(parent);
+};
+
+const createBranchItem = (experience: ExperienceContent, index: number): CareerTimelineBranchItem => ({
+  id: buildTimelineId(experience, index),
+  company: experience.company,
+  period: experience.period,
+  role: experience.role,
+  summary: experience.summary?.trim() || buildFallbackSummary(experience),
+  details: experience.details ?? [],
+  tags: experience.tags ?? [],
+});
+
 export const createCareerTimelineItems = (experiences: ExperienceContent[]): CareerTimelineItem[] => {
-  return experiences.map((experience, index) => ({
-    id: buildTimelineId(experience, index),
-    company: experience.company,
-    period: experience.period,
-    role: experience.role,
-    isConcurrent: hasOverlap(experience, experiences),
-    summary: experience.summary?.trim() || buildFallbackSummary(experience),
-    details: experience.details ?? [],
-    tags: experience.tags ?? [],
-  }));
+  const rangedExperiences = experiences
+    .map((experience, index) => ({
+      experience,
+      index,
+      range: getDateRange(experience),
+    }))
+    .filter((entry): entry is { experience: ExperienceContent; index: number; range: { start: number; end: number } } =>
+      Boolean(entry.range),
+    );
+
+  const parentIndexByChildIndex = new Map<number, number>();
+
+  rangedExperiences.forEach((child) => {
+    const parent = rangedExperiences
+      .filter((candidate) => candidate.index !== child.index && isContainedRange(child.range, candidate.range))
+      .sort((left, right) => getRangeDuration(left.range) - getRangeDuration(right.range))[0];
+
+    if (parent) {
+      parentIndexByChildIndex.set(child.index, parent.index);
+    }
+  });
+
+  const mainExperiences = experiences.filter((_, index) => !parentIndexByChildIndex.has(index));
+
+  return experiences
+    .map((experience, index) => {
+      if (parentIndexByChildIndex.has(index)) {
+        return null;
+      }
+
+      const branchItems = experiences
+        .map((branchExperience, branchIndex) =>
+          parentIndexByChildIndex.get(branchIndex) === index ? createBranchItem(branchExperience, branchIndex) : null,
+        )
+        .filter((item): item is CareerTimelineBranchItem => Boolean(item));
+
+      return {
+        ...createBranchItem(experience, index),
+        isConcurrent: hasOverlap(experience, mainExperiences),
+        branchItems,
+      };
+    })
+    .filter((item): item is CareerTimelineItem => Boolean(item));
 };
