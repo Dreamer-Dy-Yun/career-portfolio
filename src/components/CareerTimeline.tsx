@@ -33,6 +33,14 @@ const getSelectableTimelineItems = (items: CareerTimelineItem[]) => {
   return items.flatMap<SelectableTimelineItem>((item) => [item, ...item.branchItems]);
 };
 
+const getPeriodBranchItems = (item: CareerTimelineItem) => {
+  return item.branchItems.filter((branchItem) => branchItem.entryType !== 'milestone');
+};
+
+const getMilestoneBranchItems = (item: CareerTimelineItem) => {
+  return item.branchItems.filter((branchItem) => branchItem.entryType === 'milestone');
+};
+
 const getMainContentPosition = (isLeft: boolean) => {
   if (isLeft) {
     return 'col-start-1 text-right pr-3 md:pr-5 max-md:col-start-3 max-md:text-left max-md:pr-0';
@@ -57,6 +65,18 @@ const getBranchListPosition = (isLeft: boolean) => {
   return 'mr-[calc(50%+3.4rem)] pl-2 text-right max-md:ml-[6.4rem] max-md:mr-0 max-md:pl-0 max-md:text-left';
 };
 
+const getMilestoneBranchPosition = (isLeft: boolean) => {
+  if (isLeft) {
+    return 'right-0 text-left max-md:static max-md:ml-[6.4rem] max-md:w-auto';
+  }
+
+  return 'left-0 text-left max-md:static max-md:ml-[6.4rem] max-md:w-auto';
+};
+
+const getPeriodBranchListSpacing = (hasMilestoneBranches: boolean) => {
+  return hasMilestoneBranches ? 'mt-24' : 'mt-1';
+};
+
 const getContainmentRailPosition = (isLeft: boolean) => {
   if (isLeft) {
     return 'right-1/2 rounded-l-[2rem] border-y-[3px] border-l-[3px]';
@@ -67,10 +87,10 @@ const getContainmentRailPosition = (isLeft: boolean) => {
 
 const getContainmentRailDotPosition = (isLeft: boolean) => {
   if (isLeft) {
-    return 'right-[calc(50%+4rem)]';
+    return 'right-[calc(50%+5rem)]';
   }
 
-  return 'left-[calc(50%+4rem)]';
+  return 'left-[calc(50%+5rem)]';
 };
 
 const getBranchConnectorPosition = (isLeft: boolean) => {
@@ -86,7 +106,7 @@ const getContainedParentSpacing = (isLeft: boolean, hasBranches: boolean) => {
     return '';
   }
 
-  return isLeft ? 'md:pr-24' : 'md:pl-24';
+  return isLeft ? 'md:pr-32' : 'md:pl-32';
 };
 
 const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
@@ -118,7 +138,9 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
               const isLeft = index % 2 === 0;
               const itemWorkCases = workCasesByCompany[item.company] ?? [];
               const isSelected = selectedId === item.id;
-              const hasBranches = item.branchItems.length > 0;
+              const periodBranchItems = getPeriodBranchItems(item);
+              const milestoneBranchItems = getMilestoneBranchItems(item);
+              const hasBranches = periodBranchItems.length > 0;
               const hasWorkCases = itemWorkCases.length > 0;
               const isMilestone = item.entryType === 'milestone';
 
@@ -128,7 +150,7 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
                     <>
                       <span
                         aria-hidden="true"
-                        className={`pointer-events-none absolute bottom-7 top-10 hidden w-20 border-teal-700 md:block print:border-black ${getContainmentRailPosition(
+                        className={`pointer-events-none absolute bottom-7 top-10 hidden w-24 border-teal-700 md:block print:border-black ${getContainmentRailPosition(
                           isLeft,
                         )}`}
                       />
@@ -148,7 +170,9 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={`absolute top-1/2 hidden w-14 border-t border-dotted border-stone-400 md:block ${getMainConnectorPosition(
+                      className={`absolute top-1/2 hidden w-14 border-t border-dotted border-stone-400 md:block ${
+                        hasBranches ? 'md:hidden' : ''
+                      } ${getMainConnectorPosition(
                         isLeft,
                       )}`}
                     />
@@ -160,7 +184,6 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
                       <span className="flex flex-wrap gap-1 max-md:justify-start">
                         {isMilestone ? <span className={darkChip}>시점</span> : null}
                         {item.isConcurrent ? <span className={darkChip}>병행</span> : null}
-                        {hasBranches ? <span className={darkChip}>포함 기간</span> : null}
                         {hasWorkCases ? <span className={chip}>업무 {itemWorkCases.length}</span> : null}
                       </span>
                     </span>
@@ -174,14 +197,46 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
                     </span>
                   </button>
 
+                  {milestoneBranchItems.map((milestoneItem) => {
+                    const milestoneSelected = selectedId === milestoneItem.id;
+
+                    return (
+                      <button
+                        className={`
+                          absolute -top-4 z-20 w-[calc(50%-3.4rem)] rounded-2xl border border-stone-300 bg-white/92 px-4 py-3 text-sm shadow-sm
+                          before:absolute before:top-1/2 before:size-3 before:-translate-y-1/2 before:rounded-full before:border-[3px] before:border-teal-700 before:bg-[#fffaf3]
+                          after:absolute after:top-1/2 after:hidden after:h-px after:w-[3.4rem] after:-translate-y-1/2 after:border-t after:border-dotted after:border-stone-400 md:after:block
+                          hover:border-teal-700 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-700
+                          max-md:relative max-md:top-auto max-md:mt-2 max-md:text-left print:border-stone-500 print:bg-white print:shadow-none print:before:border-black print:before:bg-white
+                          ${getMilestoneBranchPosition(isLeft)}
+                          ${getBranchConnectorPosition(isLeft)}
+                          ${milestoneSelected ? 'border-teal-700 bg-white ring-2 ring-teal-700/15 print:ring-0' : ''}
+                        `}
+                        type="button"
+                        key={milestoneItem.id}
+                        onClick={() => setSelectedId(milestoneItem.id)}
+                      >
+                        <span className="block text-xs font-black text-stone-500 print:text-black">{milestoneItem.period}</span>
+                        <span className="mt-1 block font-black leading-tight text-stone-950">
+                          {milestoneItem.company} · {milestoneItem.role}
+                        </span>
+                        <span className="mt-2 inline-flex w-fit rounded-full bg-teal-950 px-2 py-0.5 text-[0.68rem] font-black text-white print:border print:border-stone-500 print:bg-white print:text-black">
+                          시점
+                        </span>
+                      </button>
+                    );
+                  })}
+
                   {hasBranches ? (
                     <ol
-                      className={`relative z-10 mt-1 grid gap-2 max-md:border-l-2 max-md:border-teal-700 max-md:pl-4 print:border-black ${getBranchListPosition(
+                      className={`relative z-10 grid gap-2 max-md:border-l-2 max-md:border-teal-700 max-md:pl-4 print:border-black ${getPeriodBranchListSpacing(
+                        milestoneBranchItems.length > 0,
+                      )} ${getBranchListPosition(
                         isLeft,
                       )}`}
                       aria-label={`${item.company} 포함 기간`}
                     >
-                      {item.branchItems.map((branchItem) => {
+                      {periodBranchItems.map((branchItem) => {
                         const branchSelected = selectedId === branchItem.id;
 
                         return (
@@ -203,11 +258,6 @@ const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
                               <span className="mt-1 block font-black text-stone-950">
                                 {branchItem.company} · {branchItem.role}
                               </span>
-                              {branchItem.entryType === 'milestone' ? (
-                                <span className="mt-2 inline-flex w-fit rounded-full bg-teal-950 px-2 py-0.5 text-[0.68rem] font-black text-white print:border print:border-stone-500 print:bg-white print:text-black">
-                                  시점
-                                </span>
-                              ) : null}
                             </button>
                           </li>
                         );
