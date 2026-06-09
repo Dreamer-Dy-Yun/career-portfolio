@@ -54,8 +54,7 @@
 }
 
 .summary-block ul,
-.work-row ul,
-.at-a-glance ol {
+.work-row ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -74,42 +73,11 @@
   content: '-';
 }
 
-.at-a-glance > div {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.at-a-glance span,
 .timeline-detail > span,
 .work-row header span {
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 900;
-}
-
-.at-a-glance > div strong {
-  color: var(--ink);
-  font-size: 1.25rem;
-}
-
-.at-a-glance ol {
-  display: grid;
-  gap: 0.7rem;
-}
-
-.at-a-glance li {
-  display: grid;
-  gap: 0.2rem;
-  border-top: 1px solid var(--line);
-  padding-top: 0.7rem;
-}
-
-.at-a-glance li strong {
-  color: var(--ink);
-  font-size: 0.92rem;
-  line-height: 1.45;
 }
 
 .dashboard-strip h3,

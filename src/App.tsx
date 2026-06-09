@@ -42,7 +42,6 @@ const App = () => {
         <ResumeDashboard
           hero={content.hero}
           profileSummary={content.profileSummary}
-          experiences={content.experiences}
           workCases={content.workCases}
           skillGroups={content.skillGroups}
         />

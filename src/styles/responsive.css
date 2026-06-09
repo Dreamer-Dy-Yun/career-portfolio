@@ -3,10 +3,6 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .at-a-glance {
-    grid-column: 1 / -1;
-  }
-
   .dashboard-strip,
   .document-section,
   .timeline-layout {
@@ -38,7 +34,6 @@
 
   .identity-block,
   .summary-block,
-  .at-a-glance,
   .dashboard-strip,
   .document-section {
     padding: 1rem;
@@ -99,7 +94,6 @@
 
   .identity-block,
   .summary-block,
-  .at-a-glance,
   .dashboard-strip {
     padding: 0.8rem 0;
   }

@@ -1,17 +1,13 @@
-import type { ExperienceContent, HeroContent, ProfileSummaryContent, SkillGroupContent, WorkCaseContent } from '../data/types';
-import { createCareerTimelineItems } from '../modules/careerTimeline';
+import type { HeroContent, ProfileSummaryContent, SkillGroupContent, WorkCaseContent } from '../data/types';
 
 type ResumeDashboardProps = {
   hero: HeroContent;
   profileSummary: ProfileSummaryContent;
-  experiences: ExperienceContent[];
   workCases: WorkCaseContent[];
   skillGroups: SkillGroupContent[];
 };
 
-const ResumeDashboard = ({ hero, profileSummary, experiences, workCases, skillGroups }: ResumeDashboardProps) => {
-  const timelineItems = createCareerTimelineItems(experiences);
-  const latestExperiences = timelineItems.slice(0, 4);
+const ResumeDashboard = ({ hero, profileSummary, workCases, skillGroups }: ResumeDashboardProps) => {
   const primarySkills = skillGroups.flatMap((group) => group.items.slice(0, 2)).slice(0, 8);
 
   return (
@@ -32,23 +28,6 @@ const ResumeDashboard = ({ hero, profileSummary, experiences, workCases, skillGr
           ))}
         </ul>
       </div>
-
-      <aside className="at-a-glance" aria-label="Career at a glance">
-        <div>
-          <span>Experience</span>
-          <strong>{timelineItems.length} entries</strong>
-        </div>
-        <ol>
-          {latestExperiences.map((item) => (
-            <li key={item.id}>
-              <span>{item.period}</span>
-              <strong>
-                {item.company} · {item.role}
-              </strong>
-            </li>
-          ))}
-        </ol>
-      </aside>
 
       <div className="dashboard-strip" aria-label="Profile highlights">
         <section>
