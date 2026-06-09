@@ -130,6 +130,7 @@ export const loadPortfolioContentFromGoogleSheet = async (sheetId: string): Prom
       tags: splitList(experience.tags),
     })),
     workCases: workCases.map((workCase) => ({
+      company: workCase.company,
       title: workCase.title,
       period: workCase.period,
       role: workCase.role,

@@ -1,17 +1,35 @@
 import { useMemo, useState } from 'react';
-import type { ExperienceContent } from '../data/types';
+import type { ExperienceContent, WorkCaseContent } from '../data/types';
 import { createCareerTimelineItems } from '../modules/careerTimeline';
 
 type CareerTimelineProps = {
   experiences: ExperienceContent[];
+  workCases: WorkCaseContent[];
 };
 
-const CareerTimeline = ({ experiences }: CareerTimelineProps) => {
+const groupWorkCasesByCompany = (workCases: WorkCaseContent[]): Map<string, WorkCaseContent[]> => {
+  return workCases.reduce<Map<string, WorkCaseContent[]>>((grouped, workCase) => {
+    const company = workCase.company?.trim();
+
+    if (!company) {
+      return grouped;
+    }
+
+    const current = grouped.get(company) ?? [];
+    grouped.set(company, [...current, workCase]);
+
+    return grouped;
+  }, new Map());
+};
+
+const CareerTimeline = ({ experiences, workCases }: CareerTimelineProps) => {
   const items = useMemo(() => createCareerTimelineItems(experiences), [experiences]);
+  const workCasesByCompany = useMemo(() => groupWorkCasesByCompany(workCases), [workCases]);
   const [activeItemId, setActiveItemId] = useState(items[0]?.id ?? '');
+  const [expandedItemId, setExpandedItemId] = useState('');
   const activeItem = items.find((item) => item.id === activeItemId) ?? items[0];
 
-  if (!activeItem) {
+  if (items.length === 0 || !activeItem) {
     return null;
   }
 
@@ -24,33 +42,74 @@ const CareerTimeline = ({ experiences }: CareerTimelineProps) => {
 
       <div className="timeline-layout">
         <ol className="timeline-list" aria-label="Career timeline">
-          {items.map((item) => (
-            <li className="timeline-row" key={item.id}>
-              <button
-                aria-pressed={activeItem.id === item.id}
-                className="timeline-button"
-                type="button"
-                onClick={() => setActiveItemId(item.id)}
-                onFocus={() => setActiveItemId(item.id)}
-                onMouseEnter={() => setActiveItemId(item.id)}
-              >
-                <span className="timeline-period">{item.period}</span>
-                <span className="timeline-axis-dot" aria-hidden="true" />
-                <span className="timeline-line">
-                  <strong>{item.company}</strong>
-                  <span>{item.role}</span>
-                  {item.isConcurrent ? <em>병행</em> : null}
-                </span>
-              </button>
-            </li>
-          ))}
+          {items.map((item) => {
+            const childWorkCases = workCasesByCompany.get(item.company) ?? [];
+            const canExpand = childWorkCases.length > 0;
+            const isExpanded = canExpand && expandedItemId === item.id;
+            const childPanelId = `timeline-projects-${item.id}`;
+
+            return (
+              <li className="timeline-row" key={item.id}>
+                <button
+                  type="button"
+                  className="timeline-button"
+                  aria-pressed={activeItem.id === item.id}
+                  aria-expanded={canExpand ? isExpanded : undefined}
+                  aria-controls={canExpand ? childPanelId : undefined}
+                  onClick={() => {
+                    setActiveItemId(item.id);
+
+                    if (canExpand) {
+                      setExpandedItemId((currentId) => (currentId === item.id ? '' : item.id));
+                    }
+                  }}
+                  onFocus={() => setActiveItemId(item.id)}
+                  onMouseEnter={() => setActiveItemId(item.id)}
+                >
+                  <span className="timeline-period">{item.period}</span>
+                  <span className="timeline-axis-dot" aria-hidden="true" />
+                  <span className="timeline-line">
+                    <strong>{item.company}</strong>
+                    <span>{item.role}</span>
+                    {item.isConcurrent ? <em>병행</em> : null}
+                    {canExpand ? <small>{childWorkCases.length} projects</small> : null}
+                  </span>
+                </button>
+
+                {isExpanded ? (
+                  <div className="timeline-projects" id={childPanelId}>
+                    <span className="timeline-projects-title">Projects</span>
+                    <ul>
+                      {childWorkCases.map((workCase) => (
+                        <li className="timeline-project-row" key={`${workCase.company}-${workCase.title}`}>
+                          <div>
+                            <span>{workCase.period}</span>
+                            <strong>{workCase.title}</strong>
+                            <em>{workCase.role}</em>
+                          </div>
+                          <p>{workCase.summary}</p>
+                          {workCase.keywords.length > 0 ? (
+                            <ul className="compact-tags" aria-label={`${workCase.title} keywords`}>
+                              {workCase.keywords.map((keyword) => (
+                                <li key={keyword}>{keyword}</li>
+                              ))}
+                            </ul>
+                          ) : null}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+              </li>
+            );
+          })}
         </ol>
 
         <aside className="timeline-detail" aria-live="polite">
           <span>{activeItem.period}</span>
           <h3>
             {activeItem.company} · {activeItem.role}
-            {activeItem.isConcurrent ? <em>병행</em> : null}
+            {activeItem.isConcurrent ? <small>병행 기간 포함</small> : null}
           </h3>
           <p>{activeItem.summary}</p>
           {activeItem.details.length > 0 ? (
@@ -61,7 +120,7 @@ const CareerTimeline = ({ experiences }: CareerTimelineProps) => {
             </ul>
           ) : null}
           {activeItem.tags.length > 0 ? (
-            <ul className="compact-tags is-dark" aria-label={`${activeItem.company} tags`}>
+            <ul className="compact-tags is-dark">
               {activeItem.tags.map((tag) => (
                 <li key={tag}>{tag}</li>
               ))}

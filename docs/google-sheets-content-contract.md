@@ -66,9 +66,12 @@
 
 ## WorkCases
 
-| title | period | role | summary | details | keywords |
-|---|---|---|---|---|---|
-| Work title | 2025 | Role | 한 줄 요약 | Detail A\|Detail B | Python\|PostgreSQL |
+| company | title | period | role | summary | details | keywords |
+|---|---|---|---|---|---|---|
+| Mining5000 | Work title | 2025 | Role | 한 줄 요약 | Detail A\|Detail B | Python\|PostgreSQL |
+
+- `company`는 `Experiences.company`와 같은 값을 사용한다.
+- 값이 일치하면 연혁에서 해당 소속을 클릭했을 때 하위 프로젝트로 펼쳐진다.
 
 ## SkillGroups
 

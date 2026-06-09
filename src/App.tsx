@@ -46,7 +46,7 @@ const App = () => {
           workCases={content.workCases}
           skillGroups={content.skillGroups}
         />
-        <CareerTimeline experiences={content.experiences} />
+        <CareerTimeline experiences={content.experiences} workCases={content.workCases} />
         <CoverLetter paragraphs={content.selfIntroduction} />
         <WorkCases workCases={content.workCases} />
         <SkillSummary skillGroups={content.skillGroups} />

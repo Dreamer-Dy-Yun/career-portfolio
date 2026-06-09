@@ -78,6 +78,7 @@ export const fallbackContent: PortfolioContent = {
   ],
   workCases: [
     {
+      company: 'Mining5000',
       title: 'Dutyfree B2C Settlement Workflow',
       period: '2025',
       role: 'Workflow / Backend / DB / UI',
@@ -86,6 +87,7 @@ export const fallbackContent: PortfolioContent = {
       keywords: ['PostgreSQL', 'FastAPI', 'OCR/LLM', 'React'],
     },
     {
+      company: 'Mining5000',
       title: 'PostgreSQL Multi-schema DB Manager',
       period: '2025',
       role: 'Backend / Database',
@@ -94,6 +96,7 @@ export const fallbackContent: PortfolioContent = {
       keywords: ['PostgreSQL', 'SQLAlchemy', 'Async'],
     },
     {
+      company: 'Mining5000',
       title: 'ICT Data Extractor / Visual Normalization',
       period: '2025',
       role: 'Data Workflow',

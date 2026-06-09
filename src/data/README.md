@@ -21,6 +21,6 @@
 - `profileSummary`: 이력서형 핵심 요약과 강점.
 - `selfIntroduction`: 자기소개 문단.
 - `experiences`: 회사, 기간, 역할, 한 줄 요약, 상세, 태그.
-- `workCases`: 대표 업무 또는 프로젝트성 경력 기술.
+- `workCases`: 대표 업무 또는 프로젝트성 경력 기술. `company`가 `experiences.company`와 일치하면 연혁 하위 프로젝트로 연결된다.
 - `skillGroups`: 기술 사용 맥락.
 - `contact`: Google Form 또는 이메일.

@@ -24,6 +24,7 @@ export type ExperienceContent = {
 };
 
 export type WorkCaseContent = {
+  company?: string;
   title: string;
   period: string;
   role: string;
